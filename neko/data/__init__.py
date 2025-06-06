@@ -1,14 +1,43 @@
+import io
 import urllib.parse
 
 import pandas as pd
-from networkcommons.data.omics import _common as _ncdata
+import requests
+
+BASEURL = "https://commons.omnipathdb.org/"
 
 
-def _retrieve(path: str, ftype: str = 'tsv') -> pd.DataFrame:
+def _open(url: str, ftype: str | None = None, df: bool | dict = False):
+    """Open a remote file and optionally return it as a DataFrame."""
 
-    url = urllib.parse.urljoin(_ncdata._baseurl(), path)
+    if not ftype:
+        ftype = urllib.parse.urlparse(url).path.split(".")[-1].lower()
 
-    return _ncdata._open(url, ftype = ftype, df = True)
+    if df is not False:
+        df_kwargs = df if isinstance(df, dict) else {}
+        if ftype == "tsv":
+            return pd.read_table(url, sep="\t", **df_kwargs)
+        elif ftype in {"csv", "txt"}:
+            return pd.read_csv(url, **df_kwargs)
+        elif ftype in {"xls", "xlsx"}:
+            return pd.read_excel(url, **df_kwargs)
+        else:
+            raise NotImplementedError(f"Unsupported file type {ftype}")
+
+    resp = requests.get(url)
+    resp.raise_for_status()
+    return io.BytesIO(resp.content)
+
+
+def _baseurl() -> str:
+    return BASEURL
+
+
+def _retrieve(path: str, ftype: str = "tsv") -> pd.DataFrame:
+
+    url = urllib.parse.urljoin(BASEURL, path)
+
+    return _open(url, ftype=ftype, df=True)
 
 
 def phosphosite_kinase_substrate():
@@ -30,6 +59,6 @@ def huri(dataset: str = 'HI-union', translated = True) -> pd.DataFrame:
 
     url = url % (dataset, '_translated' if translated else '')
 
-    df = _ncdata._open(url, df = True)
+    df = _open(url, df=True)
 
     return df
