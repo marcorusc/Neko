@@ -3,7 +3,7 @@ import pytest
 import pandas as pd
 
 
-def sample_df():
+def _sample_df():
     """Create a sample DataFrame for testing."""
     return pd.DataFrame({
         'source': ['P1', 'P2', 'P3'],
@@ -15,7 +15,7 @@ def sample_df():
     })
 
 
-def sample_df2():
+def _sample_df2():
     """Create another sample DataFrame for testing."""
     return pd.DataFrame({
         'source': ['X', 'Y'],
@@ -41,14 +41,14 @@ class TestUniverse:
 
     def test_create_with_dataframe(self):
         """Test creating Universe with a DataFrame."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         assert len(u) == 3
         assert 'test1' in u.list_resources()
 
     def test_list_resources(self):
         """Test listing resources."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         resources = u.list_resources()
         assert isinstance(resources, list)
@@ -56,8 +56,8 @@ class TestUniverse:
 
     def test_add_resources(self):
         """Test adding resources."""
-        df1 = sample_df()
-        df2 = sample_df2()
+        df1 = _sample_df()
+        df2 = _sample_df2()
         u = Universe(df1, name='test1')
         u.add_resources(df2, name='test2')
         u.build()
@@ -67,8 +67,8 @@ class TestUniverse:
 
     def test_remove_resources(self):
         """Test removing resources."""
-        df1 = sample_df()
-        df2 = sample_df2()
+        df1 = _sample_df()
+        df2 = _sample_df2()
         u = Universe(df1, name='test1')
         u.add_resources(df2, name='test2')
         u.build()
@@ -80,14 +80,14 @@ class TestUniverse:
 
     def test_remove_nonexistent_resource(self):
         """Test removing a resource that doesn't exist."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         result = u.remove_resources('nonexistent')
         assert result is False
 
     def test_get_resource(self):
         """Test getting a specific resource."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         resource = u.get_resource('test1')
         assert resource is not None
@@ -95,14 +95,14 @@ class TestUniverse:
 
     def test_get_nonexistent_resource(self):
         """Test getting a resource that doesn't exist."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         resource = u.get_resource('nonexistent')
         assert resource is None
 
     def test_clear_resources(self):
         """Test clearing all resources."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         u.clear_resources()
         assert len(u.list_resources()) == 0
@@ -136,7 +136,7 @@ class TestUniverse:
 
     def test_nodes_property(self):
         """Test the nodes property."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         nodes = u.nodes
         assert isinstance(nodes, set)
@@ -144,14 +144,14 @@ class TestUniverse:
 
     def test_contains(self):
         """Test the __contains__ method."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         assert 'P1' in u
         assert 'NonExistent' not in u
 
     def test_repr(self):
         """Test the __repr__ method."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='test1')
         repr_str = repr(u)
         assert 'Universe' in repr_str
@@ -159,8 +159,8 @@ class TestUniverse:
 
     def test_add_resources_with_dict(self):
         """Test adding resources as a dictionary."""
-        df1 = sample_df()
-        df2 = sample_df2()
+        df1 = _sample_df()
+        df2 = _sample_df2()
         resources_dict = {'resource1': df1, 'resource2': df2}
         u = Universe(resources_dict)
         assert 'resource1' in u.list_resources()
@@ -168,7 +168,7 @@ class TestUniverse:
 
     def test_undirected_resources(self):
         """Test adding undirected resources."""
-        df = sample_df()
+        df = _sample_df()
         u = Universe(df, name='undirected', directed=False)
         # Undirected edges should create mutual edges
         # The original 3 edges should become 6 edges (both directions)

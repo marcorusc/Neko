@@ -262,9 +262,15 @@ class Field:
     def _func_from_module(func: str) -> Callable:
 
         # refer to any custom function from any module
-        mod, *func_name = func.rsplit('.', maxsplit = 1)
-        mod = __import__(mod)
-        return getattr(mod, func_name[0] if func_name else func)
+        if '.' not in func:
+            # If there's no dot, we can't import a module, return None
+            raise ValueError(f"Invalid function reference: {func}")
+        mod_name, func_name = func.rsplit('.', maxsplit = 1)
+        mod = __import__(mod_name)
+        # Handle nested modules (e.g., "json.loads")
+        for part in mod_name.split('.')[1:]:
+            mod = getattr(mod, part)
+        return getattr(mod, func_name)
 
 
     def __call__(self, record: pd.DataFrame | dict) -> Any:
