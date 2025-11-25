@@ -114,17 +114,55 @@ class Universe:
         self.build()
 
 
-    def add_resources(self, resources, directed: bool = True, **param) -> None:
+    def add_resources(
+            self,
+            resources,
+            directed: bool = True,
+            **param
+        ) -> None:
+        """
+        Add resources to the Universe.
+
+        Parameters:
+            resources:
+                Can be one of the following:
+                - str: Path to a .pickle or .tsv file, or a known resource name
+                  like 'omnipath'.
+                - pd.DataFrame: A DataFrame containing interaction data.
+                - dict: A dictionary mapping resource names to DataFrames.
+                - Iterable: A list/tuple of DataFrames.
+                - None: No resources to add.
+            directed (bool):
+                Whether the interactions are directed. Default is True.
+            **param:
+                Additional parameters:
+                - name (str): Name for the resource. Default is '_default'.
+                - columns (dict): Column name mapping for renaming columns.
+
+        Returns:
+            None
+        """
+        # Handle None resources gracefully
+        if resources is None:
+            return
 
         if isinstance(resources, str):
 
             if resources.endswith('.pickle'):
+
+                if not os.path.exists(resources):
+                    raise FileNotFoundError(
+                        f"Pickle file not found: {resources}"
+                    )
 
                 with open(resources, 'rb') as fin:
 
                     resources = pickle.load(fin)
 
             elif resources.endswith('.tsv'):
+
+                if not os.path.exists(resources):
+                    raise FileNotFoundError(f"TSV file not found: {resources}")
 
                 resources = pd.read_csv(resources, sep='\t')
 
@@ -138,11 +176,17 @@ class Universe:
 
         if isinstance(resources, pd.DataFrame):
 
+            if resources.empty:
+                logging.warning(
+                    "Adding empty DataFrame as resource '%s'", name
+                )
+
             self._resources[name] = self._check_columns(
                 resources,
                 columns,
                 directed = directed,
             )
+            self._directed[name] = directed
 
         elif isinstance(resources, dict):
 
@@ -155,27 +199,76 @@ class Universe:
 
                 directed = {k: directed for k in resources.keys()}
 
-            for name, resource in resources.items():
+            for res_name, resource in resources.items():
 
                 self.add_resources(
                     resource,
-                    directed = directed[name],
-                    name = name,
+                    directed = directed[res_name],
+                    name = res_name,
                     **param,
                 )
 
-        elif isinstance(resources, Iterable):
+        elif isinstance(resources, Iterable) and not isinstance(resources, str):
 
-            names = [f'{name}_{i}' for i in range(len(resources))]
+            resources_list = list(resources)
+            names = [f'{name}_{i}' for i in range(len(resources_list))]
 
             if isinstance(directed, bool):
 
-                directed = [directed] * len(resources)
+                directed = [directed] * len(resources_list)
 
-            for r, d, n in zip(resources, directed, names):
+            for r, d, n in zip(resources_list, directed, names):
 
                 self.add_resources(r, directed = d, name = n, **param)
 
+    def remove_resources(self, name: str) -> bool:
+        """
+        Remove a resource from the Universe by name.
+
+        Parameters:
+            name (str): The name of the resource to remove.
+
+        Returns:
+            bool: True if the resource was removed, False if it was not found.
+        """
+        if name in self._resources:
+            del self._resources[name]
+            self._directed.pop(name, None)
+            # Rebuild the interactions after removing the resource
+            self.build()
+            return True
+        else:
+            logging.warning("Resource '%s' not found in Universe", name)
+            return False
+
+    def list_resources(self) -> list[str]:
+        """
+        List all resource names currently loaded in the Universe.
+
+        Returns:
+            list[str]: A list of resource names.
+        """
+        return list(self._resources.keys())
+
+    def get_resource(self, name: str) -> pd.DataFrame | None:
+        """
+        Get a specific resource DataFrame by name.
+
+        Parameters:
+            name (str): The name of the resource.
+
+        Returns:
+            pd.DataFrame | None: The resource DataFrame, or None if not found.
+        """
+        return self._resources.get(name)
+
+    def clear_resources(self) -> None:
+        """
+        Remove all resources from the Universe.
+        """
+        self._resources.clear()
+        self._directed.clear()
+        self.interactions = None
 
     @staticmethod
     def _check_columns(
