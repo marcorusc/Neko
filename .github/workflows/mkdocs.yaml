@@ -51,7 +51,8 @@ jobs:
         run: |
           mkdir -p docs_mkdocs/tutorials
           cp docs/src/notebooks/*.ipynb docs_mkdocs/tutorials/
-          # Copy any images used in notebooks
+          # Remove any symlinks committed by setup_mkdocs_tutorials.sh before copying
+          rm -rf docs_mkdocs/tutorials/img docs_mkdocs/assets/neko_logo.png
           if [ -d docs/src/notebooks/img ]; then
             cp -r docs/src/notebooks/img docs_mkdocs/tutorials/
           fi
