@@ -171,15 +171,15 @@ class Field:
         this class.
         """
 
-        definition = _RECOLPFX.sub('', definition)
+        definition = cls._RECOLPFX.sub('', definition)
         col, *maps = definition.split(cls._SEP0)
         col, *seps = col.split(cls._SEP1)
         datasep, defsep = (s or None for s in (seps + [None] * 2)[:2])
 
-        maps =
-            self._func_from_module(maps)
-                if maps and re.match(r'^[\w\.]+$', maps[0])
-            [self._process_map(i, m, defsep) for i, m in enumerate(maps)]
+        maps = (
+            cls._func_from_module(maps[0])
+                if maps and re.match(r'^[\w\.]+$', maps[0]) else
+            [cls._process_map(i, m, defsep) for i, m in enumerate(maps)]
         )
 
         return {
@@ -262,9 +262,15 @@ class Field:
     def _func_from_module(func: str) -> Callable:
 
         # refer to any custom function from any module
-        mod, *func = definition.rsplit('.', maxsplit = 1)
-        mod = __import__(mod)
-        return getattr(mod, func)
+        if '.' not in func:
+            # If there's no dot, we can't import a module, return None
+            raise ValueError(f"Invalid function reference: {func}")
+        mod_name, func_name = func.rsplit('.', maxsplit = 1)
+        mod = __import__(mod_name)
+        # Handle nested modules (e.g., "json.loads")
+        for part in mod_name.split('.')[1:]:
+            mod = getattr(mod, part)
+        return getattr(mod, func_name)
 
 
     def __call__(self, record: pd.DataFrame | dict) -> Any:
