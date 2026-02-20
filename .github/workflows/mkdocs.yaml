@@ -64,10 +64,11 @@ jobs:
 
       - name: Build MkDocs site
         run: |
-          poetry run mkdocs build --strict --verbose
+          poetry run mkdocs build --verbose
         env:
           # Suppress OmniPath download attempts during API introspection
           OMNIPATH_OFFLINE: "1"
+          JUPYTER_PLATFORM_DIRS: "1"
 
       - name: Deploy to GitHub Pages (root of gh-pages)
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'

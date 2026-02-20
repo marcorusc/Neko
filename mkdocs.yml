@@ -125,7 +125,7 @@ nav:
   - Development:
       - Contributing: contributing.md
       - Changelog: changelog.md
-  - "→ Sphinx docs": sphinx/index.html
+  - "→ Sphinx docs": https://sysbio-curie.github.io/Neko/sphinx/
 
 extra:
   social:
