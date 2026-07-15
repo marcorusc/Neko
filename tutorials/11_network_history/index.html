@@ -12,13 +12,13 @@
         <meta name="author" content="Marco Ruscone, Eirini Tsirvouli, Andrea Checcoli">
       
       
-        <link rel="canonical" href="https://sysbio-curie.github.io/Neko/tutorials/9-Recreating_famous_pathways/">
+        <link rel="canonical" href="https://sysbio-curie.github.io/Neko/tutorials/11_network_history/">
       
       
-        <link rel="prev" href="../8_Compare_networks/">
+        <link rel="prev" href="../10_Import_and_complete_a_network/">
       
       
-        <link rel="next" href="../10_Import_and_complete_a_network/">
+        <link rel="next" href="../../api/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Re-creating famous pathways from SIGNOR and WIKIPATHWAYS using NeKo - NeKo – Network Konstructor</title>
+        <title>Exploring Network History in NeKo - NeKo – Network Konstructor</title>
       
     
     
@@ -84,7 +84,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#re-creating-famous-pathways-from-signor-and-wikipathways-using-neko" class="md-skip">
+        <a href="#exploring-network-history-in-neko" class="md-skip">
           Skip to content
         </a>
       
@@ -123,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Re-creating famous pathways from SIGNOR and WIKIPATHWAYS using NeKo
+              Exploring Network History in NeKo
             
           </span>
         </div>
@@ -760,37 +760,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Re-creating famous pathways from SIGNOR and WIKIPATHWAYS using NeKo
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../9-Recreating_famous_pathways/" class="md-nav__link">
         
   
   
@@ -806,82 +779,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-retrieving-the-mtor-signaling-from-signor-using-neko" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1) Retrieving the MTOR Signaling from Signor using NeKo
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1) Retrieving the MTOR Signaling from Signor using NeKo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-retrieving-the-egfegfr-pathway-source-wikipathway-using-omnipath" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2) Retrieving the EGF/EGFR pathway (source: wikipathway) using Omnipath
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2) Retrieving the EGF/EGFR pathway (source: wikipathway) using Omnipath">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -919,10 +816,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../11_network_history/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exploring Network History in NeKo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -938,6 +862,92 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-create-a-network-using-the-omnipath-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Create a network using the Omnipath database
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-automatic-history-capture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Automatic history capture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-visualising-the-history-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Visualising the history graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-working-with-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Working with branches
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-suspension-and-toggles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Suspension and toggles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pruning-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Pruning history
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1350,58 +1360,68 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-retrieving-the-mtor-signaling-from-signor-using-neko" class="md-nav__link">
+  <a href="#1-create-a-network-using-the-omnipath-database" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1) Retrieving the MTOR Signaling from Signor using NeKo
+        1. Create a network using the Omnipath database
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="1) Retrieving the MTOR Signaling from Signor using NeKo">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-retrieving-the-egfegfr-pathway-source-wikipathway-using-omnipath" class="md-nav__link">
+  <a href="#2-automatic-history-capture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2) Retrieving the EGF/EGFR pathway (source: wikipathway) using Omnipath
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2) Retrieving the EGF/EGFR pathway (source: wikipathway) using Omnipath">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        
+        2. Automatic history capture
       
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#3-visualising-the-history-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Visualising the history graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-working-with-branches" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Working with branches
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-suspension-and-toggles" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Suspension and toggles
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-pruning-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Pruning history
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1470,7 +1490,7 @@
 
 
   
-    <a href="https://github.com/sysbio-curie/Neko/edit/main/docs_mkdocs/tutorials/9-Recreating_famous_pathways.ipynb" title="Edit this page" class="md-content__button md-icon" rel="edit">
+    <a href="https://github.com/sysbio-curie/Neko/edit/main/docs_mkdocs/tutorials/11_network_history.ipynb" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1479,7 +1499,7 @@
     
       
     
-    <a href="https://github.com/sysbio-curie/Neko/raw/main/docs_mkdocs/tutorials/9-Recreating_famous_pathways.ipynb" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/sysbio-curie/Neko/raw/main/docs_mkdocs/tutorials/11_network_history.ipynb" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
@@ -1922,18 +1942,36 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </style>
 <!-- End of mermaid configuration --><div class="jupyter-wrapper">
 <div class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0dc40388-8f54-4433-aa81-9dc643697c76">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=73806344">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="re-creating-famous-pathways-from-signor-and-wikipathways-using-neko">Re-creating famous pathways from SIGNOR and WIKIPATHWAYS using NeKo<a class="anchor-link" href="#re-creating-famous-pathways-from-signor-and-wikipathways-using-neko">¶</a></h1>
+<h1 id="exploring-network-history-in-neko">Exploring Network History in NeKo<a class="anchor-link" href="#exploring-network-history-in-neko">¶</a></h1>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=72eb137b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>This notebook demonstrates the new history facilities in NeKo. You will learn how to:</p>
+<ul>
+<li>capture network states automatically while you enrich a network</li>
+<li>inspect branches and metadata associated with each state</li>
+<li>visualise the history graph as both a <code>networkx</code> object and an embedded SVG</li>
+<li>control the history recorder with context managers and global toggles</li>
+<li>prune older history entries using <code>set_max_history</code></li>
+</ul>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a90067aa-8a9c-4ff1-8aac-4f9992094e7e">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3e253976">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1951,33 +1989,31 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">neko.core.network</span><span class="w"> </span><span class="kn">import</span> <span class="n">Network</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neko._visual.visualize_network</span><span class="w"> </span><span class="kn">import</span> <span class="n">NetworkVisualizer</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">neko.inputs</span><span class="w"> </span><span class="kn">import</span> <span class="n">Universe</span><span class="p">,</span> <span class="n">signor</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">omnipath</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">op</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">neko.core.network</span><span class="w"> </span><span class="kn">import</span> <span class="n">Network</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-1">from neko.core.network import Network
-from neko._visual.visualize_network import NetworkVisualizer
-from neko.inputs import Universe, signor
-import omnipath as op</div>
+<div class="clipboard-copy-txt" id="cell-1">import pandas as pd
+from IPython.display import display, HTML
+from neko.core.network import Network</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=19dc89d3-203b-479a-9d46-3b7846c720bb">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aeced087">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="1-retrieving-the-mtor-signaling-from-signor-using-neko">1) Retrieving the MTOR Signaling from Signor using NeKo<a class="anchor-link" href="#1-retrieving-the-mtor-signaling-from-signor-using-neko">¶</a></h2>
+<h2 id="1-create-a-network-using-the-omnipath-database">1. Create a network using the Omnipath database<a class="anchor-link" href="#1-create-a-network-using-the-omnipath-database">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0abd6eae-2970-4bdf-82b5-364731270d3e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c5589026">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -1995,18 +2031,41 @@ import omnipath as op</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">mtor_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"RPS6KA1"</span><span class="p">,</span> <span class="s2">"SREBF1"</span><span class="p">,</span> <span class="s2">"MTOR"</span><span class="p">,</span> <span class="s2">"RPTOR"</span><span class="p">,</span> <span class="s2">"INSR"</span><span class="p">,</span> <span class="s2">"RPS6KB1"</span><span class="p">,</span> <span class="s2">"RHEB"</span><span class="p">,</span> <span class="s2">"EIF4EBP1"</span><span class="p">,</span> <span class="s2">"INS"</span><span class="p">,</span> <span class="s2">"PTEN"</span><span class="p">,</span>
-             <span class="s2">"RPS6"</span><span class="p">,</span> <span class="s2">"TFEB"</span><span class="p">,</span> <span class="s2">"PIK3R1"</span><span class="p">,</span> <span class="s2">"PPARGC1A"</span><span class="p">,</span> <span class="s2">"PDPK1"</span><span class="p">,</span> <span class="s2">"AKT1S1"</span><span class="p">,</span> <span class="s2">"PPARG"</span><span class="p">,</span> <span class="s2">"PIK3CA"</span><span class="p">,</span> <span class="s2">"EIF4E"</span><span class="p">,</span> <span class="s2">"IRS1"</span><span class="p">,</span> <span class="s2">"GSK3B"</span><span class="p">,</span> <span class="s2">"ULK1"</span><span class="p">]</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">initial_nodes</span><span class="o">=</span><span class="p">[</span><span class="s2">"SRC"</span><span class="p">,</span> <span class="s2">"CDH1"</span><span class="p">,</span> <span class="s2">"TP53"</span><span class="p">],</span> <span class="n">resources</span><span class="o">=</span><span class="s2">"omnipath"</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">list_states</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-2">mtor_nodes = ["RPS6KA1", "SREBF1", "MTOR", "RPTOR", "INSR", "RPS6KB1", "RHEB", "EIF4EBP1", "INS", "PTEN",
-             "RPS6", "TFEB", "PIK3R1", "PPARGC1A", "PDPK1", "AKT1S1", "PPARG", "PIK3CA", "EIF4E", "IRS1", "GSK3B", "ULK1"]</div>
+<div class="clipboard-copy-txt" id="cell-2">net = Network(initial_nodes=["SRC", "CDH1", "TP53"], resources="omnipath")
+net.list_states()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[{'id': 0, 'metadata': {'label': 'initial'}}]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2c74b109-7324-4b4f-9c8c-5ffb828fbc32">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9ef99407">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2-automatic-history-capture">2. Automatic history capture<a class="anchor-link" href="#2-automatic-history-capture">¶</a></h2><p>Every mutating API call creates a new state with metadata describing the operation.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=604934ad">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2024,16 +2083,45 @@ import omnipath as op</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"TP63"</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"FAK"</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">list_states</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-3">import random</div>
+<div class="clipboard-copy-txt" id="cell-3">net.add_node("TP63")
+net.add_node("FAK")
+net.list_states()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[{'id': 0, 'metadata': {'label': 'initial'}},
+ {'id': 1, 'metadata': {'method': 'add_node', 'args': ['TP63'], 'kwargs': {}}},
+ {'id': 2, 'metadata': {'method': 'add_node', 'args': ['PTK2'], 'kwargs': {}}}]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c91174d0-5b4a-4ebe-aee2-002a246b3416">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=625aabdc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>We can compare branches or move around the history using <code>checkout</code>, <code>undo</code>, and <code>redo</code>.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bc79704a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2051,18 +2139,31 @@ import omnipath as op</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">seeds_number</span> <span class="o">=</span> <span class="mi">4</span>
-<span class="n">random_seeds</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">mtor_nodes</span><span class="p">,</span> <span class="n">seeds_number</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">current</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">current_state_id</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Current state ID:"</span><span class="p">,</span> <span class="n">current</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-4">seeds_number = 4
-random_seeds = random.sample(mtor_nodes, seeds_number)</div>
+<div class="clipboard-copy-txt" id="cell-4">current = net.current_state_id
+print("Current state ID:", current)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Current state ID: 2
+</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fbb83c00-86c2-4319-b45c-8edbce14ad42">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=62f7274d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2080,28 +2181,16 @@ random_seeds = random.sample(mtor_nodes, seeds_number)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">random_seeds</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-5">random_seeds</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>['AKT1S1', 'TFEB', 'SREBF1', 'RPS6']</pre>
+<div class="clipboard-copy-txt" id="cell-5">net.undo()</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=141b4700-e3da-478a-aa6b-19e7d85aa6f4">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1d27c579">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2119,33 +2208,78 @@ random_seeds = random.sample(mtor_nodes, seeds_number)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">resources</span> <span class="o">=</span> <span class="n">Universe</span><span class="p">()</span>
-<span class="n">resources</span> <span class="o">=</span> <span class="n">signor</span><span class="p">(</span><span class="s2">"../neko/_data/signor_db.tsv"</span><span class="p">)</span>  <span class="c1"># this function accept only tab separated values</span>
-<span class="n">resources</span><span class="o">.</span><span class="n">build</span><span class="p">()</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">nodes</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-6">resources = Universe()
-resources = signor("../neko/_data/signor_db.tsv")  # this function accept only tab separated values
-resources.build()</div>
+<div class="clipboard-copy-txt" id="cell-6">net.nodes</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Genesymbol</th>
+<th>Uniprot</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>SRC</td>
+<td>P12931</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>1</th>
+<td>CDH1</td>
+<td>P12830</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>2</th>
+<td>TP53</td>
+<td>P04637</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>3</th>
+<td>TP63</td>
+<td>Q9H3D4</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d6049069-ed6f-40ae-bbc3-c65c59ee095e">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Let's compare the function commplete_connection (based on the Reciprocal Pathway Extender algorithm) with the function connect_radially (based on the Iterative Neighbor Expansion ).
-We are going to create two neko_net, and apply to each of them one of the two functions.
-Finally, we are going to compare the resulting networks.</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a7799cae-73d3-48dc-aa73-5cfbc1c40de2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=50124496">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2163,16 +2297,97 @@ Finally, we are going to compare the resulting networks.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">neko_net1</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">random_seeds</span><span class="p">,</span> <span class="n">resources</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">interactions</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">redo</span><span class="p">()</span>
+<span class="n">net</span><span class="o">.</span><span class="n">nodes</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-7">neko_net1 = Network(random_seeds, resources = resources.interactions)</div>
+<div class="clipboard-copy-txt" id="cell-7">net.redo()
+net.nodes</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Genesymbol</th>
+<th>Uniprot</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>SRC</td>
+<td>P12931</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>1</th>
+<td>CDH1</td>
+<td>P12830</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>2</th>
+<td>TP53</td>
+<td>P04637</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>3</th>
+<td>TP63</td>
+<td>Q9H3D4</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>4</th>
+<td>PTK2</td>
+<td>Q05397</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=837ddb95-e22e-44ad-9ac1-6488d7a8b348">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=95567ffb">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="3-visualising-the-history-graph">3. Visualising the history graph<a class="anchor-link" href="#3-visualising-the-history-graph">¶</a></h2><p><code>history_graph()</code> returns a <code>networkx</code> object, while <code>history_html()</code> embeds a Graphviz SVG.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3328f66b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2190,16 +2405,30 @@ Finally, we are going to compare the resulting networks.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">neko_net2</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">random_seeds</span><span class="p">,</span> <span class="n">resources</span> <span class="o">=</span> <span class="n">resources</span><span class="o">.</span><span class="n">interactions</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">history_nx</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">history_graph</span><span class="p">()</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">history_nx</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-8">neko_net2 = Network(random_seeds, resources = resources.interactions)</div>
+<div class="clipboard-copy-txt" id="cell-8">history_nx = net.history_graph()
+list(history_nx.edges())</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[(0, 1), (1, 2)]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=47575e89-4da0-4a9e-acfa-9d15a98abd90">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=78a7b1fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -2217,11 +2446,9 @@ Finally, we are going to compare the resulting networks.</p>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="o">%%</span><span class="n">time</span>
-<span class="n">neko_net1</span><span class="o">.</span><span class="n">complete_connection</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"dfs"</span><span class="p">,</span> <span class="n">only_signed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">connect_with_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">consensus</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">history_html</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-9">%%time
-neko_net1.complete_connection(maxlen=3, algorithm="dfs", only_signed=True, connect_with_bias=False, consensus=False)</div>
+<div class="clipboard-copy-txt" id="cell-9">HTML(net.history_html())</div>
 </div>
 </div>
 </div>
@@ -2230,39 +2457,79 @@ neko_net1.complete_connection(maxlen=3, algorithm="dfs", only_signed=True, conne
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CPU times: user 402 ms, sys: 3.1 ms, total: 406 ms
-Wall time: 404 ms
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div class="neko-history-graph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg height="241pt" viewbox="0.00 0.00 196.09 241.22" width="196pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 237.22)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-237.22 192.09,-237.22 192.09,4 -4,4" stroke="transparent"></polygon>
+<!-- 0 -->
+<g class="node" id="node1">
+<title>0</title>
+<ellipse cx="94.05" cy="-206.35" fill="none" rx="48.17" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="94.05" y="-210.15">State 0</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="94.05" y="-195.15">initial</text>
+</g>
+<!-- 1 -->
+<g class="node" id="node2">
+<title>1</title>
+<ellipse cx="94.05" cy="-116.61" fill="none" rx="92.76" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="94.05" y="-120.41">State 1</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="94.05" y="-105.41">add_node(TP63)</text>
+</g>
+<!-- 0&#45;&gt;1 -->
+<g class="edge" id="edge1">
+<title>0-&gt;1</title>
+<path d="M94.05,-179.03C94.05,-171.06 94.05,-162.17 94.05,-153.68" fill="none" stroke="black"></path>
+<polygon fill="black" points="97.55,-153.61 94.05,-143.61 90.55,-153.61 97.55,-153.61" stroke="black"></polygon>
+</g>
+<!-- 2 -->
+<g class="node" id="node3">
+<title>2</title>
+<ellipse cx="94.05" cy="-26.87" fill="none" rx="94.09" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="94.05" y="-30.67">State 2</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="94.05" y="-15.67">add_node(PTK2)</text>
+</g>
+<!-- 1&#45;&gt;2 -->
+<g class="edge" id="edge2">
+<title>1-&gt;2</title>
+<path d="M94.05,-89.29C94.05,-81.32 94.05,-72.43 94.05,-63.94" fill="none" stroke="black"></path>
+<polygon fill="black" points="97.55,-63.87 94.05,-53.87 90.55,-63.87 97.55,-63.87" stroke="black"></polygon>
+</g>
+</g>
+</svg>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ae162d78-1df1-47a3-b3ce-d442324274e9">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=ccce38e0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id=""><a class="anchor-link" href="#">¶</a></h3><div class="alert alert-info">
-<p><strong>Note</strong></p>
-<p>The <strong>max_len</strong> in the function <em>connect_network_radially</em> should be kept at 1, max 2. Why?</p>
-<p>The Iterative Neighbour Expansion, as the name suggests, iterates through all the seed nodes and adds to the network all the interactions found. In the next step, it iterates through all the neighbors found and looks for their neighbors. Doing so, the Network size could exponentially increase, if among the neighbor nodes there are some HUB (nodes with a high degree of connection).</p>
-</div>
+<h2 id="4-working-with-branches">4. Working with branches<a class="anchor-link" href="#4-working-with-branches">¶</a></h2><p>We can revert to an earlier state, explore an alternative enrichment strategy, and compare the resulting states.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5b115402-1a40-4677-9f44-bbcd5ae4bb3f">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4b1221ac">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-10">
@@ -2275,11 +2542,19 @@ Wall time: 404 ms
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="o">%%</span><span class="n">time</span>
-<span class="n">neko_net2</span><span class="o">.</span><span class="n">connect_network_radially</span><span class="p">(</span><span class="n">max_len</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">only_signed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">consensus</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">root_state</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">root_state_id</span>
+<span class="n">net</span><span class="o">.</span><span class="n">checkout</span><span class="p">(</span><span class="n">root_state</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"P01112"</span><span class="p">)</span>
+<span class="n">branch_state</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">current_state_id</span>
+<span class="n">diff</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">compare_states</span><span class="p">(</span><span class="n">current</span><span class="p">,</span> <span class="n">branch_state</span><span class="p">)</span>
+<span class="n">diff</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-10">%%time
-neko_net2.connect_network_radially(max_len=2, only_signed=True, consensus=False)</div>
+<div class="clipboard-copy-txt" id="cell-10">root_state = net.root_state_id
+net.checkout(root_state)
+net.add_node("P01112")
+branch_state = net.current_state_id
+diff = net.compare_states(current, branch_state)
+diff</div>
 </div>
 </div>
 </div>
@@ -2288,35 +2563,38 @@ neko_net2.connect_network_radially(max_len=2, only_signed=True, consensus=False)
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CPU times: user 6.45 s, sys: 1.39 ms, total: 6.45 s
-Wall time: 6.45 s
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'added_nodes': ['P01112'],
+ 'removed_nodes': ['Q05397', 'Q9H3D4'],
+ 'added_edges': [],
+ 'removed_edges': [],
+ 'added_provenance': [],
+ 'removed_provenance': []}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2a80e34b-cb9c-4caf-962f-4738da608fb6">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=511f65a7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Now let's visualize the network:</p>
+<h2 id="5-suspension-and-toggles">5. Suspension and toggles<a class="anchor-link" href="#5-suspension-and-toggles">¶</a></h2><p>Use <code>suspend_history()</code> or <code>set_history_tracking(False)</code> to batch changes without recording intermediate states.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0cf992d7-91d6-4e9d-aa58-ec35be8a9fc3">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f6a5913c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-11">
@@ -2329,25 +2607,26 @@ Wall time: 6.45 s
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1">#Visualize network</span>
-<span class="n">visualizer1</span> <span class="o">=</span> <span class="n">NetworkVisualizer</span><span class="p">(</span><span class="n">neko_net1</span><span class="p">,</span> <span class="n">color_by</span><span class="o">=</span><span class="s1">'effect'</span><span class="p">,</span> <span class="n">noi</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">visualizer1</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">"./img/Complete_connection_neko_net_sample"</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="k">with</span> <span class="n">net</span><span class="o">.</span><span class="n">suspend_history</span><span class="p">():</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"Q9Y243"</span><span class="p">)</span>  <span class="c1"># already present, but no state recorded</span>
+    <span class="n">net</span><span class="o">.</span><span class="n">list_states</span><span class="p">()[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-11">#Visualize network
-visualizer1 = NetworkVisualizer(neko_net1, color_by='effect', noi=True)
-visualizer1.render("./img/Complete_connection_neko_net_sample", view=True)</div>
+<div class="clipboard-copy-txt" id="cell-11">with net.suspend_history():
+    net.add_node("Q9Y243")  # already present, but no state recorded
+    net.list_states()[-1]
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7d120405-e5f5-4d4a-9a80-c83877a47735">
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e59b9e8b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-12">
@@ -2360,37 +2639,57 @@ visualizer1.render("./img/Complete_connection_neko_net_sample", view=True)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1">#Visualize network</span>
-<span class="n">visualizer2</span> <span class="o">=</span> <span class="n">NetworkVisualizer</span><span class="p">(</span><span class="n">neko_net2</span><span class="p">,</span> <span class="n">color_by</span><span class="o">=</span><span class="s1">'effect'</span><span class="p">,</span> <span class="n">noi</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">visualizer2</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="s2">"./img/Radial_neko_net_sample"</span><span class="p">,</span> <span class="n">view</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">set_history_tracking</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"Q15796"</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">set_history_tracking</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">list_states</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-12">#Visualize network
-visualizer2 = NetworkVisualizer(neko_net2, color_by='effect', noi=True)
-visualizer2.render("./img/Radial_neko_net_sample", view=True)</div>
+<div class="clipboard-copy-txt" id="cell-12">net.set_history_tracking(False)
+net.add_node("Q15796")
+net.set_history_tracking(True)
+net.list_states()
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[{'id': 0, 'metadata': {'label': 'initial'}},
+ {'id': 1,
+  'metadata': {'method': 'add_node', 'args': ["'TP63'"], 'kwargs': {}}},
+ {'id': 2,
+  'metadata': {'method': 'add_node', 'args': ["'FAK'"], 'kwargs': {}}},
+ {'id': 3,
+  'metadata': {'method': 'add_node', 'args': ["'P01112'"], 'kwargs': {}}}]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e2024355-1443-40f6-b529-8c94f80d040e">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=254694d7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Let's compare the Networks. We will use JUST those nodes in signor that are not complexes or protein families (so we excluded all those nodes that starts with "SIGNOR_").
-At the following link you can find the full MTOR pathway from SIGNOR: <a href="https://signor.uniroma2.it/pathway_browser.php?beta=3.0&amp;organism=&amp;pathway_list=SIGNOR-MS&amp;x=13&amp;y=13">https://signor.uniroma2.it/pathway_browser.php?beta=3.0&amp;organism=&amp;pathway_list=SIGNOR-MS&amp;x=13&amp;y=13</a></p>
+<h2 id="6-pruning-history">6. Pruning history<a class="anchor-link" href="#6-pruning-history">¶</a></h2><p><code>set_max_history()</code> limits the number of stored states while preserving the root and the latest state.</p>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9184fb6a-6a5b-4cac-ba3c-677fb646b844">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=168fe54e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-13">
@@ -2403,17 +2702,18 @@ At the following link you can find the full MTOR pathway from SIGNOR: <a href="h
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net1_nodes_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net1</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-<span class="n">net2_nodes_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net2</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of nodes of the first NeKo network: "</span><span class="p">,</span> <span class="n">net1_nodes_size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of nodes of the second NeKo network: "</span><span class="p">,</span> <span class="n">net2_nodes_size</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">set_max_history</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"Q9Y6K9"</span><span class="p">,</span> <span class="s2">"P17302"</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">node</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">net</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">"Genesymbol"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">():</span>
+        <span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">list_states</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-13">net1_nodes_size = len(neko_net1.nodes)
-net2_nodes_size = len(neko_net2.nodes)
-
-print("Number of nodes of the first NeKo network: ", net1_nodes_size)
-print("Number of nodes of the second NeKo network: ", net2_nodes_size)</div>
+<div class="clipboard-copy-txt" id="cell-13">net.set_max_history(4)
+for node in ["Q9Y6K9", "P17302"]:
+    if node not in net.nodes["Genesymbol"].tolist():
+        net.add_node(node)
+net.list_states()
+</div>
 </div>
 </div>
 </div>
@@ -2422,24 +2722,50 @@ print("Number of nodes of the second NeKo network: ", net2_nodes_size)</div>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Number of nodes of the first NeKo network:  13
-Number of nodes of the second NeKo network:  58
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[{'id': 0, 'metadata': {'label': 'initial'}},
+ {'id': 3,
+  'metadata': {'method': 'add_node', 'args': ["'P01112'"], 'kwargs': {}}},
+ {'id': 4,
+  'metadata': {'method': 'add_node', 'args': ["'Q9Y6K9'"], 'kwargs': {}}},
+ {'id': 5,
+  'metadata': {'method': 'add_node', 'args': ["'P17302'"], 'kwargs': {}}}]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c81afa3d-fd2c-43db-acfd-bcb457864fdd">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=68b77717">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>When the number of stored states exceeds the limit, older leaf states are pruned automatically. The root and current state remain intact.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6247e582">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>This concludes the walkthrough of the history API. Experiment by combining these features with your favourite enrichment strategies to analyse multiple hypotheses side by side.</p>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9de4e419">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-14">
@@ -2452,54 +2778,21 @@ Number of nodes of the second NeKo network:  58
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net1_edges_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net1</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-<span class="n">net2_edges_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net2</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of edges of the first NeKo network: "</span><span class="p">,</span> <span class="n">net1_edges_size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of edges of the second NeKo network: "</span><span class="p">,</span> <span class="n">net2_edges_size</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">initial_nodes</span><span class="o">=</span><span class="p">[</span><span class="s2">"SRC"</span><span class="p">,</span> <span class="s2">"CDH1"</span><span class="p">,</span> <span class="s2">"TP53"</span><span class="p">],</span> <span class="n">resources</span><span class="o">=</span><span class="s2">"omnipath"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-14">net1_edges_size = len(neko_net1.edges)
-net2_edges_size = len(neko_net2.edges)
-
-print("Number of edges of the first NeKo network: ", net1_edges_size)
-print("Number of edges of the second NeKo network: ", net2_edges_size)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Number of edges of the first NeKo network:  33
-Number of edges of the second NeKo network:  161
-</pre>
+<div class="clipboard-copy-txt" id="cell-14">net = Network(initial_nodes=["SRC", "CDH1", "TP53"], resources="omnipath")</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8562a1af-20b7-492b-add2-f56f3da93b80">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The first consideration to do is that the RPE algorithm, is way faster than the INE one (402 ms vs 6.45 s). Despite being slower, the INE algorithm, provided a much bigger network (13 nodes vs 33, 58 edges vs 161)</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6827eeef-2f4a-4e15-8cd8-f9e00d0aef87">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=82aabf12">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-15">
@@ -2512,50 +2805,21 @@ Number of edges of the second NeKo network:  161
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">nodes_found</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">mtor_nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">neko_net1</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">"Genesymbol"</span><span class="p">]):</span>
-        <span class="n">nodes_found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial nodes: "</span><span class="p">,</span> <span class="n">random_seeds</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes in the MTOR pathways: "</span><span class="p">,</span> <span class="n">mtor_nodes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes founded: "</span><span class="p">,</span> <span class="n">nodes_found</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">complete_connection</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"bfs"</span><span class="p">,</span> <span class="n">only_signed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">consensus</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-15">nodes_found = []
-for node in mtor_nodes:
-    if node in list(neko_net1.nodes["Genesymbol"]):
-        nodes_found.append(node)
-
-print("Initial nodes: ", random_seeds)
-print("Nodes in the MTOR pathways: ", mtor_nodes)
-print("Nodes founded: ", nodes_found)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Initial nodes:  ['AKT1S1', 'TFEB', 'SREBF1', 'RPS6']
-Nodes in the MTOR pathways:  ['RPS6KA1', 'SREBF1', 'MTOR', 'RPTOR', 'INSR', 'RPS6KB1', 'RHEB', 'EIF4EBP1', 'INS', 'PTEN', 'RPS6', 'TFEB', 'PIK3R1', 'PPARGC1A', 'PDPK1', 'AKT1S1', 'PPARG', 'PIK3CA', 'EIF4E', 'IRS1', 'GSK3B', 'ULK1']
-Nodes founded:  ['SREBF1', 'MTOR', 'RPS6KB1', 'RPS6', 'TFEB', 'AKT1S1']
-</pre>
+<div class="clipboard-copy-txt" id="cell-15">net.complete_connection(maxlen=2, algorithm="bfs", only_signed=True, consensus=True)</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1c7de0cd-7056-4a95-a762-459116cd26e9">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=168ec6d3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-16">
@@ -2568,9 +2832,9 @@ Nodes founded:  ['SREBF1', 'MTOR', 'RPS6KB1', 'RPS6', 'TFEB', 'AKT1S1']
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage of genes covered: "</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes_found</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mtor_nodes</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">edges</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-16">print("Percentage of genes covered: ", (len(nodes_found)/len(mtor_nodes)) * 100)</div>
+<div class="clipboard-copy-txt" id="cell-16">net.edges</div>
 </div>
 </div>
 </div>
@@ -2579,23 +2843,204 @@ Nodes founded:  ['SREBF1', 'MTOR', 'RPS6KB1', 'RPS6', 'TFEB', 'AKT1S1']
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Percentage of genes covered:  27.27272727272727
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[12]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>source</th>
+<th>target</th>
+<th>Type</th>
+<th>Effect</th>
+<th>References</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>P12830</td>
+<td>P12931</td>
+<td>None</td>
+<td>stimulation</td>
+<td>ACSN:16039586;ACSN:16099633;ACSN:17143292;ACSN...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>1</th>
+<td>P12931</td>
+<td>P07949</td>
+<td>None</td>
+<td>stimulation</td>
+<td>BioGRID:10070972;HPRD:10070972;KEA:11713247;KE...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>2</th>
+<td>P07949</td>
+<td>P12830</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>3</th>
+<td>P04637</td>
+<td>P14210</td>
+<td>None</td>
+<td>stimulation</td>
+<td>SPIKE:18431400;SPIKE_LC:18431400; SPIKE:184314...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>4</th>
+<td>P14210</td>
+<td>P12931</td>
+<td>None</td>
+<td>stimulation</td>
+<td>ProtMapper:23524339; ProtMapper:23524339</td>
+<td>None</td>
+</tr>
+<tr>
+<th>5</th>
+<td>P12931</td>
+<td>Q14289</td>
+<td>None</td>
+<td>stimulation</td>
+<td>Adhesome:10329689;Adhesome:10521452;Adhesome:1...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>6</th>
+<td>Q14289</td>
+<td>P04637</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>7</th>
+<td>P04637</td>
+<td>Q15910</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>8</th>
+<td>Q15910</td>
+<td>P12830</td>
+<td>None</td>
+<td>inhibition</td>
+<td>ACSN:11309385;ACSN:12508111;ACSN:14673164;ACSN...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>9</th>
+<td>P12830</td>
+<td>P63000</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>10</th>
+<td>P63000</td>
+<td>P04637</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>11</th>
+<td>P12931</td>
+<td>P63000</td>
+<td>None</td>
+<td>stimulation</td>
+<td>ProtMapper:21798346;ProtMapper:22163037;ProtMa...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>12</th>
+<td>P12830</td>
+<td>P14210</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>13</th>
+<td>P63000</td>
+<td>P12830</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>14</th>
+<td>P04637</td>
+<td>P63000</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>15</th>
+<td>P14210</td>
+<td>P63000</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>16</th>
+<td>Q14289</td>
+<td>P63000</td>
+<td>None</td>
+<td>stimulation</td>
+<td>Adhesome:10592173</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8e5ed381-2eac-4dde-b664-9b8e7a7ad6c4">
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=16e6782c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-17">
@@ -2608,50 +3053,21 @@ Nodes founded:  ['SREBF1', 'MTOR', 'RPS6KB1', 'RPS6', 'TFEB', 'AKT1S1']
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">nodes_found</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">mtor_nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">neko_net2</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">"Genesymbol"</span><span class="p">]):</span>
-        <span class="n">nodes_found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial nodes: "</span><span class="p">,</span> <span class="n">random_seeds</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes in the MTOR pathways: "</span><span class="p">,</span> <span class="n">mtor_nodes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes founded: "</span><span class="p">,</span> <span class="n">nodes_found</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">undo</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-17">nodes_found = []
-for node in mtor_nodes:
-    if node in list(neko_net2.nodes["Genesymbol"]):
-        nodes_found.append(node)
-
-print("Initial nodes: ", random_seeds)
-print("Nodes in the MTOR pathways: ", mtor_nodes)
-print("Nodes founded: ", nodes_found)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Initial nodes:  ['AKT1S1', 'TFEB', 'SREBF1', 'RPS6']
-Nodes in the MTOR pathways:  ['RPS6KA1', 'SREBF1', 'MTOR', 'RPTOR', 'INSR', 'RPS6KB1', 'RHEB', 'EIF4EBP1', 'INS', 'PTEN', 'RPS6', 'TFEB', 'PIK3R1', 'PPARGC1A', 'PDPK1', 'AKT1S1', 'PPARG', 'PIK3CA', 'EIF4E', 'IRS1', 'GSK3B', 'ULK1']
-Nodes founded:  ['RPS6KA1', 'SREBF1', 'MTOR', 'RPS6KB1', 'PTEN', 'RPS6', 'TFEB', 'PPARGC1A', 'AKT1S1', 'PPARG', 'GSK3B', 'ULK1']
-</pre>
+<div class="clipboard-copy-txt" id="cell-17">net.undo()</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3ce92129-f927-4172-95eb-f71c84188c8f">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=38873798">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-18">
@@ -2664,9 +3080,9 @@ Nodes founded:  ['RPS6KA1', 'SREBF1', 'MTOR', 'RPS6KB1', 'PTEN', 'RPS6', 'TFEB',
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage of genes covered: "</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes_found</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">mtor_nodes</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">edges</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-18">print("Percentage of genes covered: ", (len(nodes_found)/len(mtor_nodes)) * 100)</div>
+<div class="clipboard-copy-txt" id="cell-18">net.edges</div>
 </div>
 </div>
 </div>
@@ -2675,67 +3091,51 @@ Nodes founded:  ['RPS6KA1', 'SREBF1', 'MTOR', 'RPS6KB1', 'PTEN', 'RPS6', 'TFEB',
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Percentage of genes covered:  54.54545454545454
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[14]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>source</th>
+<th>target</th>
+<th>Type</th>
+<th>Effect</th>
+<th>References</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=98534d1b-0922-491d-8c26-2f8439c5dae7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>As expected, due to the network size, the INE algorithm managed to capture more genes belonging to the MTOR pathway compared to the RPE algorithm. This was expected also because the RPE algorithm aims at finding the minimal set of genes that can connect all the seed nodes given by the user, while the INE algorithm does not take into account the shortest paths, but homogeneously explores the surroundings.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c9834d56-3487-484e-8f9b-24f0601b5af0">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="2-retrieving-the-egfegfr-pathway-source-wikipathway-using-omnipath">2) Retrieving the EGF/EGFR pathway (source: wikipathway) using Omnipath<a class="anchor-link" href="#2-retrieving-the-egfegfr-pathway-source-wikipathway-using-omnipath">¶</a></h2>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0cbdb936-fd71-419a-906a-6a5d7ffcd905">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The MTOR pathways we saw in use case 2 is a reletavely small pathway. We decided to test the INE and RPE algorithm to retrieve a bigger one, the EGF/EGFR pathway as shown in wikipathway, fetching interactions from Omnipath.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4bfbaca8-e8b2-48ea-8972-474961f19fba">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>In order to do so, we can proceed with the installation of the python package pywikipathways to quickly retrieve the genes belonging to the EGF/EGFR pathway (WP437, <a href="https://www.wikipathways.org/pathways/WP437.html">https://www.wikipathways.org/pathways/WP437.html</a>).</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d70ec715-e387-475e-8816-1a6c8efa855a">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=437b101f">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-19">
@@ -2748,52 +3148,21 @@ Nodes founded:  ['RPS6KA1', 'SREBF1', 'MTOR', 'RPS6KB1', 'PTEN', 'RPS6', 'TFEB',
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># uncomment the following line if you do not have installed pywikipathways</span>
-<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">pywikipathways</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">connect_network_radially</span><span class="p">(</span><span class="n">max_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">only_signed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">consensus</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-19"># uncomment the following line if you do not have installed pywikipathways
-!pip install pywikipathways</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Collecting pywikipathways
-  Using cached pywikipathways-0.0.3-py3-none-any.whl.metadata (2.5 kB)
-Requirement already satisfied: lxml in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from pywikipathways) (5.3.0)
-Requirement already satisfied: pandas in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from pywikipathways) (2.2.2)
-Requirement already satisfied: requests in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from pywikipathways) (2.32.3)
-Requirement already satisfied: numpy&gt;=1.26.0 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from pandas-&gt;pywikipathways) (1.26.4)
-Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from pandas-&gt;pywikipathways) (3.9.0)
-Requirement already satisfied: pytz&gt;=2020.1 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from pandas-&gt;pywikipathways) (2024.1)
-Requirement already satisfied: tzdata&gt;=2022.7 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from pandas-&gt;pywikipathways) (2024.1)
-Requirement already satisfied: six&gt;=1.5 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas-&gt;pywikipathways) (1.16.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from requests-&gt;pywikipathways) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from requests-&gt;pywikipathways) (3.7)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from requests-&gt;pywikipathways) (2.2.2)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /home/mruscone/Desktop/github/Neko/test_env/lib/python3.12/site-packages (from requests-&gt;pywikipathways) (2024.7.4)
-Using cached pywikipathways-0.0.3-py3-none-any.whl (12 kB)
-Installing collected packages: pywikipathways
-Successfully installed pywikipathways-0.0.3
-</pre>
+<div class="clipboard-copy-txt" id="cell-19">net.connect_network_radially(max_len=1, only_signed=True, consensus=True)</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8177656d-c194-4657-8dd1-4bcdf3afd084">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4499eaf6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-20">
@@ -2806,21 +3175,162 @@ Successfully installed pywikipathways-0.0.3
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pywikipathways</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pwpw</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">edges</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-20">import pywikipathways as pwpw</div>
+<div class="clipboard-copy-txt" id="cell-20">net.edges</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[16]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>source</th>
+<th>target</th>
+<th>Type</th>
+<th>Effect</th>
+<th>References</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>13</th>
+<td>P12830</td>
+<td>P12931</td>
+<td>None</td>
+<td>stimulation</td>
+<td>ACSN:16039586;ACSN:16099633;ACSN:17143292;ACSN...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>14</th>
+<td>P12830</td>
+<td>P01133</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>15</th>
+<td>P12830</td>
+<td>P62834</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>20</th>
+<td>P12830</td>
+<td>P14210</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>23</th>
+<td>P12830</td>
+<td>P63000</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<th>915</th>
+<td>P08151</td>
+<td>P04637</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>932</th>
+<td>P61978</td>
+<td>P04637</td>
+<td>None</td>
+<td>stimulation</td>
+<td>InnateDB:23092970;SPIKE:16360036;SPIKE:1847200...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>957</th>
+<td>P98170</td>
+<td>P04637</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>962</th>
+<td>P09038</td>
+<td>P04637</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>963</th>
+<td>Q07817</td>
+<td>P04637</td>
+<td>None</td>
+<td>inhibition</td>
+<td>BioGRID:24474649;DIP:24814347;HPRD:12667443;HP...</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p>120 rows × 6 columns</p>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bd661901-52f6-4d9b-949e-cfc539113f47">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b054c473">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-21">
@@ -2833,9 +3343,9 @@ Successfully installed pywikipathways-0.0.3
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">pwpw</span><span class="o">.</span><span class="n">get_pathway_info</span><span class="p">(</span><span class="s1">'WP437'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">list_states</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-21">pwpw.get_pathway_info('WP437')</div>
+<div class="clipboard-copy-txt" id="cell-21">net.list_states()</div>
 </div>
 </div>
 </div>
@@ -2845,25 +3355,32 @@ Successfully installed pywikipathways-0.0.3
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[17]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>{'id': 'WP437',
- 'url': 'https://classic.wikipathways.org/index.php/Pathway:WP437',
- 'name': 'EGF/EGFR signaling',
- 'species': 'Homo sapiens',
- 'revision': '137261'}</pre>
+<pre>[{'id': 0, 'metadata': {'label': 'initial'}},
+ {'id': 1,
+  'metadata': {'method': 'complete_connection',
+   'args': [],
+   'kwargs': {'maxlen': '2',
+    'algorithm': 'bfs',
+    'only_signed': 'True',
+    'consensus': 'True'}}},
+ {'id': 2,
+  'metadata': {'method': 'connect_network_radially',
+   'args': [],
+   'kwargs': {'max_len': '1', 'only_signed': 'True', 'consensus': 'True'}}}]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=81482dd7-9e2b-411e-a1d6-55eed867d220">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d03ddaac">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-22">
@@ -2876,21 +3393,35 @@ Successfully installed pywikipathways-0.0.3
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">egf_egfr_genes</span> <span class="o">=</span> <span class="n">pwpw</span><span class="o">.</span><span class="n">get_xref_list</span><span class="p">(</span><span class="s1">'WP437'</span><span class="p">,</span><span class="s1">'H'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">history_nx</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">history_graph</span><span class="p">()</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">history_nx</span><span class="o">.</span><span class="n">edges</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-22">egf_egfr_genes = pwpw.get_xref_list('WP437','H')</div>
+<div class="clipboard-copy-txt" id="cell-22">history_nx = net.history_graph()
+list(history_nx.edges())</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>[(0, 1), (0, 2)]</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=eeec14cd-cf03-4962-a477-6b456d95b279">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=56fc0c92">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-23">
@@ -2903,11 +3434,9 @@ Successfully installed pywikipathways-0.0.3
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">egf_egfr_genes</span><span class="p">))</span>
-<span class="n">egf_egfr_genes</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">history_html</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-23">print(len(egf_egfr_genes))
-egf_egfr_genes</div>
+<div class="clipboard-copy-txt" id="cell-23">HTML(net.history_html())</div>
 </div>
 </div>
 </div>
@@ -2916,201 +3445,107 @@ egf_egfr_genes</div>
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>162
-</pre>
-</div>
-</div>
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[23]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>['ABI1',
- 'ABL1',
- 'AKT1',
- 'AP2A1',
- 'AP2B1',
- 'AP2M1',
- 'AP2S1',
- 'ARF6',
- 'ARHGEF1',
- 'ASAP1',
- 'ATF1',
- 'ATXN2',
- 'AURKA',
- 'BCAR1',
- 'BRAF',
- 'CAMK2A',
- 'CAV1',
- 'CAV2',
- 'CBL',
- 'CBLB',
- 'CBLC',
- 'CDC42',
- 'CFL1',
- 'CREB1',
- 'CRK',
- 'CRKL',
- 'CSK',
- 'DNM1',
- 'DOK2',
- 'E2F1',
- 'EGF',
- 'EGFR',
- 'EIF4EBP1',
- 'ELK1',
- 'ELK4',
- 'EPN1',
- 'EPS15',
- 'EPS15L1',
- 'EPS8',
- 'ERBB2',
- 'ERRFI1',
- 'FOS',
- 'FOSB',
- 'FOXO1',
- 'FOXO4',
- 'GAB1',
- 'GAB2',
- 'GJA1',
- 'GRB10',
- 'GRB2',
- 'HGS',
- 'HRAS',
- 'INPP5D',
- 'INPPL1',
- 'IQGAP1',
- 'IQSEC1',
- 'ITCH',
- 'JAK1',
- 'JAK2',
- 'JUN',
- 'JUND',
- 'KRAS',
- 'LIMK2',
- 'MAP2K1',
- 'MAP2K2',
- 'MAP2K5',
- 'MAP3K1',
- 'MAP3K2',
- 'MAP3K3',
- 'MAP3K4',
- 'MAP4K1',
- 'MAPK1',
- 'MAPK14',
- 'MAPK4',
- 'MAPK7',
- 'MAPK8',
- 'MAPK9',
- 'MEF2A',
- 'MEF2C',
- 'MEF2D',
- 'MT-CO2',
- 'MTOR',
- 'MYBL2',
- 'NCK1',
- 'NCK2',
- 'NCOA3',
- 'NDUFA13',
- 'NEDD4',
- 'NEDD8',
- 'NOS3',
- 'PAK1',
- 'PCNA',
- 'PDPK1',
- 'PEBP1',
- 'PIAS3',
- 'PIK3C2B',
- 'PIK3R1',
- 'PIK3R2',
- 'PLCE1',
- 'PLCG1',
- 'PLD1',
- 'PLD2',
- 'PLSCR1',
- 'PRKCA',
- 'PRKCB',
- 'PRKCD',
- 'PRKCI',
- 'PRKCZ',
- 'PTEN',
- 'PTK2',
- 'PTK2B',
- 'PTK6',
- 'PTPN11',
- 'PTPN12',
- 'PTPN5',
- 'PTPRR',
- 'PXDN',
- 'RAB5A',
- 'RAC1',
- 'RAF1',
- 'RALA',
- 'RALB',
- 'RALBP1',
- 'RALGDS',
- 'RAP1A',
- 'RASA1',
- 'REPS2',
- 'RICTOR',
- 'RIN1',
- 'ROCK1',
- 'RPS6KA1',
- 'RPS6KA2',
- 'RPS6KA3',
- 'RPS6KA5',
- 'RPS6KB1',
- 'SH2D2A',
- 'SH3GL2',
- 'SH3GL3',
- 'SH3KBP1',
- 'SHC1',
- 'SOS1',
- 'SOS2',
- 'SP1',
- 'SPRY2',
- 'SRC',
- 'STAM',
- 'STAM2',
- 'STAMBP',
- 'STAT1',
- 'STAT3',
- 'STAT5A',
- 'STAT5B',
- 'STMN1',
- 'STXBP1',
- 'SYNJ1',
- 'TNK2',
- 'TWIST1',
- 'USP6NL',
- 'USP8',
- 'VAV1',
- 'VAV2',
- 'VAV3']</pre>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div class="neko-history-graph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg height="421pt" viewbox="0.00 0.00 2062.37 420.70" width="2062pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 416.7)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-416.7 2058.37,-416.7 2058.37,4 -4,4" stroke="transparent"></polygon>
+<!-- 0 -->
+<g class="node" id="node1">
+<title>0</title>
+<ellipse cx="1235.64" cy="-385.83" fill="none" rx="48.17" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1235.64" y="-389.63">State 0</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1235.64" y="-374.63">initial</text>
+</g>
+<!-- 1 -->
+<g class="node" id="node2">
+<title>1</title>
+<ellipse cx="809.64" cy="-296.09" fill="none" rx="443.21" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-299.89">State 1</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-284.89">complete_connection(maxlen=2, algorithm=bfs, only_signed=True, consensus=True)</text>
+</g>
+<!-- 0&#45;&gt;1 -->
+<g class="edge" id="edge1">
+<title>0-&gt;1</title>
+<path d="M1190.85,-375.61C1131.98,-363.48 1026.04,-341.66 940.76,-324.1" fill="none" stroke="black"></path>
+<polygon fill="black" points="941.23,-320.62 930.73,-322.03 939.82,-327.48 941.23,-320.62" stroke="black"></polygon>
+</g>
+<!-- 2 -->
+<g class="node" id="node3">
+<title>2</title>
+<ellipse cx="1662.64" cy="-296.09" fill="none" rx="391.97" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1662.64" y="-299.89">State 2</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1662.64" y="-284.89">connect_network_radially(max_len=1, only_signed=True, consensus=True)</text>
+</g>
+<!-- 0&#45;&gt;2 -->
+<g class="edge" id="edge2">
+<title>0-&gt;2</title>
+<path d="M1280.53,-375.61C1339.91,-363.41 1447.06,-341.39 1532.81,-323.77" fill="none" stroke="black"></path>
+<polygon fill="black" points="1533.54,-327.19 1542.63,-321.75 1532.13,-320.33 1533.54,-327.19" stroke="black"></polygon>
+</g>
+<!-- 3 -->
+<g class="node" id="node4">
+<title>3</title>
+<ellipse cx="809.64" cy="-206.35" fill="none" rx="101.23" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-210.15">State 3</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-195.15">add_node(CASP3)</text>
+</g>
+<!-- 1&#45;&gt;3 -->
+<g class="edge" id="edge3">
+<title>1-&gt;3</title>
+<path d="M809.64,-268.77C809.64,-260.8 809.64,-251.91 809.64,-243.42" fill="none" stroke="black"></path>
+<polygon fill="black" points="813.14,-243.35 809.64,-233.35 806.14,-243.35 813.14,-243.35" stroke="black"></polygon>
+</g>
+<!-- 4 -->
+<g class="node" id="node5">
+<title>4</title>
+<ellipse cx="809.64" cy="-116.61" fill="none" rx="106.55" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-120.41">State 4</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-105.41">add_node(MMP14)</text>
+</g>
+<!-- 3&#45;&gt;4 -->
+<g class="edge" id="edge4">
+<title>3-&gt;4</title>
+<path d="M809.64,-179.03C809.64,-171.06 809.64,-162.17 809.64,-153.68" fill="none" stroke="black"></path>
+<polygon fill="black" points="813.14,-153.61 809.64,-143.61 806.14,-153.61 813.14,-153.61" stroke="black"></polygon>
+</g>
+<!-- 5 -->
+<g class="node" id="node6">
+<title>5</title>
+<ellipse cx="809.64" cy="-26.87" fill="none" rx="809.77" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-30.67">State 5</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-15.67">connect_component([SRC, CDH1, TP53, RET, HGF, PTK2B, EZH2, RAC1, CASP3, MMP14], [MMP14, CASP3], maxlen=2, only_signed=True, consensus=True)</text>
+</g>
+<!-- 4&#45;&gt;5 -->
+<g class="edge" id="edge5">
+<title>4-&gt;5</title>
+<path d="M809.64,-89.29C809.64,-81.32 809.64,-72.43 809.64,-63.94" fill="none" stroke="black"></path>
+<polygon fill="black" points="813.14,-63.87 809.64,-53.87 806.14,-63.87 813.14,-63.87" stroke="black"></polygon>
+</g>
+</g>
+</svg>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c14a30bf-0d45-4aad-b2e5-cec37217040c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Let's select a random number of those genes and proceed with building the network with NeKo!</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0ff8c031-2066-4809-adc4-e9fb6684c021">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6f5f3733">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-24">
@@ -3123,23 +3558,524 @@ egf_egfr_genes</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">seeds_number</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">random_seeds</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">egf_egfr_genes</span><span class="p">,</span> <span class="n">seeds_number</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">compare_states</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-24">seeds_number = 20
-random_seeds = random.sample(egf_egfr_genes, seeds_number)</div>
+<div class="clipboard-copy-txt" id="cell-24">net.compare_states(1, 2)</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[20]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>{'added_nodes': ['GJA1',
+  'HIPK2',
+  'SNAI2',
+  'ITGB6',
+  'ITGB8',
+  'PTP4A1',
+  'PRKD1',
+  'ZYX',
+  'MAPK11',
+  'EPHB1',
+  'PIK3R3',
+  'HMGB1',
+  'EGF',
+  'RAP1A',
+  'FGF2',
+  'PPP2CA',
+  'DEK',
+  'HSPA1B',
+  'NFKB1',
+  'AR',
+  'MAPK1',
+  'CDC42',
+  'GDNF',
+  'FOS',
+  'HNRNPK',
+  'TLN1',
+  'PDGFD',
+  'NUMB',
+  'GRK2',
+  'BCL2L1',
+  'WRN',
+  'PDGFRB',
+  'CTNND1',
+  'MAPK14',
+  'GFRA1',
+  'PAK4',
+  'GLI1',
+  'BCL6',
+  'CTNNA1',
+  'ITGB5',
+  'DAPK1',
+  'ITGB4',
+  'MET',
+  'NR3C1',
+  'VAV1',
+  'XIAP',
+  'MAPK3',
+  'PRKCD',
+  'HSPA1A',
+  'S100A4'],
+ 'removed_nodes': [],
+ 'added_edges': [('MAPK11',
+   'TP53',
+   None,
+   'stimulation',
+   'ACSN:11274345;ACSN:15140942;ACSN:15187187;ACSN:16393692;ACSN:19436832;ACSN:20506250;ACSN:21614932;ProtMapper:10212189;SIGNOR:17254968;SPIKE_LC:17145710',
+   None),
+  ('TP53', 'DEK', None, 'inhibition', nan, None),
+  ('MAPK1',
+   'TP53',
+   None,
+   'stimulation',
+   'BioGRID:15867353;HPRD-phos:11409876;HPRD-phos:15116093;HPRD:11409876;HPRD:12091386;HPRD:15116093;InnateDB:10958792;KEA:10446957;KEA:10673501;KEA:11409876;KEA:11551930;KEA:11709713;KEA:11875057;KEA:12091386;KEA:14965474;KEA:15116093;KEA:9765199;Lit-BM-17:10958792;Lit-BM-17:21147777;Lit-BM-17:21675959;Lit-BM-17:23443559;Lit-BM-17:25241761;ProtMapper:11409876;ProtMapper:15116093;iPTMnet:10781582;iPTMnet:11409876;iPTMnet:12091386;iPTMnet:14965474;iPTMnet:15116093',
+   None),
+  ('CDH1',
+   'CTNNA1',
+   None,
+   'stimulation',
+   'HPRD:11226248;HPRD:7542250;InnateDB:11801604;InnateDB:16219695;InnateDB:9700170;IntAct:22750944;Lit-BM-17:10381631;Lit-BM-17:11960376;Lit-BM-17:16212417;Lit-BM-17:19016843;Lit-BM-17:25468996;Lit-BM-17:7542250;Lit-BM-17:8227214;Lit-BM-17:9233779;MPPI:9326449;SIGNOR:24336504;SPIKE:11226248;SPIKE:17145710;SPIKE_LC:11226248;SPIKE_LC:17145710',
+   None),
+  ('PAK4',
+   'TP53',
+   None,
+   'stimulation',
+   'ProtMapper:27496712;iPTMnet:27496712',
+   None),
+  ('CTNND1',
+   'CDH1',
+   None,
+   'stimulation',
+   'BioGRID:12427869;BioGRID:29207493;HPRD:10225956;HPRD:10409703;HPRD:10629228;HPRD:10931041;HPRD:11226248;HPRD:7542250;HPRD:7651399;InnateDB:17261850;InnateDB:8660921;Lit-BM-17:10409703;Lit-BM-17:12427869;Lit-BM-17:12640114;Lit-BM-17:12707304;Lit-BM-17:19711372;Lit-BM-17:20371349;Lit-BM-17:21670201;Lit-BM-17:22715382;Lit-BM-17:22752307;Lit-BM-17:22850631;Lit-BM-17:23180380;Lit-BM-17:24424122;Lit-BM-17:25468996;Lit-BM-17:7542250;Lit-BM-17:7651399;Lit-BM-17:7876318;Lit-BM-17:9535896;SIGNOR:14610055;SPIKE:20940130;SPIKE_LC:20940130',
+   None),
+  ('WRN',
+   'TP53',
+   None,
+   'stimulation',
+   'BioGRID:11427532;HPRD:11399766;HPRD:11427532;HPRD:12080066;HPRD:15735006;IntAct:11427532;IntAct:15735006;Lit-BM-17:11427532;Lit-BM-17:12080066;Lit-BM-17:15735006;SPIKE:12080066;SPIKE:16713569;SPIKE_LC:12080066;SPIKE_LC:16713569',
+   None),
+  ('SRC', 'MAPK11', None, 'stimulation', nan, None),
+  ('SRC', 'PTP4A1', None, 'stimulation', nan, None),
+  ('SRC',
+   'DAPK1',
+   None,
+   'inhibition',
+   'PhosphoSite:17803936;ProtMapper:21785723;ProtMapper:28976934;SPIKE:17803936;SPIKE_LC:17803936;iPTMnet:17803936',
+   None),
+  ('TP53', 'SNAI2', None, 'stimulation', nan, None),
+  ('SRC',
+   'PPP2CA',
+   None,
+   'inhibition',
+   'PhosphoSite:10978272;PhosphoSite:12921784;PhosphoSite:1325671;PhosphoSite:16286244;PhosphoSite:17303700;PhosphoSite:17394530;PhosphoSite:17635907;PhosphoSite:18208556;PhosphoSite:20558158;PhosphoSite:21292165;PhosphoSite:21554241;PhosphoSite:21791414;PhosphoSite:22299660;PhosphoSite:22771321;PhosphoSite:23222956;PhosphoSite:23251465;PhosphoSite:23436320;PhosphoSite:23926298;PhosphoSite:24395787;PhosphoSite:24676687;PhosphoSite:24997451;PhosphoSite:25003662;PhosphoSite:25726524;PhosphoSite:25931585;PhosphoSite:26378614;PhosphoSite:27013170;PhosphoSite:31992581;PhosphoSite:32130916;ProtMapper:23796501;SIGNOR:23796501;iPTMnet:23796501',
+   None),
+  ('PRKCD',
+   'CDH1',
+   None,
+   'inhibition',
+   'ProtMapper:27203386;SIGNOR:27203386;iPTMnet:27203386',
+   None),
+  ('HGF', 'SRC', None, 'stimulation', 'ProtMapper:23524339', None),
+  ('SRC', 'GFRA1', None, 'stimulation', nan, None),
+  ('GDNF', 'CDH1', None, 'stimulation', nan, None),
+  ('S100A4',
+   'TP53',
+   None,
+   'stimulation',
+   'BioGRID:11527429;HPRD:11278647;HPRD:11527429;HPRD:12942774;HPRD:15116098;IntAct:19740107;IntAct:20591429;IntAct:23752197;IntAct:31837246;Lit-BM-17:11527429;Lit-BM-17:19740107;Lit-BM-17:20070253;Lit-BM-17:20591429;Lit-BM-17:23752197;SPIKE_LC:19740107',
+   None),
+  ('NFKB1', 'TP53', None, 'stimulation', 'ACSN:8051093', None),
+  ('PTP4A1', 'TP53', None, 'inhibition', nan, None),
+  ('EZH2',
+   'CDH1',
+   None,
+   'inhibition',
+   'ACSN:11309385;ACSN:12508111;ACSN:14673164;ACSN:15169839;ACSN:17018611;ACSN:17615296;ACSN:19597490;ACSN:20519943;ACSN:20818389;ACSN:21685935;ACSN:22514743;ACSN:22796940;SPIKE:20574448;SPIKE_LC:20574448',
+   None),
+  ('TP53',
+   'WRN',
+   None,
+   'inhibition',
+   'BioGRID:11427532;HPRD:11399766;HPRD:11427532;HPRD:12080066;HPRD:15735006;IntAct:11427532;IntAct:15735006;Lit-BM-17:11427532;Lit-BM-17:12080066;Lit-BM-17:15735006;SPIKE:12080066;SPIKE:16713569;SPIKE_LC:12080066;SPIKE_LC:16713569',
+   None),
+  ('VAV1',
+   'SRC',
+   None,
+   'stimulation',
+   'Adhesome:1311423;Adhesome:1531699',
+   None),
+  ('CDH1',
+   'SRC',
+   None,
+   'stimulation',
+   'ACSN:16039586;ACSN:16099633;ACSN:17143292;ACSN:17496910;ACSN:19029934;ACSN:19171760;ACSN:19619488;ACSN:19734908;ACSN:22007144;ACSN:22203675;ACSN:22370635;ACSN:23343194;BioGRID:10744074',
+   None),
+  ('DAPK1',
+   'TP53',
+   None,
+   'stimulation',
+   'KEA:10801407;KEA:12111733;KEA:15254178;KEA:15489221;KEA:17339337;PhosphoSite:10606744;PhosphoSite:10673501;PhosphoSite:10733583;PhosphoSite:10734067;PhosphoSite:11244509;PhosphoSite:11258706;PhosphoSite:11707453;PhosphoSite:11883897;PhosphoSite:12091386;PhosphoSite:15355354;PhosphoSite:15542844;PhosphoSite:17339337;PhosphoSite:17977830;PhosphoSite:18246126;PhosphoSite:20851891;PhosphoSite:20959462;PhosphoSite:21386980;PhosphoSite:22112863;PhosphoSite:22815859;PhosphoSite:25584963;PhosphoSite:26742101;PhosphoSite:27753536;PhosphoSite:32266931;PhosphoSite:34168813;ProtMapper:17339337;ProtMapper:25229255;ProtMapper:26626260;ProtMapper:27681874;SIGNOR:17339337;iPTMnet:17297916;iPTMnet:17339337;phosphoELM:17339337',
+   None),
+  ('EGF',
+   'SRC',
+   None,
+   'stimulation',
+   'ProtMapper:15845350;ProtMapper:19481075;ProtMapper:22927910;ProtMapper:23349873;ProtMapper:27462789',
+   None),
+  ('SRC', 'ITGB4', None, 'stimulation', 'Adhesome:10592173', None),
+  ('SRC', 'ITGB6', None, 'stimulation', 'Adhesome:10592173', None),
+  ('GJA1', 'CDH1', None, 'stimulation', nan, None),
+  ('TP53', 'AR', None, 'inhibition', 'SPIKE_LC:19481544', None),
+  ('SRC',
+   'GRK2',
+   None,
+   'bimodal',
+   'CA1:11278940;HPRD:12624098;KEA:16725308;PhosphoSite:11566877;PhosphoSite:16725308;SIGNOR:16725308;SPIKE_LC:16189514;iPTMnet:16725308',
+   None),
+  ('SRC', 'EPHB1', None, 'stimulation', nan, None),
+  ('TP53',
+   'HSPA1A',
+   None,
+   'inhibition',
+   'HPRD:7811761;MPPI:8729618;SPIKE_LC:16713569',
+   None),
+  ('SRC', 'NFKB1', None, 'stimulation', nan, None),
+  ('SRC',
+   'PRKCD',
+   None,
+   'stimulation',
+   'HPRD:15337529;KEA:11927579;KEA:14715667;KEA:14970215;KEA:15541367;KEA:15961393;KEA:17570831;PhosphoSite:16982614;PhosphoSite:17658731;PhosphoSite:19366211;PhosphoSite:24211614;PhosphoSite:26876198;PhosphoSite:27203386;ProtMapper:10319993;ProtMapper:17658731;ProtMapper:18550549;ProtMapper:19138410;ProtMapper:19366211;ProtMapper:19632318;ProtMapper:22689788;ProtMapper:23329791;ProtMapper:23329794;ProtMapper:26876198;ProtMapper:27203386;ProtMapper:28637715;ProtMapper:29422059;ProtMapper:29452094;SPIKE_LC:15851033;iPTMnet:17569658',
+   None),
+  ('ITGB8', 'SRC', None, 'stimulation', 'Adhesome:10592173', None),
+  ('NUMB',
+   'TP53',
+   None,
+   'stimulation',
+   'BioGRID:23881403;DIP:18172499;IntAct:18172499;SIGNOR:18492217',
+   None),
+  ('MAPK14',
+   'TP53',
+   None,
+   'stimulation',
+   'ACSN:11274345;ACSN:15140942;ACSN:15187187;ACSN:16393692;ACSN:19436832;ACSN:20506250;ACSN:21614932;BioGRID:21050851;HPRD-phos:10348343;HPRD-phos:10747897;HPRD-phos:10884347;HPRD-phos:19413330;InnateDB:10581258;KEA:10348343;KEA:10747897;KEA:1088347;KEA:10884347;KEA:16083285;KEA:16552184;KEA:9315650;Lit-BM-17:15642743;Lit-BM-17:17172861;Lit-BM-17:20213747;Lit-BM-17:21050851;Lit-BM-17:21675959;ProtMapper:10212189;ProtMapper:10581258;ProtMapper:10747897;ProtMapper:10781582;ProtMapper:11078726;ProtMapper:11258706;ProtMapper:11283254;ProtMapper:15642743;ProtMapper:15657900;ProtMapper:17535811;ProtMapper:17906639;ProtMapper:22975381;ProtMapper:24818748;ProtMapper:25789565;ProtMapper:26247731;SIGNOR:10581258;SIGNOR:10747897;SIGNOR:10781582;SIGNOR:11258706;SIGNOR:15642743;SIGNOR:17535811;SIGNOR:22975381;iPTMnet:10348343;iPTMnet:10581258;iPTMnet:10747897;iPTMnet:10781582;iPTMnet:10884347;iPTMnet:11258706;iPTMnet:15642743;iPTMnet:17535811;iPTMnet:19413330;iPTMnet:22975381',
+   None),
+  ('SRC',
+   'CTNND1',
+   None,
+   'stimulation',
+   'HPRD-phos:11382764;HPRD-phos:14996911;HPRD-phos:17016520;HPRD-phos:17389395;HPRD-phos:18669648;HPRD-phos:18707149;HPRD-phos:20068231;HPRD:11382764;KEA:11382764;ProtMapper:11382764;ProtMapper:17194753;ProtMapper:19138410;ProtMapper:23457577;ProtMapper:26477567;SIGNOR:11382764;iPTMnet:11382764;iPTMnet:14996911;iPTMnet:17016520;iPTMnet:17194753;iPTMnet:17389395;iPTMnet:18669648;iPTMnet:18707149;iPTMnet:20068231',
+   None),
+  ('PRKD1',
+   'CDH1',
+   None,
+   'stimulation',
+   'SIGNOR:15695390;SPIKE_LC:15695390',
+   None),
+  ('CTNNA1', 'SRC', None, 'stimulation', nan, None),
+  ('XIAP', 'TP53', None, 'stimulation', nan, None),
+  ('RAP1A', 'CDH1', None, 'stimulation', nan, None),
+  ('HMGB1',
+   'TP53',
+   None,
+   'stimulation',
+   'DIP:23063560;DIP:9472015;HPRD:11106654;HPRD:11748221;HPRD:9472015;IntAct:23063560;IntAct:9472015;Lit-BM-17:11106654;Lit-BM-17:11748221;Lit-BM-17:9472015;SPIKE_LC:16713569',
+   None),
+  ('CDH1', 'RAP1A', None, 'stimulation', nan, None),
+  ('SRC', 'HIPK2', None, 'stimulation', nan, None),
+  ('SRC', 'TLN1', None, 'stimulation', nan, None),
+  ('CDC42', 'CDH1', None, 'inhibition', nan, None),
+  ('CDH1', 'ZYX', None, 'stimulation', nan, None),
+  ('TP53', 'HSPA1B', None, 'inhibition', 'MPPI:8729618', None),
+  ('SRC', 'PDGFD', None, 'stimulation', nan, None),
+  ('GRK2',
+   'TP53',
+   None,
+   'stimulation',
+   'PhosphoSite:10933801;PhosphoSite:11409876;PhosphoSite:14729628;PhosphoSite:15053879;PhosphoSite:15116093;PhosphoSite:18952844;PhosphoSite:20124405;PhosphoSite:20473327;PhosphoSite:23723076;PhosphoSite:29988038;PhosphoSite:33256128;ProtMapper:20124405',
+   None),
+  ('HSPA1B', 'TP53', None, 'inhibition', 'MPPI:8729618', None),
+  ('SRC',
+   'FOS',
+   None,
+   'stimulation',
+   'PhosphoSite:17160021;PhosphoSite:22105363',
+   None),
+  ('SRC',
+   'ITGB5',
+   None,
+   'stimulation',
+   'Adhesome:10592173;NetPath:19910644',
+   None),
+  ('FGF2', 'TP53', None, 'inhibition', nan, None),
+  ('SRC',
+   'AR',
+   None,
+   'stimulation',
+   'BioGRID:15027889;HPRD:15027889;HPRD:15062576;InnateDB:12933816;Lit-BM-17:15027889;Lit-BM-17:15062576;Lit-BM-17:15466214;Lit-BM-17:24728074;NetPath:11032808;NetPath:12933816;NetPath:15466214;ProtMapper:17525795;ProtMapper:19117998;ProtMapper:20383201;ProtMapper:20570899;ProtMapper:21318111;ProtMapper:21512132;ProtMapper:21886458;ProtMapper:21956655;ProtMapper:24859991;ProtMapper:24868554;ProtMapper:24948875;ProtMapper:25133482;ProtMapper:25547388;ProtMapper:25950519;ProtMapper:26829214;ProtMapper:28144231;SPIKE:17045208;SPIKE_LC:17045208',
+   None),
+  ('PPP2CA',
+   'TP53',
+   None,
+   'bimodal',
+   'DEPOD:14712210;DEPOD:17245430;DEPOD:1848668;HPRD:12556559;ProtMapper:14712210;ProtMapper:17245430;SIGNOR:14712210;SIGNOR:17245430;SPIKE_LC:16713569',
+   None),
+  ('TLN1', 'SRC', None, 'stimulation', nan, None),
+  ('SRC', 'GDNF', None, 'stimulation', nan, None),
+  ('SRC', 'MAPK3', None, 'stimulation', nan, None),
+  ('PIK3R3',
+   'TP53',
+   None,
+   'stimulation',
+   'IntAct:32606738;SIGNOR:32606738',
+   None),
+  ('TP53',
+   'S100A4',
+   None,
+   'stimulation',
+   'BioGRID:11527429;HPRD:11278647;HPRD:11527429;HPRD:12942774;HPRD:15116098;IntAct:19740107;IntAct:20591429;IntAct:23752197;IntAct:31837246;Lit-BM-17:11527429;Lit-BM-17:19740107;Lit-BM-17:20070253;Lit-BM-17:20591429;Lit-BM-17:23752197;SPIKE_LC:19740107',
+   None),
+  ('SRC', 'MAPK14', None, 'stimulation', nan, None),
+  ('NR3C1',
+   'TP53',
+   None,
+   'inhibition',
+   'BioGRID:11080152;HPRD:11080152;SPIKE_LC:16713569',
+   None),
+  ('SRC', 'NUMB', None, 'stimulation', nan, None),
+  ('ZYX', 'SRC', None, 'stimulation', nan, None),
+  ('ITGB4', 'SRC', None, 'stimulation', 'Adhesome:10592173', None),
+  ('TP53', 'GLI1', None, 'inhibition', nan, None),
+  ('CDH1', 'EGF', None, 'inhibition', nan, None),
+  ('SRC', 'FGF2', None, 'inhibition', nan, None),
+  ('TP53',
+   'BCL2L1',
+   None,
+   'inhibition',
+   'BioGRID:24474649;DIP:24814347;HPRD:12667443;HPRD:16151013;IntAct:12667443;IntAct:14963330;IntAct:16151013;IntAct:24814347;Lit-BM-17:12667443;Lit-BM-17:14963330;Lit-BM-17:16151013;Lit-BM-17:20837658;Lit-BM-17:21900206;Lit-BM-17:24474649;Lit-BM-17:26556313;SPIKE_LC:16713569',
+   None),
+  ('AR', 'CDH1', None, 'inhibition', nan, None),
+  ('TP53',
+   'BCL6',
+   None,
+   'stimulation',
+   'SPIKE:16249378;SPIKE_LC:16249378',
+   None),
+  ('HNRNPK',
+   'TP53',
+   None,
+   'stimulation',
+   'InnateDB:23092970;SPIKE:16360036;SPIKE:18472002;SPIKE_LC:16360036;SPIKE_LC:18472002',
+   None),
+  ('ITGB5',
+   'SRC',
+   None,
+   'stimulation',
+   'Adhesome:10592173;NetPath:19910644',
+   None),
+  ('SRC',
+   'PIK3R3',
+   None,
+   'stimulation',
+   'IntAct:25814554;Lit-BM-17:22402981;Lit-BM-17:25814554',
+   None),
+  ('SRC',
+   'MET',
+   None,
+   'inhibition',
+   'BioGRID:9837958;HPRD:9837958;IntAct:24034250;IntAct:24728074;KEA:17570479;Lit-BM-17:24034250;Lit-BM-17:24728074;Lit-BM-17:9837958',
+   None),
+  ('TP53', 'PDGFRB', None, 'inhibition', nan, None),
+  ('SRC',
+   'PTK2B',
+   None,
+   'stimulation',
+   'Adhesome:10329689;Adhesome:10521452;Adhesome:10777553;Adhesome:11149930;Adhesome:11274221;Adhesome:12345678;Adhesome:14739300;Adhesome:14963038;Adhesome:19380485;Adhesome:8849729;Adhesome:9556630;Adhesome:9560226;CancerCellMap:14963038;HPRD:10777553;HPRD:8849729;InnateDB:14963038;IntAct:10521452;IntAct:11149930;IntAct:8849729;KEA:15070849;KEA:15585656;NetPath:14963038;PhosphoSite:12231407;PhosphoSite:12486027;PhosphoSite:12526812;PhosphoSite:15070849;PhosphoSite:15105428;PhosphoSite:15166227;PhosphoSite:15585656;PhosphoSite:15778498;PhosphoSite:19919693;PhosphoSite:22581436;PhosphoSite:25349423;PhosphoSite:31979355;ProtMapper:15695828;ProtMapper:18935208;ProtMapper:20001213;ProtMapper:20521079;ProtMapper:26866924;SIGNOR:15695828;SPIKE:14963038;SPIKE:16713569;SPIKE_LC:14963038;SPIKE_LC:16713569;SignaLink3:10593973;SignaLink3:12495636;SignaLink3:23109003;SignaLink3:7529876;dbPTM:12522270;dbPTM:17192257;dbPTM:17389395;dbPTM:18083107;dbPTM:19369195;dbPTM:19534553;dbPTM:20028775;dbPTM:20381867;dbPTM:20521079;iPTMnet:15695828;iPTMnet:20521079;iPTMnet:26866924',
+   None),
+  ('SRC',
+   'PRKD1',
+   None,
+   'stimulation',
+   'HPRD:12637538;KEA:12637538;KEA:17804414;PhosphoSite:17804414;PhosphoSite:28842658;ProtMapper:12505989;ProtMapper:12637538;ProtMapper:17804414;ProtMapper:28174535;SIGNOR:12637538;SIGNOR:17804414;iPTMnet:12637538;iPTMnet:17804414;phosphoELM:17804414',
+   None),
+  ('SRC', 'PAK4', None, 'stimulation', nan, None),
+  ('FOS', 'TP53', None, 'inhibition', nan, None),
+  ('TP53',
+   'HGF',
+   None,
+   'stimulation',
+   'SPIKE:18431400;SPIKE_LC:18431400',
+   None),
+  ('EPHB1', 'SRC', None, 'stimulation', nan, None),
+  ('GFRA1', 'CDH1', None, 'stimulation', nan, None),
+  ('TP53', 'XIAP', None, 'stimulation', nan, None),
+  ('MET',
+   'CDH1',
+   None,
+   'stimulation',
+   'ACSN:12040186;ACSN:14585353;ACSN:17496910;ACSN:19568798;ACSN:22558232;Cellinker:17336101;InnateDB:16909210',
+   None),
+  ('SRC', 'ITGB8', None, 'stimulation', 'Adhesome:10592173', None),
+  ('TP53',
+   'HMGB1',
+   None,
+   'stimulation',
+   'DIP:23063560;DIP:9472015;HPRD:11106654;HPRD:11748221;HPRD:9472015;IntAct:23063560;IntAct:9472015;Lit-BM-17:11106654;Lit-BM-17:11748221;Lit-BM-17:9472015;SPIKE_LC:16713569',
+   None),
+  ('TP53',
+   'MET',
+   None,
+   'stimulation',
+   'SPIKE:18431400;SPIKE_LC:18431400',
+   None),
+  ('HIPK2',
+   'TP53',
+   None,
+   'stimulation',
+   'BioGRID:11925430;BioGRID:22110707;HPRD-phos:11780126;HPRD-phos:11875057;HPRD-phos:16212962;HPRD:11780126;HPRD:11875057;HPRD:11925430;HPRD:15896780;IntAct:15896780;IntAct:16212962;KEA:11780126;KEA:11875057;KEA:16212962;KEA:16729035;Lit-BM-17:11740489;Lit-BM-17:11925430;Lit-BM-17:15896780;Lit-BM-17:16212962;Lit-BM-17:21057547;Lit-BM-17:25313037;ProtMapper:11740489;ProtMapper:11780126;ProtMapper:15865933;ProtMapper:16212962;ProtMapper:16601678;ProtMapper:17203463;ProtMapper:17210684;ProtMapper:17332358;ProtMapper:17349959;ProtMapper:17906639;ProtMapper:19128456;ProtMapper:19714248;ProtMapper:19731416;ProtMapper:19828042;ProtMapper:19946469;ProtMapper:20171273;ProtMapper:20418953;ProtMapper:20508833;ProtMapper:20849851;ProtMapper:21192925;ProtMapper:21258400;ProtMapper:21855806;ProtMapper:22110707;ProtMapper:22545114;ProtMapper:22889244;ProtMapper:22935610;ProtMapper:23091802;ProtMapper:23293771;ProtMapper:23316480;ProtMapper:23536002;ProtMapper:23700162;ProtMapper:23717325;ProtMapper:23814485;ProtMapper:23945296;ProtMapper:24101931;ProtMapper:24145406;ProtMapper:24211575;ProtMapper:24829283;ProtMapper:25210797;ProtMapper:25313037;ProtMapper:25364713;ProtMapper:26942128;ProtMapper:27019364;ProtMapper:27308326;ProtMapper:27308327;ProtMapper:27689990;ProtMapper:27787517;ProtMapper:27901482;ProtMapper:28107201;ProtMapper:28122345;ProtMapper:28893313;SIGNOR:17210684;SPIKE:17332358;SPIKE_LC:15896780;SPIKE_LC:16713569;SPIKE_LC:17332358;iPTMnet:11740489;iPTMnet:11780126;iPTMnet:11875057;iPTMnet:16212962;iPTMnet:16729035;iPTMnet:17203463;iPTMnet:17210684;iPTMnet:19828042;iPTMnet:22011578;phosphoELM:11780126;phosphoELM:16729035',
+   None),
+  ('GLI1', 'TP53', None, 'inhibition', nan, None),
+  ('SRC',
+   'CDC42',
+   None,
+   'stimulation',
+   'KEA:14506284;PhosphoSite:14506284;ProtMapper:14506284;ProtMapper:26816343;SIGNOR:14506284;SPIKE:9626657;SPIKE_LC:9626657;iPTMnet:14506284;phosphoELM:14506284',
+   None),
+  ('HSPA1A',
+   'TP53',
+   None,
+   'inhibition',
+   'HPRD:7811761;MPPI:8729618;SPIKE_LC:16713569',
+   None),
+  ('BCL2L1',
+   'TP53',
+   None,
+   'inhibition',
+   'BioGRID:24474649;DIP:24814347;HPRD:12667443;HPRD:16151013;IntAct:12667443;IntAct:14963330;IntAct:16151013;IntAct:24814347;Lit-BM-17:12667443;Lit-BM-17:14963330;Lit-BM-17:16151013;Lit-BM-17:20837658;Lit-BM-17:21900206;Lit-BM-17:24474649;Lit-BM-17:26556313;SPIKE_LC:16713569',
+   None),
+  ('SRC',
+   'GJA1',
+   None,
+   'inhibition',
+   'ACSN:10679481;ACSN:10871288;ACSN:15534005;ACSN:15782139;ACSN:16492141;ACSN:9278444;ACSN:9592087;HPRD-phos:11514593;HPRD-phos:19901323;HPRD:11514593;HPRD:9278444;KEA:11514593;PhosphoSite:30448479;ProtMapper:11514593;ProtMapper:15350848;ProtMapper:16916748;ProtMapper:19284610;ProtMapper:21856279;ProtMapper:22342665;ProtMapper:23596415;ProtMapper:23718910;ProtMapper:24508467;ProtMapper:24670366;ProtMapper:26706150;ProtMapper:27280719;ProtMapper:29587860;ProtMapper:30095367;ProtMapper:30323740;SIGNOR:16916748;SPIKE_LC:16189514;iPTMnet:11514593;iPTMnet:16916748;iPTMnet:19901323',
+   None),
+  ('SRC', 'MAPK1', None, 'stimulation', 'ProtMapper:17088251', None),
+  ('BCL6',
+   'TP53',
+   None,
+   'inhibition',
+   'SPIKE:15577913;SPIKE_LC:15577913',
+   None),
+  ('PDGFRB',
+   'SRC',
+   None,
+   'stimulation',
+   'BioGRID:18315570;HPRD:2173144;KEA:9010229;ProtMapper:15489898;SIGNOR:15489898;SPIKE_LC:16189514;iPTMnet:15489898;iPTMnet:9010229',
+   None),
+  ('MAPK3',
+   'TP53',
+   None,
+   'stimulation',
+   'HPRD:10958792;InnateDB:10958792;PhosphoSite:10348343;PhosphoSite:10747897;PhosphoSite:11239457;PhosphoSite:12393879;PhosphoSite:17237827;PhosphoSite:18523266;PhosphoSite:24194938;PhosphoSite:25767119;PhosphoSite:28937686;PhosphoSite:9467949;PhosphoSite:9739174;ProtMapper:12955074;SIGNOR:12955074;SPIKE_LC:16713569;iPTMnet:10781582;iPTMnet:12955074',
+   None),
+  ('SNAI2',
+   'CDH1',
+   None,
+   'inhibition',
+   'ACSN:11309385;ACSN:12508111;ACSN:14673164;ACSN:15169839;ACSN:17508028;ACSN:17615296;ACSN:19597490;ACSN:20519943;ACSN:20818389;ACSN:21685935;ACSN:22370643;ACSN:22796940',
+   None),
+  ('SRC',
+   'VAV1',
+   None,
+   'stimulation',
+   'Adhesome:1311423;Adhesome:1531699',
+   None),
+  ('PDGFD', 'SRC', None, 'stimulation', nan, None),
+  ('PRKCD',
+   'TP53',
+   None,
+   'stimulation',
+   'IntAct:16377624;ProtMapper:16314418;ProtMapper:16377624;ProtMapper:17906639;SIGNOR:16377624;iPTMnet:16314418;iPTMnet:16377624',
+   None),
+  ('SRC',
+   'HNRNPK',
+   None,
+   'bimodal',
+   'HPRD-phos:12052863;HPRD:12052863;HPRD:7516469;KEA:12052863;Lit-BM-17:16854432;Lit-BM-17:17178840;PhosphoSite:12052863;PhosphoSite:16854432;PhosphoSite:24642125;ProtMapper:12052863;ProtMapper:21184736;SIGNOR:12052863;SPIKE:12052863;SPIKE_LC:12052863;SPIKE_LC:16713569;SPIKE_LC:7592945;iPTMnet:12052863;phosphoELM:12052863',
+   None),
+  ('SRC',
+   'RET',
+   None,
+   'stimulation',
+   'BioGRID:10070972;HPRD:10070972;KEA:11713247;KEA:17570479;SPIKE_LC:16189514',
+   None),
+  ('DEK', 'TP53', None, 'stimulation', nan, None),
+  ('TP53',
+   'NR3C1',
+   None,
+   'inhibition',
+   'BioGRID:11080152;HPRD:11080152;SPIKE_LC:16713569',
+   None),
+  ('ITGB6', 'SRC', None, 'stimulation', 'Adhesome:10592173', None),
+  ('EGF', 'CDH1', None, 'stimulation', nan, None),
+  ('SRC', 'CTNNA1', None, 'stimulation', nan, None)],
+ 'removed_edges': [('HGF',
+   'SRC',
+   None,
+   'stimulation',
+   'ProtMapper:23524339; ProtMapper:23524339',
+   None),
+  ('PTK2B', 'RAC1', None, 'stimulation', 'Adhesome:10592173', None),
+  ('EZH2',
+   'CDH1',
+   None,
+   'inhibition',
+   'ACSN:11309385;ACSN:12508111;ACSN:14673164;ACSN:15169839;ACSN:17018611;ACSN:17615296;ACSN:19597490;ACSN:20519943;ACSN:20818389;ACSN:21685935;ACSN:22514743;ACSN:22796940;SPIKE:20574448;SPIKE_LC:20574448; ACSN:11309385;ACSN:12508111;ACSN:14673164;ACSN:15169839;ACSN:17018611;ACSN:17615296;ACSN:19597490;ACSN:20519943;ACSN:20818389;ACSN:21685935;ACSN:22514743;ACSN:22796940;SPIKE:20574448;SPIKE_LC:20574448',
+   None),
+  ('CDH1',
+   'SRC',
+   None,
+   'stimulation',
+   'ACSN:16039586;ACSN:16099633;ACSN:17143292;ACSN:17496910;ACSN:19029934;ACSN:19171760;ACSN:19619488;ACSN:19734908;ACSN:22007144;ACSN:22203675;ACSN:22370635;ACSN:23343194;BioGRID:10744074; ACSN:16039586;ACSN:16099633;ACSN:17143292;ACSN:17496910;ACSN:19029934;ACSN:19171760;ACSN:19619488;ACSN:19734908;ACSN:22007144;ACSN:22203675;ACSN:22370635;ACSN:23343194;BioGRID:10744074',
+   None),
+  ('HGF', 'RAC1', None, 'stimulation', nan, None),
+  ('TP53',
+   'HGF',
+   None,
+   'stimulation',
+   'SPIKE:18431400;SPIKE_LC:18431400; SPIKE:18431400;SPIKE_LC:18431400',
+   None),
+  ('SRC',
+   'PTK2B',
+   None,
+   'stimulation',
+   'Adhesome:10329689;Adhesome:10521452;Adhesome:10777553;Adhesome:11149930;Adhesome:11274221;Adhesome:12345678;Adhesome:14739300;Adhesome:14963038;Adhesome:19380485;Adhesome:8849729;Adhesome:9556630;Adhesome:9560226;CancerCellMap:14963038;HPRD:10777553;HPRD:8849729;InnateDB:14963038;IntAct:10521452;IntAct:11149930;IntAct:8849729;KEA:15070849;KEA:15585656;NetPath:14963038;PhosphoSite:12231407;PhosphoSite:12486027;PhosphoSite:12526812;PhosphoSite:15070849;PhosphoSite:15105428;PhosphoSite:15166227;PhosphoSite:15585656;PhosphoSite:15778498;PhosphoSite:19919693;PhosphoSite:22581436;PhosphoSite:25349423;PhosphoSite:31979355;ProtMapper:15695828;ProtMapper:18935208;ProtMapper:20001213;ProtMapper:20521079;ProtMapper:26866924;SIGNOR:15695828;SPIKE:14963038;SPIKE:16713569;SPIKE_LC:14963038;SPIKE_LC:16713569;SignaLink3:10593973;SignaLink3:12495636;SignaLink3:23109003;SignaLink3:7529876;dbPTM:12522270;dbPTM:17192257;dbPTM:17389395;dbPTM:18083107;dbPTM:19369195;dbPTM:19534553;dbPTM:20028775;dbPTM:20381867;dbPTM:20521079;iPTMnet:15695828;iPTMnet:20521079;iPTMnet:26866924; Adhesome:10329689;Adhesome:10521452;Adhesome:10777553;Adhesome:11149930;Adhesome:11274221;Adhesome:12345678;Adhesome:14739300;Adhesome:14963038;Adhesome:19380485;Adhesome:8849729;Adhesome:9556630;Adhesome:9560226;CancerCellMap:14963038;HPRD:10777553;HPRD:8849729;InnateDB:14963038;IntAct:10521452;IntAct:11149930;IntAct:8849729;KEA:15070849;KEA:15585656;NetPath:14963038;PhosphoSite:12231407;PhosphoSite:12486027;PhosphoSite:12526812;PhosphoSite:15070849;PhosphoSite:15105428;PhosphoSite:15166227;PhosphoSite:15585656;PhosphoSite:15778498;PhosphoSite:19919693;PhosphoSite:22581436;PhosphoSite:25349423;PhosphoSite:31979355;ProtMapper:15695828;ProtMapper:18935208;ProtMapper:20001213;ProtMapper:20521079;ProtMapper:26866924;SIGNOR:15695828;SPIKE:14963038;SPIKE:16713569;SPIKE_LC:14963038;SPIKE_LC:16713569;SignaLink3:10593973;SignaLink3:12495636;SignaLink3:23109003;SignaLink3:7529876;dbPTM:12522270;dbPTM:17192257;dbPTM:17389395;dbPTM:18083107;dbPTM:19369195;dbPTM:19534553;dbPTM:20028775;dbPTM:20381867;dbPTM:20521079;iPTMnet:15695828;iPTMnet:20521079;iPTMnet:26866924',
+   None),
+  ('SRC',
+   'RET',
+   None,
+   'stimulation',
+   'BioGRID:10070972;HPRD:10070972;KEA:11713247;KEA:17570479;SPIKE_LC:16189514; BioGRID:10070972;HPRD:10070972;KEA:11713247;KEA:17570479;SPIKE_LC:16189514',
+   None)],
+ 'added_provenance': [],
+ 'removed_provenance': []}</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ca9cb2f7-39b4-481b-8091-64fef5eba285">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2a880907">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-25">
@@ -3152,66 +4088,21 @@ random_seeds = random.sample(egf_egfr_genes, seeds_number)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">random_seeds</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">checkout</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-25">random_seeds</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[25]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>['PEBP1',
- 'SOS1',
- 'GAB2',
- 'CDC42',
- 'CBLC',
- 'EIF4EBP1',
- 'HGS',
- 'RICTOR',
- 'PTPRR',
- 'GRB2',
- 'RAF1',
- 'RAC1',
- 'MTOR',
- 'ELK4',
- 'RPS6KA5',
- 'EPS15L1',
- 'USP6NL',
- 'PIK3R1',
- 'ABL1',
- 'PTK2']</pre>
+<div class="clipboard-copy-txt" id="cell-25">net.checkout(1)</div>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e3dccd95-6ee4-42a3-8eb9-dd96141e108a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id=""><a class="anchor-link" href="#">¶</a></h3><div class="alert alert-info">
-<p><strong>TIP</strong></p>
-<p>NeKo provides some built-in functions to easily plug some well-known databases, like <strong>Omnipath</strong>, <strong>Signor</strong>, <strong>PhosphositePlus</strong> and <strong>Huri</strong>. More information can be found in the Notebook #2</p>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6302b5bf-0a2e-4e2c-9a88-ba3b505af6fc">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ffef5ca9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-26">
@@ -3224,21 +4115,215 @@ random_seeds = random.sample(egf_egfr_genes, seeds_number)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">neko_net3</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">random_seeds</span><span class="p">,</span> <span class="n">resources</span> <span class="o">=</span> <span class="s1">'omnipath'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">convert_edgelist_into_genesymbol</span><span class="p">()</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-26">neko_net3 = Network(random_seeds, resources = 'omnipath')</div>
+<div class="clipboard-copy-txt" id="cell-26">net.convert_edgelist_into_genesymbol()</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>source</th>
+<th>target</th>
+<th>Type</th>
+<th>Effect</th>
+<th>References</th>
+<th>Provenance</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>CDH1</td>
+<td>SRC</td>
+<td>None</td>
+<td>stimulation</td>
+<td>ACSN:16039586;ACSN:16099633;ACSN:17143292;ACSN...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>1</th>
+<td>SRC</td>
+<td>RET</td>
+<td>None</td>
+<td>stimulation</td>
+<td>BioGRID:10070972;HPRD:10070972;KEA:11713247;KE...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>2</th>
+<td>RET</td>
+<td>CDH1</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>3</th>
+<td>TP53</td>
+<td>HGF</td>
+<td>None</td>
+<td>stimulation</td>
+<td>SPIKE:18431400;SPIKE_LC:18431400; SPIKE:184314...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>4</th>
+<td>HGF</td>
+<td>SRC</td>
+<td>None</td>
+<td>stimulation</td>
+<td>ProtMapper:23524339; ProtMapper:23524339</td>
+<td>None</td>
+</tr>
+<tr>
+<th>5</th>
+<td>SRC</td>
+<td>PTK2B</td>
+<td>None</td>
+<td>stimulation</td>
+<td>Adhesome:10329689;Adhesome:10521452;Adhesome:1...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>6</th>
+<td>PTK2B</td>
+<td>TP53</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>7</th>
+<td>TP53</td>
+<td>EZH2</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>8</th>
+<td>EZH2</td>
+<td>CDH1</td>
+<td>None</td>
+<td>inhibition</td>
+<td>ACSN:11309385;ACSN:12508111;ACSN:14673164;ACSN...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>9</th>
+<td>CDH1</td>
+<td>RAC1</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>10</th>
+<td>RAC1</td>
+<td>TP53</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>11</th>
+<td>SRC</td>
+<td>RAC1</td>
+<td>None</td>
+<td>stimulation</td>
+<td>ProtMapper:21798346;ProtMapper:22163037;ProtMa...</td>
+<td>None</td>
+</tr>
+<tr>
+<th>12</th>
+<td>CDH1</td>
+<td>HGF</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>13</th>
+<td>RAC1</td>
+<td>CDH1</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>14</th>
+<td>TP53</td>
+<td>RAC1</td>
+<td>None</td>
+<td>inhibition</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>15</th>
+<td>HGF</td>
+<td>RAC1</td>
+<td>None</td>
+<td>stimulation</td>
+<td>NaN</td>
+<td>None</td>
+</tr>
+<tr>
+<th>16</th>
+<td>PTK2B</td>
+<td>RAC1</td>
+<td>None</td>
+<td>stimulation</td>
+<td>Adhesome:10592173</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=89a3ad40-ef1e-467f-98dd-e9704fef09e1">
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2b5d1cd9">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-27">
@@ -3251,34 +4336,35 @@ random_seeds = random.sample(egf_egfr_genes, seeds_number)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">neko_net4</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="n">random_seeds</span><span class="p">,</span> <span class="n">resources</span> <span class="o">=</span> <span class="s1">'omnipath'</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"MMP14"</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="s2">"CASP3"</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-27">neko_net4 = Network(random_seeds, resources = 'omnipath')</div>
+<div class="clipboard-copy-txt" id="cell-27">net.add_node("MMP14")
+net.add_node("CASP3")</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>True</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=14468b0d-9972-4e6e-8e8d-e8d9fe2d8f33">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Once again, now that we have created the NeKo network, let's use the RPE and INE algorithm to retrieve (hopefully) the full EGF/EGFR pathway.</p>
-<p><strong>To Notice!</strong></p>
-<p>Since the AllOmnipath database is very big and we have a higher number of seed nodes, the computational time / cost will be higher too! In some cases, expect both complete_connection and connect_network_radially to take minutes!</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8c51e03a-2878-4783-ac4e-50328b8240d1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7c6d2400">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-28">
@@ -3291,37 +4377,21 @@ random_seeds = random.sample(egf_egfr_genes, seeds_number)</div>
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="o">%%</span><span class="n">time</span>
-<span class="n">neko_net3</span><span class="o">.</span><span class="n">complete_connection</span><span class="p">(</span><span class="n">maxlen</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">algorithm</span><span class="o">=</span><span class="s2">"dfs"</span><span class="p">,</span> <span class="n">only_signed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">connect_with_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">consensus</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">connect_component</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">"Genesymbol"</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="p">[</span><span class="s2">"MMP14"</span><span class="p">,</span> <span class="s2">"CASP3"</span><span class="p">],</span> <span class="n">maxlen</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">only_signed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">consensus</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-28">%%time
-neko_net3.complete_connection(maxlen=3, algorithm="dfs", only_signed=True, connect_with_bias=False, consensus=False)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CPU times: user 3min 18s, sys: 24.7 ms, total: 3min 18s
-Wall time: 3min 18s
-</pre>
+<div class="clipboard-copy-txt" id="cell-28">net.connect_component(net.nodes["Genesymbol"].tolist(), ["MMP14", "CASP3"], maxlen=2, only_signed=True, consensus=True)</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7291cdef-74dc-4d88-b588-b65404bb60a0">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a880dce2">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-29">
@@ -3334,11 +4404,9 @@ Wall time: 3min 18s
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="o">%%</span><span class="n">time</span>
-<span class="n">neko_net4</span><span class="o">.</span><span class="n">connect_network_radially</span><span class="p">(</span><span class="n">max_len</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">only_signed</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">consensus</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">HTML</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">history_html</span><span class="p">())</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-29">%%time
-neko_net4.connect_network_radially(max_len=1, only_signed=True, consensus=False)</div>
+<div class="clipboard-copy-txt" id="cell-29">HTML(net.history_html())</div>
 </div>
 </div>
 </div>
@@ -3347,24 +4415,107 @@ neko_net4.connect_network_radially(max_len=1, only_signed=True, consensus=False)
 <div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>CPU times: user 41.7 s, sys: 3.03 ms, total: 41.7 s
-Wall time: 41.7 s
-</pre>
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div class="neko-history-graph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: %3 Pages: 1 -->
+<svg height="421pt" viewbox="0.00 0.00 2062.37 420.70" width="2062pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g class="graph" id="graph0" transform="scale(1 1) rotate(0) translate(4 416.7)">
+<title>%3</title>
+<polygon fill="white" points="-4,4 -4,-416.7 2058.37,-416.7 2058.37,4 -4,4" stroke="transparent"></polygon>
+<!-- 0 -->
+<g class="node" id="node1">
+<title>0</title>
+<ellipse cx="1235.64" cy="-385.83" fill="none" rx="48.17" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1235.64" y="-389.63">State 0</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1235.64" y="-374.63">initial</text>
+</g>
+<!-- 1 -->
+<g class="node" id="node2">
+<title>1</title>
+<ellipse cx="809.64" cy="-296.09" fill="none" rx="443.21" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-299.89">State 1</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-284.89">complete_connection(maxlen=2, algorithm=bfs, only_signed=True, consensus=True)</text>
+</g>
+<!-- 0&#45;&gt;1 -->
+<g class="edge" id="edge1">
+<title>0-&gt;1</title>
+<path d="M1190.85,-375.61C1131.98,-363.48 1026.04,-341.66 940.76,-324.1" fill="none" stroke="black"></path>
+<polygon fill="black" points="941.23,-320.62 930.73,-322.03 939.82,-327.48 941.23,-320.62" stroke="black"></polygon>
+</g>
+<!-- 2 -->
+<g class="node" id="node3">
+<title>2</title>
+<ellipse cx="1662.64" cy="-296.09" fill="none" rx="391.97" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1662.64" y="-299.89">State 2</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="1662.64" y="-284.89">connect_network_radially(max_len=1, only_signed=True, consensus=True)</text>
+</g>
+<!-- 0&#45;&gt;2 -->
+<g class="edge" id="edge2">
+<title>0-&gt;2</title>
+<path d="M1280.53,-375.61C1339.91,-363.41 1447.06,-341.39 1532.81,-323.77" fill="none" stroke="black"></path>
+<polygon fill="black" points="1533.54,-327.19 1542.63,-321.75 1532.13,-320.33 1533.54,-327.19" stroke="black"></polygon>
+</g>
+<!-- 3 -->
+<g class="node" id="node4">
+<title>3</title>
+<ellipse cx="809.64" cy="-206.35" fill="none" rx="101.23" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-210.15">State 3</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-195.15">add_node(CASP3)</text>
+</g>
+<!-- 1&#45;&gt;3 -->
+<g class="edge" id="edge3">
+<title>1-&gt;3</title>
+<path d="M809.64,-268.77C809.64,-260.8 809.64,-251.91 809.64,-243.42" fill="none" stroke="black"></path>
+<polygon fill="black" points="813.14,-243.35 809.64,-233.35 806.14,-243.35 813.14,-243.35" stroke="black"></polygon>
+</g>
+<!-- 4 -->
+<g class="node" id="node5">
+<title>4</title>
+<ellipse cx="809.64" cy="-116.61" fill="none" rx="106.55" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-120.41">State 4</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-105.41">add_node(MMP14)</text>
+</g>
+<!-- 3&#45;&gt;4 -->
+<g class="edge" id="edge4">
+<title>3-&gt;4</title>
+<path d="M809.64,-179.03C809.64,-171.06 809.64,-162.17 809.64,-153.68" fill="none" stroke="black"></path>
+<polygon fill="black" points="813.14,-153.61 809.64,-143.61 806.14,-153.61 813.14,-153.61" stroke="black"></polygon>
+</g>
+<!-- 5 -->
+<g class="node" id="node6">
+<title>5</title>
+<ellipse cx="809.64" cy="-26.87" fill="none" rx="809.77" ry="26.74" stroke="black"></ellipse>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-30.67">State 5</text>
+<text font-family="Times,serif" font-size="14.00" text-anchor="middle" x="809.64" y="-15.67">connect_component([SRC, CDH1, TP53, RET, HGF, PTK2B, EZH2, RAC1, CASP3, MMP14], [MMP14, CASP3], maxlen=2, only_signed=True, consensus=True)</text>
+</g>
+<!-- 4&#45;&gt;5 -->
+<g class="edge" id="edge5">
+<title>4-&gt;5</title>
+<path d="M809.64,-89.29C809.64,-81.32 809.64,-72.43 809.64,-63.94" fill="none" stroke="black"></path>
+<polygon fill="black" points="813.14,-63.87 809.64,-53.87 806.14,-63.87 813.14,-63.87" stroke="black"></polygon>
+</g>
+</g>
+</svg>
+</div>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3793c48c-1c85-47d6-bd23-548094ee8b90">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6c4575b7">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="CodeMirror cm-s-jupyter">
 <div class="zeroclipboard-container">
 <clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-30">
@@ -3377,369 +4528,11 @@ Wall time: 41.7 s
 </div>
 </clipboard-copy>
 </div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1">#This time the network are very big and it can be difficult to visualize them</span>
-<span class="c1">#visualizer3 = NetworkVisualizer(neko_net3, color_by='effect', noi=True)</span>
-<span class="c1">#visualizer3.render("./img/Complete_connection_neko_net_sample_EGF", view=True)</span>
+<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net</span><span class="o">.</span><span class="n">history_html</span><span class="p">()</span><span class="o">.</span>
 </pre></div>
-<div class="clipboard-copy-txt" id="cell-30">#This time the network are very big and it can be difficult to visualize them
-#visualizer3 = NetworkVisualizer(neko_net3, color_by='effect', noi=True)
-#visualizer3.render("./img/Complete_connection_neko_net_sample_EGF", view=True)</div>
+<div class="clipboard-copy-txt" id="cell-30">net.history_html().</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3b491a47-4d3c-4302-a44a-88fac4d2671f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-31">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="c1">#Visualize network</span>
-<span class="c1">#visualizer4 = NetworkVisualizer(neko_net4, color_by='effect', noi=True)</span>
-<span class="c1">#visualizer4.render("./img/Radial_neko_net_sample_EGF", view=True)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-31">#Visualize network
-#visualizer4 = NetworkVisualizer(neko_net4, color_by='effect', noi=True)
-#visualizer4.render("./img/Radial_neko_net_sample_EGF", view=True)</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=3dfda316-09fb-48ee-a509-451fbdecdd4f">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>As we did previously, let's compare network's size and check if we found nodes beloning to the EGF/EGFR pathway from wikipathway</p>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9edbd689-fa46-4a2c-b18e-b0321b42c9d4">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-32">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net3_nodes_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net3</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-<span class="n">net4_nodes_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net4</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of nodes of the third NeKo network: "</span><span class="p">,</span> <span class="n">net3_nodes_size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of nodes of the fourth NeKo network: "</span><span class="p">,</span> <span class="n">net4_nodes_size</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-32">net3_nodes_size = len(neko_net3.nodes)
-net4_nodes_size = len(neko_net4.nodes)
-
-print("Number of nodes of the third NeKo network: ", net3_nodes_size)
-print("Number of nodes of the fourth NeKo network: ", net4_nodes_size)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Number of nodes of the third NeKo network:  284
-Number of nodes of the fourth NeKo network:  273
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=bbca2027-2e28-441c-b258-0b68587b54fd">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-33">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">net3_edges_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net3</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-<span class="n">net4_edges_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">neko_net4</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of edges of the third NeKo network: "</span><span class="p">,</span> <span class="n">net3_edges_size</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of edges of the fourth NeKo network: "</span><span class="p">,</span> <span class="n">net4_edges_size</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-33">net3_edges_size = len(neko_net3.edges)
-net4_edges_size = len(neko_net4.edges)
-
-print("Number of edges of the third NeKo network: ", net3_edges_size)
-print("Number of edges of the fourth NeKo network: ", net4_edges_size)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Number of edges of the third NeKo network:  5109
-Number of edges of the fourth NeKo network:  1107
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d4becd12-06c9-48ed-bd85-fa6f7fe7dd60">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-34">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">nodes_found</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">egf_egfr_genes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">neko_net3</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">"Genesymbol"</span><span class="p">]):</span>
-        <span class="n">nodes_found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial nodes: "</span><span class="p">,</span> <span class="n">random_seeds</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes in the EGF/EGFR pathways: "</span><span class="p">,</span> <span class="n">egf_egfr_genes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes founded: "</span><span class="p">,</span> <span class="n">nodes_found</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-34">nodes_found = []
-for node in egf_egfr_genes:
-    if node in list(neko_net3.nodes["Genesymbol"]):
-        nodes_found.append(node)
-
-print("Initial nodes: ", random_seeds)
-print("Nodes in the EGF/EGFR pathways: ", egf_egfr_genes)
-print("Nodes founded: ", nodes_found)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Initial nodes:  ['PEBP1', 'SOS1', 'GAB2', 'CDC42', 'CBLC', 'EIF4EBP1', 'HGS', 'RICTOR', 'PTPRR', 'GRB2', 'RAF1', 'RAC1', 'MTOR', 'ELK4', 'RPS6KA5', 'EPS15L1', 'USP6NL', 'PIK3R1', 'ABL1', 'PTK2']
-Nodes in the EGF/EGFR pathways:  ['ABI1', 'ABL1', 'AKT1', 'AP2A1', 'AP2B1', 'AP2M1', 'AP2S1', 'ARF6', 'ARHGEF1', 'ASAP1', 'ATF1', 'ATXN2', 'AURKA', 'BCAR1', 'BRAF', 'CAMK2A', 'CAV1', 'CAV2', 'CBL', 'CBLB', 'CBLC', 'CDC42', 'CFL1', 'CREB1', 'CRK', 'CRKL', 'CSK', 'DNM1', 'DOK2', 'E2F1', 'EGF', 'EGFR', 'EIF4EBP1', 'ELK1', 'ELK4', 'EPN1', 'EPS15', 'EPS15L1', 'EPS8', 'ERBB2', 'ERRFI1', 'FOS', 'FOSB', 'FOXO1', 'FOXO4', 'GAB1', 'GAB2', 'GJA1', 'GRB10', 'GRB2', 'HGS', 'HRAS', 'INPP5D', 'INPPL1', 'IQGAP1', 'IQSEC1', 'ITCH', 'JAK1', 'JAK2', 'JUN', 'JUND', 'KRAS', 'LIMK2', 'MAP2K1', 'MAP2K2', 'MAP2K5', 'MAP3K1', 'MAP3K2', 'MAP3K3', 'MAP3K4', 'MAP4K1', 'MAPK1', 'MAPK14', 'MAPK4', 'MAPK7', 'MAPK8', 'MAPK9', 'MEF2A', 'MEF2C', 'MEF2D', 'MT-CO2', 'MTOR', 'MYBL2', 'NCK1', 'NCK2', 'NCOA3', 'NDUFA13', 'NEDD4', 'NEDD8', 'NOS3', 'PAK1', 'PCNA', 'PDPK1', 'PEBP1', 'PIAS3', 'PIK3C2B', 'PIK3R1', 'PIK3R2', 'PLCE1', 'PLCG1', 'PLD1', 'PLD2', 'PLSCR1', 'PRKCA', 'PRKCB', 'PRKCD', 'PRKCI', 'PRKCZ', 'PTEN', 'PTK2', 'PTK2B', 'PTK6', 'PTPN11', 'PTPN12', 'PTPN5', 'PTPRR', 'PXDN', 'RAB5A', 'RAC1', 'RAF1', 'RALA', 'RALB', 'RALBP1', 'RALGDS', 'RAP1A', 'RASA1', 'REPS2', 'RICTOR', 'RIN1', 'ROCK1', 'RPS6KA1', 'RPS6KA2', 'RPS6KA3', 'RPS6KA5', 'RPS6KB1', 'SH2D2A', 'SH3GL2', 'SH3GL3', 'SH3KBP1', 'SHC1', 'SOS1', 'SOS2', 'SP1', 'SPRY2', 'SRC', 'STAM', 'STAM2', 'STAMBP', 'STAT1', 'STAT3', 'STAT5A', 'STAT5B', 'STMN1', 'STXBP1', 'SYNJ1', 'TNK2', 'TWIST1', 'USP6NL', 'USP8', 'VAV1', 'VAV2', 'VAV3']
-Nodes founded:  ['ABL1', 'AKT1', 'BRAF', 'CAMK2A', 'CAV1', 'CBL', 'CBLB', 'CBLC', 'CDC42', 'CREB1', 'E2F1', 'EGF', 'EGFR', 'EIF4EBP1', 'ELK4', 'EPN1', 'EPS15', 'EPS15L1', 'ERBB2', 'FOS', 'GAB1', 'GAB2', 'GRB10', 'GRB2', 'HGS', 'HRAS', 'IQGAP1', 'JAK1', 'JAK2', 'KRAS', 'LIMK2', 'MAP2K1', 'MAP3K1', 'MAPK1', 'MAPK14', 'MAPK7', 'MAPK8', 'MAPK9', 'MTOR', 'NCK1', 'PAK1', 'PDPK1', 'PEBP1', 'PIK3R1', 'PIK3R2', 'PLCG1', 'PLD1', 'PRKCA', 'PRKCB', 'PRKCD', 'PRKCZ', 'PTEN', 'PTK2', 'PTK2B', 'PTPN11', 'PTPRR', 'RAC1', 'RAF1', 'RAP1A', 'RASA1', 'RICTOR', 'RPS6KA2', 'RPS6KA5', 'RPS6KB1', 'SH3GL2', 'SHC1', 'SOS1', 'SRC', 'STAT3', 'USP6NL', 'VAV1', 'VAV2', 'VAV3']
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d2abe68e-8f47-4869-badb-a630c91c220d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-35">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage of genes covered: "</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes_found</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">egf_egfr_genes</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-35">print("Percentage of genes covered: ", (len(nodes_found)/len(egf_egfr_genes)) * 100)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Percentage of genes covered:  45.06172839506173
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1dd14079-baf4-4431-996d-895c2cc677cc">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-36">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="n">nodes_found</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">egf_egfr_genes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">neko_net4</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">"Genesymbol"</span><span class="p">]):</span>
-        <span class="n">nodes_found</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Initial nodes: "</span><span class="p">,</span> <span class="n">random_seeds</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes in the EGF/EGFR pathways: "</span><span class="p">,</span> <span class="n">egf_egfr_genes</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Nodes founded: "</span><span class="p">,</span> <span class="n">nodes_found</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-36">nodes_found = []
-for node in egf_egfr_genes:
-    if node in list(neko_net4.nodes["Genesymbol"]):
-        nodes_found.append(node)
-
-print("Initial nodes: ", random_seeds)
-print("Nodes in the EGF/EGFR pathways: ", egf_egfr_genes)
-print("Nodes founded: ", nodes_found)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Initial nodes:  ['PEBP1', 'SOS1', 'GAB2', 'CDC42', 'CBLC', 'EIF4EBP1', 'HGS', 'RICTOR', 'PTPRR', 'GRB2', 'RAF1', 'RAC1', 'MTOR', 'ELK4', 'RPS6KA5', 'EPS15L1', 'USP6NL', 'PIK3R1', 'ABL1', 'PTK2']
-Nodes in the EGF/EGFR pathways:  ['ABI1', 'ABL1', 'AKT1', 'AP2A1', 'AP2B1', 'AP2M1', 'AP2S1', 'ARF6', 'ARHGEF1', 'ASAP1', 'ATF1', 'ATXN2', 'AURKA', 'BCAR1', 'BRAF', 'CAMK2A', 'CAV1', 'CAV2', 'CBL', 'CBLB', 'CBLC', 'CDC42', 'CFL1', 'CREB1', 'CRK', 'CRKL', 'CSK', 'DNM1', 'DOK2', 'E2F1', 'EGF', 'EGFR', 'EIF4EBP1', 'ELK1', 'ELK4', 'EPN1', 'EPS15', 'EPS15L1', 'EPS8', 'ERBB2', 'ERRFI1', 'FOS', 'FOSB', 'FOXO1', 'FOXO4', 'GAB1', 'GAB2', 'GJA1', 'GRB10', 'GRB2', 'HGS', 'HRAS', 'INPP5D', 'INPPL1', 'IQGAP1', 'IQSEC1', 'ITCH', 'JAK1', 'JAK2', 'JUN', 'JUND', 'KRAS', 'LIMK2', 'MAP2K1', 'MAP2K2', 'MAP2K5', 'MAP3K1', 'MAP3K2', 'MAP3K3', 'MAP3K4', 'MAP4K1', 'MAPK1', 'MAPK14', 'MAPK4', 'MAPK7', 'MAPK8', 'MAPK9', 'MEF2A', 'MEF2C', 'MEF2D', 'MT-CO2', 'MTOR', 'MYBL2', 'NCK1', 'NCK2', 'NCOA3', 'NDUFA13', 'NEDD4', 'NEDD8', 'NOS3', 'PAK1', 'PCNA', 'PDPK1', 'PEBP1', 'PIAS3', 'PIK3C2B', 'PIK3R1', 'PIK3R2', 'PLCE1', 'PLCG1', 'PLD1', 'PLD2', 'PLSCR1', 'PRKCA', 'PRKCB', 'PRKCD', 'PRKCI', 'PRKCZ', 'PTEN', 'PTK2', 'PTK2B', 'PTK6', 'PTPN11', 'PTPN12', 'PTPN5', 'PTPRR', 'PXDN', 'RAB5A', 'RAC1', 'RAF1', 'RALA', 'RALB', 'RALBP1', 'RALGDS', 'RAP1A', 'RASA1', 'REPS2', 'RICTOR', 'RIN1', 'ROCK1', 'RPS6KA1', 'RPS6KA2', 'RPS6KA3', 'RPS6KA5', 'RPS6KB1', 'SH2D2A', 'SH3GL2', 'SH3GL3', 'SH3KBP1', 'SHC1', 'SOS1', 'SOS2', 'SP1', 'SPRY2', 'SRC', 'STAM', 'STAM2', 'STAMBP', 'STAT1', 'STAT3', 'STAT5A', 'STAT5B', 'STMN1', 'STXBP1', 'SYNJ1', 'TNK2', 'TWIST1', 'USP6NL', 'USP8', 'VAV1', 'VAV2', 'VAV3']
-Nodes founded:  ['ABI1', 'ABL1', 'AKT1', 'ARF6', 'ASAP1', 'BCAR1', 'CAMK2A', 'CAV1', 'CBL', 'CBLB', 'CBLC', 'CDC42', 'CRK', 'CRKL', 'CSK', 'EGF', 'EGFR', 'EIF4EBP1', 'ELK4', 'EPN1', 'EPS15', 'EPS15L1', 'GAB1', 'GAB2', 'GRB10', 'GRB2', 'HGS', 'HRAS', 'INPP5D', 'IQGAP1', 'JAK1', 'JAK2', 'KRAS', 'MAP2K1', 'MAP3K4', 'MAPK1', 'MAPK14', 'MAPK7', 'MAPK8', 'MTOR', 'NCK1', 'NCK2', 'PAK1', 'PEBP1', 'PIK3R1', 'PIK3R2', 'PLCG1', 'PLD1', 'PRKCA', 'PRKCD', 'PRKCZ', 'PTEN', 'PTK2', 'PTK2B', 'PTPN11', 'PTPN12', 'PTPRR', 'RAC1', 'RAF1', 'RALGDS', 'RAP1A', 'RASA1', 'RICTOR', 'RIN1', 'ROCK1', 'RPS6KA5', 'RPS6KB1', 'SH3GL2', 'SHC1', 'SOS1', 'SRC', 'USP6NL', 'VAV1', 'VAV2', 'VAV3']
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c199f367-d0c4-4c91-8359-a6c03dc54ac7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="CodeMirror cm-s-jupyter">
-<div class="zeroclipboard-container">
-<clipboard-copy ,="" aria-label="Copy to Clipboard" for="cell-37">
-<div>
-<span class="notice" hidden="">Copied!</span>
-<svg aria-hidden="true" class="clipboard-copy-icon" data-view-component="true" height="20" version="1.1" viewbox="0 0 16 16" width="20">
-<path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-<path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z" fill="currentColor" fill-rule="evenodd"></path>
-</svg>
-</div>
-</clipboard-copy>
-</div>
-<div class="highlight-ipynb hl-python"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Percentage of genes covered: "</span><span class="p">,</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodes_found</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">egf_egfr_genes</span><span class="p">))</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
-</pre></div>
-<div class="clipboard-copy-txt" id="cell-37">print("Percentage of genes covered: ", (len(nodes_found)/len(egf_egfr_genes)) * 100)</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Percentage of genes covered:  46.2962962962963
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f0cc73cc-35fe-423d-bdf8-caf91432feb9">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Once more, the INE captured better the pathway composition, recovering 40-50% of the genes in the EGF/EGFR pathway from wikipathways (by starting from 10%). This time, INE performed better than RPE. The reason for this resides within the database composition. The Omnipath database contains tons of interaction, which means, many possibilities to go from gene A to gene B in the shortest path possible (with max len = 3). On the other hand, INE runs with max_len = 1, so it just collects all the possible neighbors of the nodes, without looking for extended extra pathways.</p>
-<p>Please remember that the aim of the RPE algorithm is to reduce as much as possible the average network distance. On the other hand, the INE algorithm does not care about it.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=f251baa6">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 </div>
 </div>
 </div>
@@ -3820,7 +4613,7 @@ Nodes founded:  ['ABI1', 'ABL1', 'AKT1', 'ARF6', 'ASAP1', 'BCAR1', 'CAMK2A', 'CA
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../8_Compare_networks/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Network comparison">
+          <a href="../10_Import_and_complete_a_network/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Build, manipulate, export and import networks">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -3830,20 +4623,20 @@ Nodes founded:  ['ABI1', 'ABL1', 'AKT1', 'ARF6', 'ASAP1', 'BCAR1', 'CAMK2A', 'CA
                 Previous
               </span>
               <div class="md-ellipsis">
-                Network comparison
+                Build, manipulate, export and import networks
               </div>
             </div>
           </a>
         
         
           
-          <a href="../10_Import_and_complete_a_network/" class="md-footer__link md-footer__link--next" aria-label="Next: Build, manipulate, export and import networks">
+          <a href="../../api/" class="md-footer__link md-footer__link--next" aria-label="Next: Overview">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Build, manipulate, export and import networks
+                Overview
               </div>
             </div>
             <div class="md-footer__button md-icon">
