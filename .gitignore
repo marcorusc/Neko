@@ -24,3 +24,26 @@ __pycache__/
 
 # MkDocs build output
 site/
+
+# Jupyter
+.ipynb_checkpoints/
+pypath_log/
+
+# Local virtualenvs
+.venv/
+.release-venv/
+venv/
+
+# Generated notebook run artifacts
+dependencies_tree.txt
+notebooks/logical_models/
+notebooks/img/
+notebooks/network
+notebooks/network.pdf
+notebooks/network_history.*
+notebooks/output.bnd
+notebooks/output.cfg
+notebooks/simple_interaction_format.sif
+docs/src/notebooks/img/
+docs/src/notebooks/network
+docs/src/notebooks/network.pdf
