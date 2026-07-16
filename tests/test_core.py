@@ -187,3 +187,14 @@ def test_bnet_export_rejects_sanitized_name_collisions(tmp_path):
 
     with pytest.raises(ValueError, match='collide'):
         exporter.export_bnet(str(tmp_path / 'collision.bnet'))
+
+
+def test_field_resolves_function_from_nested_module():
+    from neko.inputs._def import Field, NodeDef
+
+    assert Field('urllib.parse.quote')('a b') == 'a%20b'
+    assert Field('__value')({'value': 'result'}) == 'result'
+
+    node_def = NodeDef('__id', 'protein', 'protein', '9606')
+    assert node_def.id({'id': 'P12931'}) == 'P12931'
+    assert node_def.organism({}) == '9606'
