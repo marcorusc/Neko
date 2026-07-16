@@ -69,10 +69,10 @@ def omnipath(**kwargs) -> Universe:
 def signor(path: str | None = None, **kwargs) -> Universe:
     # If path is provided and exists, use it. Otherwise, use the new signor() logic to download/process.
     if path and os.path.exists(path):
-        return Universe(_signor.signor(path))
+        return Universe(_signor.signor(path, **kwargs))
     else:
         # Use the new signor() logic: download and process if path is None
-        return Universe(_signor.signor())
+        return Universe(_signor.signor(**kwargs))
 
 
 def phosphosite(

@@ -5,12 +5,13 @@ from typing import Dict
 
 
 def wrap_node_name(node_name):
-    if ":" in node_name:
-        node_name = node_name.replace(":", "_")
-    if node_name.startswith("COMPLEX"):
+    if node_name.startswith("COMPLEX:"):
         return node_name[8:]
-    else:
-        return node_name
+
+    if ":" in node_name:
+        return node_name.replace(":", "_")
+
+    return node_name
 
 
 class NetworkVisualizer:
@@ -192,10 +193,15 @@ class NetworkVisualizer:
         objects = []
         for idx, item in self.__dataframe_nodes.iterrows():
             obj = {
-                "id": self.__dataframe_nodes["Uniprot"].loc[idx],
-                "properties": {"label": self.__dataframe_nodes["Genesymbol"].loc[idx]},
+                # Edges have already been converted to display identifiers,
+                # so node IDs must use the same namespace. This is especially
+                # important for complexes and typed SIGNOR entities.
+                "id": self.__dataframe_nodes["Genesymbol"].loc[idx],
+                "properties": {
+                    "label": self.__dataframe_nodes["Genesymbol"].loc[idx],
+                },
                 "color": "#ffffff",
-                "styles": {"backgroundColor": "#ffffff"}
+                "styles": {"backgroundColor": "#ffffff"},
             }
             objects.append(obj)
         w.nodes = objects

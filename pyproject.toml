@@ -168,3 +168,6 @@ addopts = [
 filterwarnings = [
     # "ignore:.*U.*mode is deprecated:DeprecationWarning",
 ]
+markers = [
+    "live: tests which call external data providers and require network access",
+]

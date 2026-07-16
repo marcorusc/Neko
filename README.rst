@@ -38,6 +38,27 @@ Features
 - Interaction database integration
 - Branching network history with automatic snapshots, HTML/SVG rendering, and state pruning controls
 
+SIGNOR entity normalization
+---------------------------
+
+The built-in ``signor()`` input downloads SIGNOR's complex, protein-family,
+phenotype, and stimulus dictionaries together with the human interaction
+table. Proprietary endpoint IDs are normalized before the ``Universe`` is
+built: complexes use the same ``COMPLEX:`` member syntax as OmniPath, while
+the other group/context nodes use readable ``PROTEIN_FAMILY:``,
+``PHENOTYPE:``, and ``STIMULUS:`` identifiers.
+
+.. code-block:: python
+
+    from neko.inputs import signor
+
+    resources = signor()
+
+For reproducible offline loading, preloaded dictionary DataFrames can be
+passed through ``entity_dictionaries``. Normalization can be explicitly
+disabled with ``normalize_entities=False`` when the raw SIGNOR identifiers
+are required.
+
 Installation
 ------------
 

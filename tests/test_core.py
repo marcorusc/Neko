@@ -56,6 +56,38 @@ def test_network_add_edge():
     assert {'P1', 'P2'} <= set(net.edges[['source', 'target']].stack())
 
 
+def test_network_adds_typed_signor_entity_without_translation():
+    from neko.core.tools import mapping_node_identifier
+    from neko.core.network import Network
+
+    entity = 'PHENOTYPE:Cell_death'
+    resources = sample_df()
+    resources.loc[len(resources)] = {
+        'source': 'P1',
+        'target': entity,
+        'is_directed': True,
+        'is_stimulation': True,
+        'is_inhibition': False,
+        'form_complex': False,
+    }
+    net = Network(initial_nodes=['P1'], resources=resources)
+
+    assert mapping_node_identifier(entity) == [None, entity, entity]
+    assert net.add_node(entity)
+    matches = net.nodes[['Genesymbol', 'Uniprot']].eq([entity, entity])
+    assert matches.all(axis=1).any()
+
+
+def test_visualizer_wraps_typed_signor_entities():
+    from neko._visual.visualize_network import wrap_node_name
+
+    assert wrap_node_name('COMPLEX:P23511_Q13952') == 'P23511_Q13952'
+    assert wrap_node_name('COMPLEX_NAME:New complex') == (
+        'COMPLEX_NAME_New complex'
+    )
+    assert wrap_node_name('PHENOTYPE:Cell_death') == 'PHENOTYPE_Cell_death'
+
+
 def test_exports(tmp_path):
     from neko.core.network import Network
     from neko._outputs.exports import Exports
