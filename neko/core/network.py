@@ -1093,13 +1093,6 @@ class Network:
 
         return history_html(self, include_metadata=include_metadata, div_class=div_class)
 
-    def history_html(self, include_metadata: bool = True, div_class: str = "neko-history-graph") -> str:
-        """Return an HTML snippet embedding the history graph."""
-
-        from .._visual.history import history_html
-
-        return history_html(self, include_metadata=include_metadata, div_class=div_class)
-
     def check_sign(self, edge, consensus_only=False):
         return check_sign(edge, consensus_only)
 
