@@ -1,7 +1,18 @@
 from __future__ import annotations
-from pypath.utils import mapping
-import pandas as pd
+
 import networkx as nx
+
+import pandas as pd
+
+from neko.inputs import identifier_mapping as mapping
+
+NON_PROTEIN_ENTITY_PREFIXES = (
+    "COMPLEX_NAME:",
+    "PROTEIN_FAMILY:",
+    "PHENOTYPE:",
+    "STIMULUS:",
+)
+
 
 def is_connected(network) -> bool:
     """
@@ -74,10 +85,10 @@ def check_gene_list_format(gene_list: list[str]) -> bool:
         - A boolean indicating whether the gene list is in Uniprot format (True) or genesymbol format (False).
     """
     # Check if the gene list contains Uniprot identifiers
-    if all(mapping.id_from_label0(gene) for gene in gene_list):
+    if all(mapping.to_uniprot(gene) for gene in gene_list):
         return True
     # Check if the gene list contains genesymbols
-    elif all(mapping.label(gene) for gene in gene_list):
+    elif all(mapping.to_genesymbol(gene) for gene in gene_list):
         return False
 
 
@@ -85,7 +96,7 @@ def mapping_node_identifier(node: str) -> list[str]:
     """
     This function takes a node identifier and returns a list containing the possible identifiers for the node.
     The identifiers include a complex string, a genesymbol, and a uniprot identifier. The function uses the
-    mapping.id_from_label0 and mapping.label functions from the pypath.utils.mapping module to translate the node
+    to_uniprot and to_genesymbol functions from the neko.inputs.identifier_mapping module to translate the node
     identifier into these different formats.
 
     Args:
@@ -100,21 +111,25 @@ def mapping_node_identifier(node: str) -> list[str]:
     genesymbol = None
     uniprot = None
 
-    node_id = mapping.id_from_label0(node)
+    if isinstance(node, str) and node.startswith(NON_PROTEIN_ENTITY_PREFIXES):
+        # Typed group/context nodes are already normalized identifiers. Keep
+        # the identifier intact for resource-edge matching and display it as
+        # the node label without attempting a meaningless UniProt lookup.
+        return [complex_string, node, node]
 
-    if node_id:
-        # Convert UniProt ID to gene symbol
-        uniprot = node_id
-        if uniprot.startswith("MI"):
-            genesymbol = uniprot
-        else:
-            genesymbol = mapping.label(uniprot)
-    elif isinstance(node, str) and node.startswith("COMPLEX"):
+    if isinstance(node, str) and node.startswith("COMPLEX:"):
+        # Check the complex prefix before attempting any translation:
+        # "COMPLEX:X_Y" is never itself a valid gene symbol or UniProt
+        # accession, so translating it directly would always miss (wasting
+        # a live lookup); translate its individual members instead.
         node_content = node[8:]
         node_list = node_content.split("_")
 
-        # Translate each element in node_list using mapping.label
-        translated_node_list = [mapping.label(mapping.id_from_label0(item)) or item for item in node_list]
+        # Translate each element in node_list using mapping.to_genesymbol
+        translated_node_list = [
+            mapping.to_genesymbol(mapping.to_uniprot(item)) or item
+            for item in node_list
+        ]
 
         # Join the elements in node_list with "_"
         joined_node_string = "_".join(translated_node_list)
@@ -122,11 +137,23 @@ def mapping_node_identifier(node: str) -> list[str]:
         # Add back the "COMPLEX:" prefix to the string
         complex_string = "COMPLEX:" + joined_node_string
         uniprot = node
+
+        return [complex_string, genesymbol, uniprot]
+
+    node_id = mapping.to_uniprot(node)
+
+    if node_id:
+        # Convert UniProt ID to gene symbol
+        uniprot = node_id
+        if uniprot.startswith("MI"):
+            genesymbol = uniprot
+        else:
+            genesymbol = mapping.to_genesymbol(uniprot)
     else:
-        label = mapping.label(node)
+        label = mapping.to_genesymbol(node)
         if label:
             genesymbol = label
-            uniprot = mapping.id_from_label0(genesymbol)
+            uniprot = mapping.to_uniprot(genesymbol)
         else:
             print("Error during translation, check syntax for ", node)
 

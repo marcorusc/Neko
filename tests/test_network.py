@@ -1,9 +1,6 @@
 import pytest
 import pandas as pd
 
-pytest.importorskip("pypath.utils.mapping")
-pytest.importorskip("pypath_common")
-
 from neko.core.network import Network
 import os
 import difflib

@@ -1,5 +1,7 @@
 import pandas as pd
-from pypath.utils import mapping
+import pytest
+
+from neko.inputs import identifier_mapping
 
 
 def identity(x):
@@ -7,15 +9,15 @@ def identity(x):
 
 
 def setup_module(module):
-    module.orig_id = mapping.id_from_label0
-    module.orig_label = mapping.label
-    mapping.id_from_label0 = identity
-    mapping.label = identity
+    module.orig_to_uniprot = identifier_mapping.to_uniprot
+    module.orig_to_genesymbol = identifier_mapping.to_genesymbol
+    identifier_mapping.to_uniprot = identity
+    identifier_mapping.to_genesymbol = identity
 
 
 def teardown_module(module):
-    mapping.id_from_label0 = module.orig_id
-    mapping.label = module.orig_label
+    identifier_mapping.to_uniprot = module.orig_to_uniprot
+    identifier_mapping.to_genesymbol = module.orig_to_genesymbol
 
 
 def sample_df():

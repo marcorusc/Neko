@@ -40,11 +40,10 @@ unipressed = "*"
 jupyterlab = "*"
 pycurl = "*"
 graphviz = "*"
+pypath-common = ">=0.2.6"
+requests = ">=2.31,<3"
 pandas = "2.2.2"
-pypath-common = "^0.2.5"
 omnipath = "1.0.9"
-pypath-omnipath = "0.16.20"
-paramiko = "<4.0.0"
 
 [tool.poetry.dev-dependencies]
 pandoc = "*"

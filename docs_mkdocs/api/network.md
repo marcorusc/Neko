@@ -14,8 +14,7 @@ from neko.core.network import Network
 from neko.core.network import Network
 from neko.inputs import Universe
 
-resources = Universe()
-resources.build()
+resources = Universe("omnipath")
 
 net = Network(["EGFR", "KRAS", "MYC"], resources=resources.interactions)
 net.connect_nodes()
