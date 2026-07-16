@@ -111,3 +111,79 @@ def test_exports(tmp_path):
     created = list(tmp_path.glob('test*.bnet'))
     assert created
 
+
+def test_bnet_export_keeps_formulas_for_sanitized_signor_nodes(tmp_path):
+    from neko.core.network import Network
+    from neko._outputs.exports import Exports
+
+    entity = 'PROTEIN_FAMILY:ERK1/2'
+    resources = pd.DataFrame({
+        'source': ['P1'],
+        'target': [entity],
+        'is_directed': [True],
+        'is_stimulation': [True],
+        'is_inhibition': [False],
+        'form_complex': [False],
+    })
+    net = Network(initial_nodes=['P1', entity], resources=resources)
+    net.add_edge(resources.assign(type='causal', references='ref'))
+
+    Exports(net).export_bnet(str(tmp_path / 'typed.bnet'))
+
+    content = (tmp_path / 'typed_1.bnet').read_text()
+    assert 'PROTEIN_FAMILY_ERK1_2, (P1)' in content
+
+
+def test_sif_export_creates_parent_directory(tmp_path):
+    from neko.core.network import Network
+    from neko._outputs.exports import Exports
+
+    df = sample_df()
+    net = Network(initial_nodes=['P1'], resources=df)
+    net.add_edge(pd.DataFrame({
+        'source': ['P1'],
+        'target': ['P2'],
+        'is_stimulation': [True],
+        'is_inhibition': [False],
+    }))
+    output = tmp_path / 'nested' / 'network.sif'
+
+    Exports(net).export_sif(str(output))
+
+    assert output.exists()
+
+
+def test_bnet_export_caps_variants_before_materializing(tmp_path):
+    from neko._outputs.exports import Exports
+
+    exporter = Exports.__new__(Exports)
+    labels = ['SOURCE'] + [f'TARGET_{index}' for index in range(20)]
+    exporter.nodes = pd.DataFrame({'Genesymbol': labels})
+    exporter.interactions = pd.DataFrame({
+        'source': ['SOURCE'] * 20,
+        'target': labels[1:],
+        'Effect': ['bimodal'] * 20,
+        'References': ['ref'] * 20,
+    })
+
+    exporter.export_bnet(str(tmp_path / 'capped.bnet'), n=1)
+
+    assert [path.name for path in tmp_path.glob('capped_*.bnet')] == [
+        'capped_1.bnet',
+    ]
+
+
+def test_bnet_export_rejects_sanitized_name_collisions(tmp_path):
+    from neko._outputs.exports import Exports
+
+    exporter = Exports.__new__(Exports)
+    exporter.nodes = pd.DataFrame({'Genesymbol': ['A-B', 'A_B']})
+    exporter.interactions = pd.DataFrame({
+        'source': ['A-B'],
+        'target': ['A_B'],
+        'Effect': ['stimulation'],
+        'References': ['ref'],
+    })
+
+    with pytest.raises(ValueError, match='collide'):
+        exporter.export_bnet(str(tmp_path / 'collision.bnet'))
