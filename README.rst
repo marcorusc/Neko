@@ -61,6 +61,15 @@ can still be passed through ``entity_dictionaries``. Normalization can be
 explicitly disabled with ``normalize_entities=False`` when the raw SIGNOR
 identifiers are required.
 
+SIGNOR ChEBI accessions remain canonical network identifiers and are never
+sent to UniProt for translation. When a resource contains ChEBI nodes, NeKo
+lazily downloads the official compressed ``compounds.tsv.gz`` table once and
+caches only the names needed by that resource for display. If the download is
+unavailable, network construction continues with the ChEBI accession as its
+label. ChEBI data are provided by EMBL-EBI under the `Creative Commons
+Attribution 4.0 International license
+<https://www.ebi.ac.uk/chebi/aboutChebiForward.do>`_.
+
 Installation
 ------------
 

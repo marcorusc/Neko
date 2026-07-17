@@ -1,5 +1,5 @@
 from __future__ import annotations
-from ..inputs import _universe
+from ..inputs import _universe, chebi_mapping
 from .._methods.enrichment_methods import Connections
 import copy
 from contextlib import contextmanager
@@ -166,6 +166,12 @@ class Network:
             interactions
         )
 
+        # Resolve all ChEBI labels in one pass. The canonical accessions stay
+        # usable even when this optional, best-effort enrichment is offline.
+        chebi_mapping.ensure_names(
+            chebi_mapping.identifiers_in_frame(self.resources),
+        )
+
         if self.initial_nodes:
             nodes_found = []
             for node in self.initial_nodes:
@@ -314,14 +320,34 @@ class Network:
         Returns:
             - None
         """
-        # Remove the node from the nodes DataFrame
-        self.nodes = self.nodes[(self.nodes.Genesymbol != node) & (self.nodes.Uniprot != node)]
+        if node is None or (not isinstance(node, str) and pd.isna(node)):
+            return
 
-        # Translate the node identifier to Uniprot
-        node = mapping_node_identifier(node)[2]
+        matching_nodes = self.nodes[
+            (self.nodes["Genesymbol"] == node)
+            | (self.nodes["Uniprot"] == node)
+        ]
+        identifiers = {node}
+        identifiers.update(
+            value
+            for value in matching_nodes[["Genesymbol", "Uniprot"]].stack()
+            if pd.notna(value)
+        )
 
-        # Remove any edges associated with the node from the edges DataFrame
-        self.edges = self.edges[~self.edges[['source', 'target']].isin([node]).any(axis=1)]
+        if matching_nodes.empty:
+            translated = mapping_node_identifier(node)
+            identifiers.update(value for value in translated if value is not None)
+
+        self.nodes = self.nodes[
+            ~self.nodes[["Genesymbol", "Uniprot"]]
+            .isin(identifiers)
+            .any(axis=1)
+        ]
+        self.edges = self.edges[
+            ~self.edges[["source", "target"]]
+            .isin(identifiers)
+            .any(axis=1)
+        ]
 
         return
 

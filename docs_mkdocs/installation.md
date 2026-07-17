@@ -98,9 +98,12 @@ which dot   # should point to the graphviz dot binary
 NeKo downloads interaction data from OmniPath when building an OmniPath
 universe. Identifier translation lazily downloads a reviewed-human mapping
 table from UniProt and caches it locally. SIGNOR similarly caches its validated
-interaction table and entity dictionaries, so later loads can run offline.
-Ensure the first use has network access, or provide an existing cache with
-`NEKO_CACHE_DIR`.
+interaction table and entity dictionaries, so later loads can run offline. If
+a resource contains ChEBI accessions, NeKo also caches the compressed ChEBI
+compounds table and a small accession-to-name subset. The names are optional:
+if ChEBI is unreachable, the canonical accession is used as the display label
+and network construction continues. Ensure the first use has network access,
+or provide an existing cache with `NEKO_CACHE_DIR`.
 
 ```python
 from neko.inputs import Universe

@@ -5,12 +5,16 @@ import networkx as nx
 import pandas as pd
 
 from neko.inputs import identifier_mapping as mapping
+from neko.inputs import chebi_mapping
 
 NON_PROTEIN_ENTITY_PREFIXES = (
+    "CID:",
     "COMPLEX_NAME:",
     "PROTEIN_FAMILY:",
     "PHENOTYPE:",
+    "SIGNOR-",
     "STIMULUS:",
+    "URS",
 )
 
 
@@ -110,6 +114,16 @@ def mapping_node_identifier(node: str) -> list[str]:
     complex_string = None
     genesymbol = None
     uniprot = None
+
+    canonical_chebi = chebi_mapping.normalize_identifier(node)
+
+    if canonical_chebi:
+        # ChEBI accessions are canonical non-protein identifiers. A cached
+        # ASCII name is display-only; failure to obtain it must never change
+        # the identifier used by resource edges or trigger a UniProt lookup.
+        genesymbol = chebi_mapping.to_name(canonical_chebi) or canonical_chebi
+
+        return [complex_string, genesymbol, canonical_chebi]
 
     if isinstance(node, str) and node.startswith(NON_PROTEIN_ENTITY_PREFIXES):
         # Typed group/context nodes are already normalized identifiers. Keep

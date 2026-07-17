@@ -60,3 +60,11 @@ After the first successful load, the cached release is available offline. Set
 `NEKO_CACHE_DIR` to choose the cache root. Use `normalize_entities=False` only
 when raw identifiers such as `SIGNOR-C1` are explicitly needed. Preloaded
 DataFrames can also be supplied as `entity_dictionaries`.
+
+ChEBI accessions are preserved as canonical non-protein identifiers rather
+than being sent to UniProt. NeKo lazily caches the official compressed
+`compounds.tsv.gz` table and extracts only the names required by the current
+resource. Name enrichment is best-effort; offline or failed downloads fall
+back to displaying the accession without blocking network construction.
+[ChEBI data](https://www.ebi.ac.uk/chebi/) are provided by EMBL-EBI under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
