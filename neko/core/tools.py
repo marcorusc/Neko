@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import re
+
 import networkx as nx
 
 import pandas as pd
@@ -16,6 +18,28 @@ NON_PROTEIN_ENTITY_PREFIXES = (
     "STIMULUS:",
     "URS",
 )
+PHOSPHOSITE_PATTERN = re.compile(
+    r'^(?P<protein>\S+)_(?P<residue>[STY])(?P<position>\d+)$',
+    re.IGNORECASE,
+)
+
+
+def normalize_phosphosite_identifier(node: str | None) -> str | None:
+    """Return the canonical ``GENE_RESIDUE`` phosphosite identifier."""
+
+    if not isinstance(node, str):
+        return None
+
+    match = PHOSPHOSITE_PATTERN.fullmatch(node.strip())
+
+    if match is None:
+        return None
+
+    return (
+        f'{match.group("protein")}_'
+        f'{match.group("residue").upper()}'
+        f'{match.group("position")}'
+    )
 
 
 def is_connected(network) -> bool:
@@ -92,8 +116,25 @@ def check_gene_list_format(gene_list: list[str]) -> bool:
     Returns:
         - A boolean indicating whether the gene list is in Uniprot format (True) or genesymbol format (False).
     """
-    # Check if the gene list contains Uniprot identifiers
-    if all(mapping.to_uniprot(gene) for gene in gene_list):
+    def canonical_resource_identifier(gene):
+        return (
+            normalize_phosphosite_identifier(gene)
+            or chebi_mapping.normalize_identifier(gene)
+            or (
+                isinstance(gene, str)
+                and gene.startswith(
+                    NON_PROTEIN_ENTITY_PREFIXES + ("COMPLEX:",)
+                )
+            )
+        )
+
+    # Canonical resource identifiers behave like UniProt accessions in graph
+    # operations: they are already ready for edge lookup and must not be sent
+    # to a protein identifier service.
+    if all(
+        canonical_resource_identifier(gene) or mapping.to_uniprot(gene)
+        for gene in gene_list
+    ):
         return True
     # Check if the gene list contains genesymbols
     elif all(mapping.to_genesymbol(gene) for gene in gene_list):
@@ -157,6 +198,14 @@ def mapping_node_identifier(node: str) -> list[str]:
         uniprot = node
 
         return [complex_string, genesymbol, uniprot]
+
+    phosphosite = normalize_phosphosite_identifier(node)
+
+    if phosphosite:
+        # PhosphoSitePlus uses identifiers such as MAP3K4_T1494 directly in
+        # resource edges. They are canonical site nodes, not gene symbols to
+        # submit to UniProt.
+        return [complex_string, phosphosite, phosphosite]
 
     node_id = mapping.to_uniprot(node)
 

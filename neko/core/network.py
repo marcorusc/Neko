@@ -300,13 +300,29 @@ class Network:
             self.initial_nodes = list(set(self.initial_nodes))
             return True
         complex_string, genesymbol, uniprot = mapping_node_identifier(node)
-        if complex_string:
-            new_entry = {"Genesymbol": complex_string, "Uniprot": node, "Type": "NaN"}
-        else:
-            new_entry = {"Genesymbol": genesymbol, "Uniprot": uniprot, "Type": "NaN"}
-        if not self.check_node(uniprot) and not self.check_node(genesymbol):
+
+        # The identifier stored in ``Uniprot`` is also the identifier used by
+        # resource edges. Prefer the caller's exact identifier when the
+        # resource uses it (e.g. PhosphoSitePlus gene symbols and sites), and
+        # otherwise use its translated UniProt or display identifier.
+        resource_identifier = next(
+            (
+                identifier
+                for identifier in (node, uniprot, genesymbol)
+                if identifier is not None and self.check_node(identifier)
+            ),
+            None,
+        )
+
+        if resource_identifier is None:
             print("Error: node %s is not present in the resources database" % node)
             return False
+
+        new_entry = {
+            "Genesymbol": complex_string or genesymbol or node,
+            "Uniprot": resource_identifier,
+            "Type": "NaN",
+        }
         self.nodes.loc[len(self.nodes)] = new_entry
         self.nodes = self.nodes.drop_duplicates().reset_index(drop=True)
         self._add_node_obj(new_entry["Genesymbol"], new_entry["Uniprot"], new_entry["Type"])
@@ -397,9 +413,36 @@ class Network:
         existing_edge = self.edges[(self.edges["source"] == edge["source"].values[0]) &
                                    (self.edges["target"] == edge["target"].values[0]) &
                                    (self.edges["Effect"] == effect)]
-        if not existing_edge.empty and references is not None:
-            self.edges.loc[existing_edge.index, "References"] += "; " + str(references)
-        else:
+        reference_is_missing = (
+            references is None
+            or references is False
+            or (
+                pd.api.types.is_scalar(references)
+                and pd.isna(references)
+            )
+        )
+
+        if not existing_edge.empty and not reference_is_missing:
+            new_reference = str(references)
+
+            for index in existing_edge.index:
+                current = self.edges.at[index, "References"]
+                current_is_missing = (
+                    current is None
+                    or current is False
+                    or (
+                        pd.api.types.is_scalar(current)
+                        and pd.isna(current)
+                    )
+                )
+
+                if current_is_missing:
+                    self.edges.at[index, "References"] = new_reference
+                elif new_reference not in str(current).split('; '):
+                    self.edges.at[index, "References"] = (
+                        f'{current}; {new_reference}'
+                    )
+        elif existing_edge.empty:
             # Concatenate the new edge DataFrame with the existing edges in the graph
             self.edges = pd.concat([self.edges, df_edge])
 
