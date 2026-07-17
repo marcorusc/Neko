@@ -68,3 +68,12 @@ resource. Name enrichment is best-effort; offline or failed downloads fall
 back to displaying the accession without blocking network construction.
 [ChEBI data](https://www.ebi.ac.uk/chebi/) are provided by EMBL-EBI under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+
+## PhosphoSitePlus identifiers
+
+`neko.inputs.phosphosite()` preserves phosphorylation sites in the native
+`GENE_RESIDUE` form, for example `MAP3K4_T1494`. Serine, threonine, and
+tyrosine sites are recognized before protein identifier translation, so site
+nodes are never submitted to UniProt. When a resource uses gene symbols as
+edge identifiers, NeKo also keeps those symbols as the graph identifiers to
+ensure kinase-to-site and site-to-protein paths remain searchable.
