@@ -38,6 +38,8 @@ import logging
 from requests.adapters import Retry, HTTPAdapter
 import requests
 
+from neko._cache import cache_dir
+
 logger = logging.getLogger(__name__)
 
 HUMAN_TAXON_ID = '9606'
@@ -76,16 +78,7 @@ def looks_like_uniprot_accession(value: str) -> bool:
 
 def _cache_dir() -> Path:
 
-    override = os.environ.get('NEKO_CACHE_DIR')
-
-    if override:
-        base = Path(override)
-    elif os.name == 'nt':
-        base = Path(os.environ.get('LOCALAPPDATA', Path.home() / 'AppData' / 'Local'))
-    else:
-        base = Path(os.environ.get('XDG_CACHE_HOME', Path.home() / '.cache'))
-
-    return base / 'neko' / _CACHE_SUBDIR
+    return cache_dir(_CACHE_SUBDIR)
 
 
 def _table_path() -> Path:

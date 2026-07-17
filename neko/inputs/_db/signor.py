@@ -1,14 +1,33 @@
 from io import BytesIO
 from typing import Mapping
 from pathlib import Path
+import logging
+import os
 import time
+import uuid
 
 import requests
 
 import pandas as pd
 
+from neko._cache import cache_dir
+
+logger = logging.getLogger(__name__)
+
 SIGNOR_URL = "https://signor.uniroma2.it/releases/getLatestRelease.php"
 SIGNOR_ENTITIES_URL = "https://signor.uniroma2.it/download_complexes.php"
+SIGNOR_CACHE_SUBDIR = 'signor'
+SIGNOR_CACHE_FILENAME = 'SIGNOR_Human.tsv'
+SIGNOR_DIRECT_VALUES = {
+    'yes': True,
+    'true': True,
+    't': True,
+    '1': True,
+    'no': False,
+    'false': False,
+    'f': False,
+    '0': False,
+}
 SIGNOR_REQUIRED_COLUMNS = {
     'IDA',
     'IDB',
@@ -50,6 +69,49 @@ SIGNOR_ENTITY_DOWNLOADS = {
 }
 
 
+def _cache_dir() -> Path:
+    """Return the managed cache directory for SIGNOR resources."""
+
+    return cache_dir(SIGNOR_CACHE_SUBDIR)
+
+
+def _database_cache_path() -> Path:
+    """Return the cached SIGNOR interaction-table path."""
+
+    return _cache_dir() / SIGNOR_CACHE_FILENAME
+
+
+def _write_dataframe_cache(
+    df: pd.DataFrame,
+    path: Path,
+    separator: str,
+) -> None:
+    """Atomically write one validated SIGNOR DataFrame to the cache."""
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    token = f'{os.getpid()}.{uuid.uuid4().hex}'
+    temporary_path = path.with_name(f'.{path.name}.{token}.tmp')
+
+    try:
+        df.to_csv(temporary_path, sep=separator, index=False)
+        temporary_path.replace(path)
+    finally:
+        temporary_path.unlink(missing_ok=True)
+
+
+def _cache_dataframe(
+    df: pd.DataFrame,
+    path: Path,
+    separator: str,
+) -> None:
+    """Best-effort cache write which never blocks use of downloaded data."""
+
+    try:
+        _write_dataframe_cache(df, path, separator)
+    except OSError as error:
+        logger.warning('Could not write SIGNOR cache %s: %s', path, error)
+
+
 def _parse_signor_response(content: bytes) -> pd.DataFrame:
     """Parse and validate a SIGNOR TSV response."""
 
@@ -71,6 +133,23 @@ def _parse_signor_response(content: bytes) -> pd.DataFrame:
         )
 
     return df
+
+
+def _parse_signor_directness(direct: pd.Series) -> pd.Series:
+    """Normalize every supported representation of SIGNOR directness."""
+
+    direct_values = direct.astype('string').str.strip().str.casefold()
+    is_direct = direct_values.map(SIGNOR_DIRECT_VALUES)
+    invalid_direct = direct_values.notna() & is_direct.isna()
+
+    if invalid_direct.any():
+        invalid = sorted(set(direct_values.loc[invalid_direct].tolist()))
+        raise ValueError(
+            'Unrecognized values in SIGNOR DIRECT column: '
+            f'{", ".join(invalid)}.',
+        )
+
+    return is_direct.fillna(False).astype(bool)
 
 
 def _parse_signor_entity_response(
@@ -99,6 +178,91 @@ def _parse_signor_entity_response(
         )
 
     return df.drop_duplicates().reset_index(drop=True)
+
+
+def _read_cached_signor_database() -> pd.DataFrame | None:
+    """Return a validated cached interaction table, if one is available."""
+
+    path = _database_cache_path()
+
+    if not path.exists():
+        return None
+
+    try:
+        cached = _parse_signor_response(path.read_bytes())
+        _parse_signor_directness(cached['DIRECT'])
+
+        return cached
+    except (OSError, ValueError) as error:
+        logger.warning('Ignoring invalid SIGNOR cache %s: %s', path, error)
+
+        return None
+
+
+def _read_cached_signor_entity_dictionaries(
+) -> dict[str, pd.DataFrame] | None:
+    """Return all validated cached entity dictionaries, if complete."""
+
+    cache = _cache_dir()
+    dictionaries = {}
+
+    for entity_type, config in SIGNOR_ENTITY_DOWNLOADS.items():
+        path = cache / config['filename']
+
+        if not path.exists():
+            return None
+
+        try:
+            dictionaries[entity_type] = _parse_signor_entity_response(
+                path.read_bytes(),
+                config['columns'],
+            )
+        except (OSError, ValueError) as error:
+            logger.warning(
+                'Ignoring invalid SIGNOR entity cache %s: %s',
+                path,
+                error,
+            )
+
+            return None
+
+    return dictionaries
+
+
+def _load_signor_database() -> pd.DataFrame:
+    """Load SIGNOR interactions from NeKo's cache or download and cache them."""
+
+    cached = _read_cached_signor_database()
+
+    if cached is not None:
+        return cached
+
+    downloaded = download_signor_database()
+    _parse_signor_directness(downloaded['DIRECT'])
+    _cache_dataframe(downloaded, _database_cache_path(), '\t')
+
+    return downloaded
+
+
+def _load_signor_entity_dictionaries() -> dict[str, pd.DataFrame]:
+    """Load SIGNOR dictionaries from NeKo's cache or populate the cache."""
+
+    cached = _read_cached_signor_entity_dictionaries()
+
+    if cached is not None:
+        return cached
+
+    downloaded = download_signor_entity_dictionaries()
+    cache = _cache_dir()
+
+    for entity_type, config in SIGNOR_ENTITY_DOWNLOADS.items():
+        _cache_dataframe(
+            downloaded[entity_type],
+            cache / config['filename'],
+            ';',
+        )
+
+    return downloaded
 
 
 def download_signor_entity_dictionaries(
@@ -349,16 +513,18 @@ def signor(
     normalize_entities: bool = True,
 ) -> pd.DataFrame:
     """
-    SIGNOR database from TSV or download.
+    SIGNOR database from a TSV, NeKo's cache, or a download.
 
-    Processes SIGNOR interactions from a local TSV file or downloads if no path is provided.
+    Processes a supplied local TSV. Without a path, uses NeKo's validated
+    SIGNOR cache and downloads only resources missing from that cache.
 
     Parameters:
         path (str, optional):
-            The path to the SIGNOR TSV. If None, downloads the database.
+            The path to the SIGNOR TSV. If None, uses the managed cache before
+            downloading the database.
         entity_dictionaries (mapping, optional):
             Preloaded SIGNOR entity dictionaries. If omitted, the four
-            dictionaries are downloaded from SIGNOR.
+            dictionaries are loaded from the managed cache before downloading.
         normalize_entities (bool):
             Replace SIGNOR-specific complex, family, phenotype, and stimulus
             IDs with normalized, human-readable identifiers.
@@ -367,7 +533,7 @@ def signor(
         pd.DataFrame: Processed SIGNOR interactions.
     """
     if path is None:
-        df = download_signor_database()
+        df = _load_signor_database()
     else:
         df = pd.read_table(path)
 
@@ -375,7 +541,7 @@ def signor(
         dictionaries = (
             entity_dictionaries
             if entity_dictionaries is not None
-            else download_signor_entity_dictionaries()
+            else _load_signor_entity_dictionaries()
         )
         df = normalize_signor_entities(df, dictionaries)
 
@@ -384,23 +550,7 @@ def signor(
     df = df.loc[~unknown_effect.fillna(False)].copy()
     effects = df['EFFECT'].astype('string')
 
-    direct_values = df['DIRECT'].astype('string').str.strip().str.casefold()
-    is_direct = direct_values.map({
-        'yes': True,
-        'true': True,
-        '1': True,
-        'no': False,
-        'false': False,
-        '0': False,
-    })
-    invalid_direct = direct_values.notna() & is_direct.isna()
-
-    if invalid_direct.any():
-        invalid = sorted(set(direct_values.loc[invalid_direct].tolist()))
-        raise ValueError(
-            'Unrecognized values in SIGNOR DIRECT column: '
-            f'{", ".join(invalid)}.',
-        )
+    is_direct = _parse_signor_directness(df['DIRECT'])
 
     # Transform the original dataframe into the desired format
     df = pd.DataFrame({
@@ -410,7 +560,7 @@ def signor(
         # DIRECT field describes whether the supporting evidence is direct,
         # rather than whether the graph edge has a direction.
         'is_directed': True,
-        'is_direct': is_direct.fillna(False).astype(bool),
+        'is_direct': is_direct,
         'is_stimulation': effects.str.contains(
             'up-regulates', regex=False, na=False,
         ),

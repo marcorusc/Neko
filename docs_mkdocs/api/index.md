@@ -43,10 +43,12 @@ from neko._annotations.gene_ontology import Ontology
 
 ## SIGNOR entities
 
-`neko.inputs.signor()` normalizes SIGNOR-specific nodes automatically. It
-downloads the complex, protein-family, phenotype, and stimulus dictionaries;
-expands complexes recursively into OmniPath-compatible `COMPLEX:` identifiers;
-and assigns readable typed identifiers to the other entity classes.
+`neko.inputs.signor()` normalizes SIGNOR-specific nodes automatically. It uses
+NeKo's validated local cache for the interaction table and the complex,
+protein-family, phenotype, and stimulus dictionaries, downloading only the
+missing resources. It expands complexes recursively into OmniPath-compatible
+`COMPLEX:` identifiers and assigns readable typed identifiers to the other
+entity classes.
 
 ```python
 from neko.inputs import signor
@@ -54,6 +56,7 @@ from neko.inputs import signor
 resources = signor()
 ```
 
-Use `normalize_entities=False` only when raw identifiers such as `SIGNOR-C1`
-are explicitly needed. For an offline workflow, pass preloaded DataFrames as
-`entity_dictionaries`.
+After the first successful load, the cached release is available offline. Set
+`NEKO_CACHE_DIR` to choose the cache root. Use `normalize_entities=False` only
+when raw identifiers such as `SIGNOR-C1` are explicitly needed. Preloaded
+DataFrames can also be supplied as `entity_dictionaries`.

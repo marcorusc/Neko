@@ -6,11 +6,12 @@ import pandas as pd
 
 from neko.inputs._db.omnipath import omnipath_universe
 import neko.inputs._db.signor as signor_module
+import neko.inputs._universe as universe_module
 
 SIGNOR_TSV = (
     b'IDA\tIDB\tDIRECT\tEFFECT\tANNOTATOR\tPMID\tSIGNOR_ID\n'
-    b'SRC\tTP53\tYES\tup-regulates activity\tlperfetto\t1\tSIGNOR-1\n'
-    b'SRC\tTP53\tNO\tup-regulates activity\t\t2\tSIGNOR-2\n'
+    b'SRC\tTP53\tt\tup-regulates activity\tlperfetto\t1\tSIGNOR-1\n'
+    b'SRC\tTP53\tf\tup-regulates activity\t\t2\tSIGNOR-2\n'
 )
 INVALID_SIGNOR_RESPONSE = (
     b'<br />\n<b>Fatal error</b>: Allowed memory size exhausted'
@@ -49,8 +50,10 @@ class FakeResponse:
 
 
 @pytest.fixture
-def mock_signor_download(monkeypatch):
+def mock_signor_download(monkeypatch, tmp_path):
     calls = {'get': [], 'post': []}
+
+    monkeypatch.setenv('NEKO_CACHE_DIR', str(tmp_path / 'cache'))
 
     def get(url, timeout):
         calls['get'].append((url, timeout))
@@ -98,6 +101,42 @@ def test_download_signor_database_as_df(mock_signor_download):
     assert not mock_signor_download['post']
 
 
+def test_signor_uses_and_populates_managed_database_cache(
+    mock_signor_download,
+):
+    first = signor_module.signor(normalize_entities=False)
+    cache_path = signor_module._database_cache_path()
+
+    assert not first.empty
+    assert cache_path.exists()
+    assert len(mock_signor_download['get']) == 1
+
+    second = signor_module.signor(normalize_entities=False)
+
+    assert first.equals(second)
+    assert len(mock_signor_download['get']) == 1
+
+
+def test_signor_replaces_invalid_managed_database_cache(
+    mock_signor_download,
+    caplog,
+):
+    cache_path = signor_module._database_cache_path()
+    cache_path.parent.mkdir(parents=True)
+    cache_path.write_bytes(
+        b'IDA\tIDB\tDIRECT\tEFFECT\tANNOTATOR\tPMID\tSIGNOR_ID\n'
+        b'SRC\tTP53\tMAYBE\tup-regulates activity\tcurator\t1\tSIGNOR-1\n'
+    )
+
+    processed = signor_module.signor(normalize_entities=False)
+
+    assert not processed.empty
+    assert len(mock_signor_download['get']) == 1
+    assert 'Ignoring invalid SIGNOR cache' in caplog.text
+    cached = pd.read_csv(cache_path, sep='\t')
+    assert {'IDA', 'IDB', 'DIRECT'}.issubset(cached.columns)
+
+
 def test_download_signor_entity_dictionaries(tmp_path, mock_signor_download):
     dictionaries = signor_module.download_signor_entity_dictionaries(tmp_path)
 
@@ -113,6 +152,34 @@ def test_download_signor_entity_dictionaries(tmp_path, mock_signor_download):
     for config in signor_module.SIGNOR_ENTITY_DOWNLOADS.values():
         saved = pd.read_csv(tmp_path / config['filename'], sep=';')
         assert not saved.empty
+
+
+def test_signor_uses_and_populates_managed_entity_cache(
+    tmp_path,
+    mock_signor_download,
+    monkeypatch,
+):
+    path = tmp_path / 'SIGNOR_Human.tsv'
+    path.write_bytes(SIGNOR_TSV)
+
+    first = signor_module.signor(str(path))
+
+    assert not first.empty
+    assert len(mock_signor_download['post']) == 4
+
+    monkeypatch.setattr(
+        signor_module.requests,
+        'post',
+        lambda *args, **kwargs: pytest.fail('unexpected dictionary download'),
+    )
+
+    second = signor_module.signor(str(path))
+
+    assert first.equals(second)
+    assert len(mock_signor_download['post']) == 4
+
+    for config in signor_module.SIGNOR_ENTITY_DOWNLOADS.values():
+        assert (signor_module._cache_dir() / config['filename']).exists()
 
 
 def test_normalize_signor_entities_expands_nested_members():
@@ -175,6 +242,56 @@ def test_signor_can_skip_entity_dictionary_download(
     )
 
     assert processed.loc[0, 'source'] == 'SRC'
+
+
+def test_public_signor_missing_path_falls_back_with_warning(
+    tmp_path,
+    monkeypatch,
+    caplog,
+):
+    calls = []
+    processed = pd.DataFrame({
+        'source': ['SRC'],
+        'target': ['TP53'],
+        'is_directed': [True],
+        'is_stimulation': [True],
+        'is_inhibition': [False],
+        'form_complex': [False],
+    })
+
+    def fake_signor(**kwargs):
+        calls.append(kwargs)
+        return processed
+
+    monkeypatch.setattr(universe_module._signor, 'signor', fake_signor)
+    missing = tmp_path / 'missing.tsv'
+
+    resources = universe_module.signor(
+        str(missing),
+        normalize_entities=False,
+    )
+
+    assert not resources.interactions.empty
+    assert calls == [{'normalize_entities': False}]
+    assert 'Falling back to the managed NeKo cache' in caplog.text
+
+
+def test_signor_accepts_provider_directness_values(tmp_path):
+    path = tmp_path / 'directness.tsv'
+    path.write_bytes(
+        b'IDA\tIDB\tDIRECT\tEFFECT\tANNOTATOR\tPMID\tSIGNOR_ID\n'
+        b'SRC\tTP53\tt\tup-regulates activity\tcurator\t1\tSIGNOR-1\n'
+        b'SRC\tMDM2\tf\tup-regulates activity\tcurator\t2\tSIGNOR-2\n'
+    )
+
+    processed = signor_module.signor(
+        str(path),
+        normalize_entities=False,
+    )
+
+    directness = processed.set_index('target')['is_direct'].to_dict()
+    assert bool(directness['TP53']) is True
+    assert bool(directness['MDM2']) is False
 
 
 def test_signor_preserves_conflicting_effects_without_false_consensus(
@@ -276,10 +393,12 @@ def test_download_signor_database_rejects_invalid_response(
     os.environ.get('NEKO_RUN_LIVE_TESTS') != '1',
     reason='set NEKO_RUN_LIVE_TESTS=1 to call the live SIGNOR service',
 )
-def test_download_signor_database_live():
-    df = signor_module.download_signor_database()
+def test_signor_live(tmp_path, monkeypatch):
+    monkeypatch.setenv('NEKO_CACHE_DIR', str(tmp_path / 'cache'))
+    df = signor_module.signor(normalize_entities=False)
 
-    assert {'IDA', 'IDB'}.issubset(df.columns)
+    assert {'source', 'target', 'is_direct'}.issubset(df.columns)
+    assert not df.empty
 
 
 def test_omnipath_universe():
