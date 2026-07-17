@@ -29,13 +29,17 @@ def is_connected(network) -> bool:
     Returns:
         - bool
     """
-    # Create a graph from the edges
-    g = nx.from_pandas_edgelist(network.edges, 'source', 'target')
-    # Add isolated nodes to the graph
-    all_nodes = set(network.nodes['Uniprot'])
-    g.add_nodes_from(all_nodes)
-    # Check if the graph is connected
-    return nx.is_connected(g)
+    valid_edges = network.edges.dropna(subset=['source', 'target'])
+    g = nx.from_pandas_edgelist(valid_edges, 'source', 'target')
+    node_identifiers = network.nodes['Uniprot'].where(
+        network.nodes['Uniprot'].notna(),
+        network.nodes['Genesymbol'],
+    )
+    g.add_nodes_from(node_identifiers.dropna().unique())
+
+    # NetworkX deliberately rejects the null graph. For NeKo's purposes an
+    # empty or one-node network has no disconnected pair to resolve.
+    return len(g) <= 1 or nx.is_connected(g)
 
 def check_sign(interaction: pd.DataFrame, consensus: bool = False) -> str:
     """

@@ -44,6 +44,13 @@ def _record_state_operation(method):
             return method(self, *args, **kwargs)
 
         depth = getattr(self, "_auto_state_depth", 0)
+
+        # The outer decorated operation records the complete state change.
+        # Nested operations must not recompute full DataFrame fingerprints for
+        # every added edge or node; they never create independent snapshots.
+        if depth > 0:
+            return method(self, *args, **kwargs)
+
         self._auto_state_depth = depth + 1
 
         before_nodes = _frame_fingerprint(self.nodes)
@@ -55,9 +62,6 @@ def _record_state_operation(method):
             self._auto_state_depth = depth
 
         if getattr(self, "_is_initializing", False):
-            return result
-
-        if depth > 0:
             return result
 
         nodes_changed = before_nodes != _frame_fingerprint(self.nodes)

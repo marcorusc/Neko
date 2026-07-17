@@ -4,12 +4,46 @@ Connection strategies for NeKo networks.
 This module contains high-level strategies for connecting nodes in a Network object.
 Each function should accept a Network instance as the first argument.
 """
-from typing import List, Optional, Union
-import pandas as pd
+import logging
 from itertools import combinations
+from typing import List, Optional, Union
+
+import pandas as pd
 from typing_extensions import Literal
+
 from .._methods.enrichment_methods import Connections
 from .tools import is_connected
+
+logger = logging.getLogger(__name__)
+
+
+def _node_identifiers(nodes: pd.DataFrame) -> pd.Series:
+    """Return each node's edge identifier, with a label fallback."""
+
+    return nodes["Uniprot"].where(
+        nodes["Uniprot"].notna(),
+        nodes["Genesymbol"],
+    )
+
+
+def _remove_nodes(network, nodes: pd.DataFrame) -> bool:
+    """Remove rows and report whether the node count decreased."""
+
+    previous_count = len(network.nodes)
+
+    for node in _node_identifiers(nodes).dropna().tolist():
+        network.remove_node(node)
+
+    made_progress = len(network.nodes) < previous_count
+
+    if not made_progress:
+        logger.warning(
+            'Stopped disconnected-node cleanup because no removable '
+            'identifier was found.',
+        )
+
+    return made_progress
+
 
 def connect_nodes(network, only_signed: bool = False, consensus_only: bool = False) -> None:
     """
@@ -141,7 +175,11 @@ def connect_network_radially(network, max_len: int = 1, direction: Literal['OUT'
     Connect all nodes of a network in a radial manner.
     """
     initial_nodes = network.initial_nodes
-    initial_nodes_set = set([network.mapping_node_identifier(i)[2] for i in initial_nodes])
+    initial_nodes_set = {
+        identifier
+        for node in initial_nodes
+        if (identifier := network.mapping_node_identifier(node)[2]) is not None
+    }
     i = 0
     source_nodes = initial_nodes_set
     target_nodes = initial_nodes_set
@@ -174,36 +212,68 @@ def connect_network_radially(network, max_len: int = 1, direction: Literal['OUT'
     # Remove disconnected nodes
     target_nodes_set = set(network.edges["target"].unique())
     source_nodes_set = set(network.edges["source"].unique())
+    node_identifiers = _node_identifiers(network.nodes)
     disconnected_nodes = network.nodes[
-        ~network.nodes["Uniprot"].isin(initial_nodes_set) & (
-            ~network.nodes["Uniprot"].isin(target_nodes_set) | ~network.nodes["Uniprot"].isin(source_nodes_set))]
+        ~node_identifiers.isin(initial_nodes_set) & (
+            ~node_identifiers.isin(target_nodes_set)
+            | ~node_identifiers.isin(source_nodes_set)
+        )
+    ]
     while not disconnected_nodes.empty:
-        nodes_to_remove = disconnected_nodes["Uniprot"].tolist()
-        for node in nodes_to_remove:
-            network.remove_node(node)
+        if not _remove_nodes(network, disconnected_nodes):
+            break
         target_nodes_set = set(network.edges["target"].unique())
         source_nodes_set = set(network.edges["source"].unique())
+        node_identifiers = _node_identifiers(network.nodes)
         disconnected_nodes = network.nodes[
-            ~network.nodes["Uniprot"].isin(initial_nodes_set) & (
-                ~network.nodes["Uniprot"].isin(target_nodes_set) | ~network.nodes["Uniprot"].isin(source_nodes_set))]
+            ~node_identifiers.isin(initial_nodes_set) & (
+                ~node_identifiers.isin(target_nodes_set)
+                | ~node_identifiers.isin(source_nodes_set)
+            )
+        ]
     return
 
 def connect_as_atopo(network, strategy: Literal['radial', 'complete', None] = None, max_len: int = 1, loops: bool = False, outputs=None, only_signed: bool = True, consensus: bool = False) -> None:
     """
     Connect all nodes of a network in a topological manner.
     """
-    initial_nodes = [network.mapping_node_identifier(i)[2] for i in network.initial_nodes]
+    initial_nodes = [
+        identifier
+        for node in network.initial_nodes
+        if (identifier := network.mapping_node_identifier(node)[2]) is not None
+    ]
     initial_nodes_set = set(initial_nodes)
     if strategy == 'radial':
         connect_network_radially(network, max_len, direction=None, loops=loops, consensus=consensus, only_signed=only_signed)
     elif strategy == 'complete':
         network.complete_connection(max_len, minimal=True, only_signed=only_signed, consensus=consensus, connect_with_bias=False)
-    starting_nodes = set(network.nodes["Uniprot"].tolist())
+    starting_nodes = set(_node_identifiers(network.nodes).dropna())
     if outputs is None:
         return
+
+    outputs_uniprot = []
+    invalid_outputs = []
+
     for node in outputs:
-        network.add_node(node)
-    outputs_uniprot = [network.mapping_node_identifier(i)[2] for i in outputs]
+        if network.add_node(node):
+            identifier = network.mapping_node_identifier(node)[2]
+
+            if identifier is not None:
+                outputs_uniprot.append(identifier)
+                continue
+
+        invalid_outputs.append(node)
+
+    if invalid_outputs:
+        logger.warning(
+            'Ignoring output nodes without a usable resource identifier: %s',
+            ', '.join(map(str, invalid_outputs)),
+        )
+
+    if not outputs_uniprot:
+        logger.warning('No valid output nodes were available for connection.')
+        return
+
     depth = 1
     while not is_connected(network):
         connect_to_upstream_nodes(network, outputs_uniprot, depth=depth, rank=len(outputs_uniprot), only_signed=only_signed, consensus=consensus)
@@ -220,15 +290,20 @@ def connect_as_atopo(network, strategy: Literal['radial', 'complete', None] = No
         depth += 1
     network.edges.drop_duplicates().reset_index(drop=True)
     target_nodes_set = set(network.edges["target"].unique())
+    node_identifiers = _node_identifiers(network.nodes)
     disconnected_nodes = network.nodes[
-        ~network.nodes["Uniprot"].isin(initial_nodes_set) & ~network.nodes["Uniprot"].isin(target_nodes_set)]
+        ~node_identifiers.isin(initial_nodes_set)
+        & ~node_identifiers.isin(target_nodes_set)
+    ]
     while not disconnected_nodes.empty:
-        nodes_to_remove = disconnected_nodes["Uniprot"].tolist()
-        for node in nodes_to_remove:
-            network.remove_node(node)
+        if not _remove_nodes(network, disconnected_nodes):
+            break
         target_nodes_set = set(network.edges["target"].unique())
+        node_identifiers = _node_identifiers(network.nodes)
         disconnected_nodes = network.nodes[
-            ~network.nodes["Uniprot"].isin(initial_nodes_set) & ~network.nodes["Uniprot"].isin(target_nodes_set)]
+            ~node_identifiers.isin(initial_nodes_set)
+            & ~node_identifiers.isin(target_nodes_set)
+        ]
     return
 
 def complete_connection(network,
