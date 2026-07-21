@@ -180,8 +180,24 @@ class Network:
             nodes_found = []
             for node in self.initial_nodes:
                 if self.add_node(node):
-                    nodes_found.append(node)
-            self.initial_nodes = nodes_found
+                    identifiers = mapping_node_identifier(node)
+                    candidates = {
+                        identifier
+                        for identifier in (node, *identifiers)
+                        if identifier is not None
+                    }
+                    matching_nodes = self.nodes[
+                        self.nodes[['Genesymbol', 'Uniprot']]
+                        .isin(candidates)
+                        .any(axis=1)
+                    ]
+                    canonical = (
+                        matching_nodes.iloc[0]['Genesymbol']
+                        if not matching_nodes.empty
+                        else identifiers[0] or identifiers[1] or node
+                    )
+                    nodes_found.append(canonical)
+            self.initial_nodes = list(dict.fromkeys(nodes_found))
             self._drop_missing_nodes()
             self.nodes.reset_index(inplace=True, drop=True)
 

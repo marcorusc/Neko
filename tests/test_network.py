@@ -28,6 +28,49 @@ def test_network_creation_from_genes(sample_genes, sample_resources):
     assert set(net.nodes["Uniprot"]).intersection(sample_genes)
     assert net.resources is not None
 
+
+def test_aliases_share_one_canonical_visualizer_node(monkeypatch):
+    import neko.core.network as network_module
+    from neko._visual.visualize_network import NetworkVisualizer
+
+    identifiers = {
+        'FAK': [None, 'PTK2', 'Q05397'],
+        'PTK2': [None, 'PTK2', 'Q05397'],
+        'Q05397': [None, 'PTK2', 'Q05397'],
+        'SRC': [None, 'SRC', 'P12931'],
+        'P12931': [None, 'SRC', 'P12931'],
+    }
+    monkeypatch.setattr(
+        network_module,
+        'mapping_node_identifier',
+        lambda node: identifiers[node],
+    )
+    resources = pd.DataFrame({
+        'source': ['Q05397'],
+        'target': ['P12931'],
+        'Type': ['activation'],
+        'Effect': ['stimulation'],
+        'References': ['PMID:1'],
+    })
+
+    net = Network(
+        initial_nodes=['FAK', 'PTK2', 'SRC'],
+        resources=resources,
+    )
+
+    assert net.initial_nodes == ['PTK2', 'SRC']
+    assert net.nodes['Genesymbol'].tolist() == ['PTK2', 'SRC']
+
+    visualizer = NetworkVisualizer(net, noi=True)
+    visualizer.tissue_mapping(pd.DataFrame({
+        'Genesymbol': ['PTK2', 'SRC'],
+        'in_tissue': [True, True],
+    }))
+    visualizer._NetworkVisualizer__build_graph()
+
+    assert visualizer.graph.source.count('\n\tPTK2 [') == 1
+    assert visualizer.graph.source.count('\n\tSRC [') == 1
+
 def test_add_and_remove_node(sample_genes, sample_resources):
     net = Network(initial_nodes=sample_genes, resources=sample_resources)
     # Add a node that is present in resources
