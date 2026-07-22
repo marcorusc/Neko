@@ -22,6 +22,22 @@ print(net.nodes)
 print(net.edges)
 ```
 
+## Connect to a GO term
+
+```python
+net.connect_genes_to_phenotype(
+    id_accession="GO:0062043",
+    only_signed=True,
+    compress=True,
+    maxlen=1,
+)
+```
+
+The accession is sufficient: NeKo obtains the canonical term label from GO.
+Exact-term human annotations are used by default. Use
+`include_descendants=True` to include genes annotated to more specific GO
+terms, or change `taxon_id` for another organism.
+
 ---
 
 ## Class reference
