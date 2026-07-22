@@ -1,5 +1,5 @@
 from __future__ import annotations
-from ..inputs import _universe
+from ..inputs import _universe, chebi_mapping
 from .._methods.enrichment_methods import Connections
 import copy
 from contextlib import contextmanager
@@ -44,6 +44,13 @@ def _record_state_operation(method):
             return method(self, *args, **kwargs)
 
         depth = getattr(self, "_auto_state_depth", 0)
+
+        # The outer decorated operation records the complete state change.
+        # Nested operations must not recompute full DataFrame fingerprints for
+        # every added edge or node; they never create independent snapshots.
+        if depth > 0:
+            return method(self, *args, **kwargs)
+
         self._auto_state_depth = depth + 1
 
         before_nodes = _frame_fingerprint(self.nodes)
@@ -55,9 +62,6 @@ def _record_state_operation(method):
             self._auto_state_depth = depth
 
         if getattr(self, "_is_initializing", False):
-            return result
-
-        if depth > 0:
             return result
 
         nodes_changed = before_nodes != _frame_fingerprint(self.nodes)
@@ -166,12 +170,34 @@ class Network:
             interactions
         )
 
+        # Resolve all ChEBI labels in one pass. The canonical accessions stay
+        # usable even when this optional, best-effort enrichment is offline.
+        chebi_mapping.ensure_names(
+            chebi_mapping.identifiers_in_frame(self.resources),
+        )
+
         if self.initial_nodes:
             nodes_found = []
             for node in self.initial_nodes:
                 if self.add_node(node):
-                    nodes_found.append(node)
-            self.initial_nodes = nodes_found
+                    identifiers = mapping_node_identifier(node)
+                    candidates = {
+                        identifier
+                        for identifier in (node, *identifiers)
+                        if identifier is not None
+                    }
+                    matching_nodes = self.nodes[
+                        self.nodes[['Genesymbol', 'Uniprot']]
+                        .isin(candidates)
+                        .any(axis=1)
+                    ]
+                    canonical = (
+                        matching_nodes.iloc[0]['Genesymbol']
+                        if not matching_nodes.empty
+                        else identifiers[0] or identifiers[1] or node
+                    )
+                    nodes_found.append(canonical)
+            self.initial_nodes = list(dict.fromkeys(nodes_found))
             self._drop_missing_nodes()
             self.nodes.reset_index(inplace=True, drop=True)
 
@@ -290,13 +316,29 @@ class Network:
             self.initial_nodes = list(set(self.initial_nodes))
             return True
         complex_string, genesymbol, uniprot = mapping_node_identifier(node)
-        if complex_string:
-            new_entry = {"Genesymbol": complex_string, "Uniprot": node, "Type": "NaN"}
-        else:
-            new_entry = {"Genesymbol": genesymbol, "Uniprot": uniprot, "Type": "NaN"}
-        if not self.check_node(uniprot) and not self.check_node(genesymbol):
+
+        # The identifier stored in ``Uniprot`` is also the identifier used by
+        # resource edges. Prefer the caller's exact identifier when the
+        # resource uses it (e.g. PhosphoSitePlus gene symbols and sites), and
+        # otherwise use its translated UniProt or display identifier.
+        resource_identifier = next(
+            (
+                identifier
+                for identifier in (node, uniprot, genesymbol)
+                if identifier is not None and self.check_node(identifier)
+            ),
+            None,
+        )
+
+        if resource_identifier is None:
             print("Error: node %s is not present in the resources database" % node)
             return False
+
+        new_entry = {
+            "Genesymbol": complex_string or genesymbol or node,
+            "Uniprot": resource_identifier,
+            "Type": "NaN",
+        }
         self.nodes.loc[len(self.nodes)] = new_entry
         self.nodes = self.nodes.drop_duplicates().reset_index(drop=True)
         self._add_node_obj(new_entry["Genesymbol"], new_entry["Uniprot"], new_entry["Type"])
@@ -314,14 +356,34 @@ class Network:
         Returns:
             - None
         """
-        # Remove the node from the nodes DataFrame
-        self.nodes = self.nodes[(self.nodes.Genesymbol != node) & (self.nodes.Uniprot != node)]
+        if node is None or (not isinstance(node, str) and pd.isna(node)):
+            return
 
-        # Translate the node identifier to Uniprot
-        node = mapping_node_identifier(node)[2]
+        matching_nodes = self.nodes[
+            (self.nodes["Genesymbol"] == node)
+            | (self.nodes["Uniprot"] == node)
+        ]
+        identifiers = {node}
+        identifiers.update(
+            value
+            for value in matching_nodes[["Genesymbol", "Uniprot"]].stack()
+            if pd.notna(value)
+        )
 
-        # Remove any edges associated with the node from the edges DataFrame
-        self.edges = self.edges[~self.edges[['source', 'target']].isin([node]).any(axis=1)]
+        if matching_nodes.empty:
+            translated = mapping_node_identifier(node)
+            identifiers.update(value for value in translated if value is not None)
+
+        self.nodes = self.nodes[
+            ~self.nodes[["Genesymbol", "Uniprot"]]
+            .isin(identifiers)
+            .any(axis=1)
+        ]
+        self.edges = self.edges[
+            ~self.edges[["source", "target"]]
+            .isin(identifiers)
+            .any(axis=1)
+        ]
 
         return
 
@@ -367,9 +429,36 @@ class Network:
         existing_edge = self.edges[(self.edges["source"] == edge["source"].values[0]) &
                                    (self.edges["target"] == edge["target"].values[0]) &
                                    (self.edges["Effect"] == effect)]
-        if not existing_edge.empty and references is not None:
-            self.edges.loc[existing_edge.index, "References"] += "; " + str(references)
-        else:
+        reference_is_missing = (
+            references is None
+            or references is False
+            or (
+                pd.api.types.is_scalar(references)
+                and pd.isna(references)
+            )
+        )
+
+        if not existing_edge.empty and not reference_is_missing:
+            new_reference = str(references)
+
+            for index in existing_edge.index:
+                current = self.edges.at[index, "References"]
+                current_is_missing = (
+                    current is None
+                    or current is False
+                    or (
+                        pd.api.types.is_scalar(current)
+                        and pd.isna(current)
+                    )
+                )
+
+                if current_is_missing:
+                    self.edges.at[index, "References"] = new_reference
+                elif new_reference not in str(current).split('; '):
+                    self.edges.at[index, "References"] = (
+                        f'{current}; {new_reference}'
+                    )
+        elif existing_edge.empty:
             # Concatenate the new edge DataFrame with the existing edges in the graph
             self.edges = pd.concat([self.edges, df_edge])
 
@@ -1085,13 +1174,6 @@ class Network:
         from .._visual.history import history_digraph
 
         return history_digraph(self, include_metadata=include_metadata)
-
-    def history_html(self, include_metadata: bool = True, div_class: str = "neko-history-graph") -> str:
-        """Return an HTML snippet embedding the history graph."""
-
-        from .._visual.history import history_html
-
-        return history_html(self, include_metadata=include_metadata, div_class=div_class)
 
     def history_html(self, include_metadata: bool = True, div_class: str = "neko-history-graph") -> str:
         """Return an HTML snippet embedding the history graph."""

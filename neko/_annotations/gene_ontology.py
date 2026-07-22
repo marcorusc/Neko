@@ -1,7 +1,9 @@
 import re
-import requests
-import pandas as pd
+
 import omnipath as op
+import requests
+
+import pandas as pd
 
 
 def fetch_nodes_from_url(url):
@@ -58,10 +60,20 @@ class Ontology:
         description_pattern = re.escape(description_prefix) + r".+?%22"
 
         # Perform the replacements
-        url = re.sub(go_code_pattern, go_code_prefix + new_go_code, self.gene_ontology_url, 1)
+        url = re.sub(
+            go_code_pattern,
+            go_code_prefix + new_go_code,
+            self.gene_ontology_url,
+            count=1,
+        )
         # URL-encode the new description
         new_description_encoded = re.sub(r" ", "%20", new_description)
-        url = re.sub(description_pattern, description_prefix + new_description_encoded + "%22", url, 1)
+        url = re.sub(
+            description_pattern,
+            description_prefix + new_description_encoded + "%22",
+            url,
+            count=1,
+        )
 
         return url
 
