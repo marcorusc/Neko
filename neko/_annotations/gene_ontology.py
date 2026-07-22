@@ -1,9 +1,217 @@
 import re
+import logging
+import os
+import uuid
 
 import omnipath as op
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util import Retry
 
 import pandas as pd
+
+from neko._cache import cache_dir
+
+
+_HPA_TISSUE_RESOURCE = "HPA_tissue"
+_REQUIRED_ANNOTATION_COLUMNS = frozenset({
+    "genesymbol",
+    "label",
+    "record_id",
+    "value",
+})
+_NOT_DETECTED_LEVELS = frozenset({"not detected"})
+_HPA_CANCER_DATA_URL = (
+    "https://www.proteinatlas.org/download/tsv/cancer_data.tsv.zip"
+)
+_HPA_CANCER_CACHE_SUBDIR = "annotations"
+_HPA_CANCER_CACHE_FILENAME = "hpa_cancer_data.tsv.zip"
+_MIN_HPA_CANCER_ROWS = 100_000
+_HPA_CANCER_COLUMNS = frozenset({
+    "Gene name",
+    "Cancer",
+    "High",
+    "Medium",
+    "Low",
+    "Not detected",
+})
+_HPA_CANCER_TISSUES = frozenset({
+    "breast cancer",
+    "carcinoid",
+    "cervical cancer",
+    "colorectal cancer",
+    "endometrial cancer",
+    "glioma",
+    "head and neck cancer",
+    "liver cancer",
+    "lung cancer",
+    "lymphoma",
+    "melanoma",
+    "ovarian cancer",
+    "pancreatic cancer",
+    "prostate cancer",
+    "renal cancer",
+    "skin cancer",
+    "stomach cancer",
+    "testis cancer",
+    "thyroid cancer",
+    "urothelial cancer",
+})
+
+logger = logging.getLogger(__name__)
+
+
+class AnnotationServiceError(RuntimeError):
+    """Raised when tissue annotations cannot be retrieved or interpreted."""
+
+
+def _normalize_annotation_value(value):
+    """Normalize an OmniPath annotation value for comparison."""
+    if pd.isna(value):
+        return ""
+    return " ".join(str(value).casefold().split())
+
+
+def _hpa_cancer_cache_path():
+    """Return the managed cache path for the HPA cancer table."""
+    return (
+        cache_dir(_HPA_CANCER_CACHE_SUBDIR)
+        / _HPA_CANCER_CACHE_FILENAME
+    )
+
+
+def _new_hpa_session():
+    """Create a bounded-retry session for Human Protein Atlas downloads."""
+    session = requests.Session()
+    retries = Retry(
+        total=3,
+        backoff_factor=0.5,
+        status_forcelist=[429, 500, 502, 503, 504],
+        allowed_methods=frozenset({'GET'}),
+    )
+    session.mount('https://', HTTPAdapter(max_retries=retries))
+    return session
+
+
+def _read_hpa_cancer_table(path):
+    """Read and validate the cached HPA cancer expression table."""
+    table = pd.read_csv(path, sep='\t', compression='zip', low_memory=False)
+    missing_columns = _HPA_CANCER_COLUMNS.difference(table.columns)
+    if missing_columns:
+        missing = ", ".join(sorted(missing_columns))
+        raise ValueError(f"HPA cancer data is missing columns: {missing}.")
+    if len(table) < _MIN_HPA_CANCER_ROWS:
+        raise ValueError(
+            "HPA cancer data is unexpectedly small "
+            f"({len(table)} rows)."
+        )
+    return table
+
+
+def _download_hpa_cancer_table(timeout=120):
+    """Download, validate, and atomically cache the HPA cancer table."""
+    path = _hpa_cancer_cache_path()
+    path.parent.mkdir(parents=True, exist_ok=True)
+    token = f"{os.getpid()}.{uuid.uuid4().hex}"
+    temporary_path = path.with_name(f".{path.name}.{token}.tmp")
+
+    try:
+        response = _new_hpa_session().get(
+            _HPA_CANCER_DATA_URL,
+            timeout=(10, timeout),
+        )
+        response.raise_for_status()
+        temporary_path.write_bytes(response.content)
+        table = _read_hpa_cancer_table(temporary_path)
+        temporary_path.replace(path)
+        return table
+    finally:
+        temporary_path.unlink(missing_ok=True)
+
+
+def _load_hpa_cancer_table():
+    """Load a valid cached HPA table, downloading it only when necessary."""
+    path = _hpa_cancer_cache_path()
+    if path.is_file():
+        try:
+            return _read_hpa_cancer_table(path)
+        except (OSError, ValueError, pd.errors.ParserError) as exc:
+            logger.warning("Ignoring invalid cached HPA cancer data: %s", exc)
+    return _download_hpa_cancer_table()
+
+
+def _hpa_cancer_expressed_genes(gene_symbols, tissue):
+    """Return genes detected by HPA IHC in at least one cancer sample."""
+    target_tissue = _normalize_annotation_value(tissue)
+    table = _load_hpa_cancer_table()
+    cancers = table['Cancer'].map(_normalize_annotation_value)
+    symbols = table['Gene name'].map(_normalize_annotation_value)
+    requested = {
+        _normalize_annotation_value(symbol)
+        for symbol in gene_symbols
+    }
+    matches = table[cancers.eq(target_tissue) & symbols.isin(requested)].copy()
+    if matches.empty:
+        return set()
+
+    detected_counts = matches[['High', 'Medium', 'Low']].apply(
+        pd.to_numeric,
+        errors='coerce',
+    ).fillna(0).sum(axis=1)
+    return set(symbols.loc[matches.index[detected_counts.gt(0)]])
+
+
+def _expressed_genes(annotations_df, tissue):
+    """Return normalized symbols expressed in ``tissue`` in HPA records."""
+    if not isinstance(annotations_df, pd.DataFrame):
+        raise AnnotationServiceError(
+            "OmniPath returned an invalid tissue annotation response: "
+            f"expected a pandas DataFrame, got {type(annotations_df).__name__}."
+        )
+
+    missing_columns = _REQUIRED_ANNOTATION_COLUMNS.difference(
+        annotations_df.columns
+    )
+    if missing_columns:
+        missing = ", ".join(sorted(missing_columns))
+        raise AnnotationServiceError(
+            "OmniPath returned an invalid tissue annotation response; "
+            f"missing columns: {missing}."
+        )
+
+    if annotations_df.empty:
+        return set()
+
+    records = annotations_df.copy()
+    records["_label"] = records["label"].map(_normalize_annotation_value)
+    records = records[records["_label"].isin(("tissue", "level"))]
+    if records.empty:
+        return set()
+
+    records = (
+        records.pivot_table(
+            index=["genesymbol", "record_id"],
+            columns="_label",
+            values="value",
+            aggfunc="first",
+            observed=True,
+        )
+        .reset_index()
+    )
+    if "tissue" not in records or "level" not in records:
+        return set()
+
+    target_tissue = _normalize_annotation_value(tissue)
+    tissues = records["tissue"].map(_normalize_annotation_value)
+    levels = records["level"].map(_normalize_annotation_value)
+    detected = levels.ne("") & ~levels.isin(_NOT_DETECTED_LEVELS)
+    matching_records = records[tissues.eq(target_tissue) & detected]
+
+    return {
+        _normalize_annotation_value(symbol)
+        for symbol in matching_records["genesymbol"]
+        if not pd.isna(symbol)
+    }
 
 
 def fetch_nodes_from_url(url):
@@ -112,33 +320,77 @@ class Ontology:
 
     def check_tissue_annotations(self, genes_df, tissue):
         """
-        Check if tissue annotations for each gene symbol contain the specified tissue.
+        Check whether genes have detected HPA expression in a tissue.
 
         Args:
         genes_df (DataFrame): DataFrame containing gene symbols.
-        tissue (str): Tissue to check for in annotations.
+        tissue (str): Tissue to match exactly after case/whitespace normalization.
 
         Returns:
-        DataFrame: DataFrame with results indicating whether each gene symbol has tissue annotations containing the specified tissue.
+        DataFrame: Gene symbols and their detected-expression status.
+
+        Raises:
+        AnnotationServiceError: If OmniPath is unavailable or returns an
+            unexpected annotation schema.
         """
 
-        results = []
+        if not isinstance(genes_df, pd.DataFrame):
+            raise TypeError(
+                "genes_df must be a pandas DataFrame containing a "
+                "'Genesymbol' column."
+            )
+        if 'Genesymbol' not in genes_df:
+            raise ValueError("genes_df must contain a 'Genesymbol' column.")
+        if not isinstance(tissue, str) or not tissue.strip():
+            raise ValueError("tissue must be a non-empty string.")
 
-        # Iterate over each gene symbol
-        for genesymbol in genes_df['Genesymbol']:
-            # Fetch annotations for the gene symbol
-            annotations_df = op.requests.Annotations.get([genesymbol], force_full_download=True)
+        raw_symbols = genes_df['Genesymbol']
+        if raw_symbols.isna().any():
+            raise ValueError("genes_df contains a missing gene symbol.")
 
-            # Filter annotations for tissue annotations
-            tissue_annotations = annotations_df[annotations_df['label'] == 'tissue']
+        gene_symbols = raw_symbols.astype(str).tolist()
+        if any(not symbol.strip() for symbol in gene_symbols):
+            raise ValueError("genes_df contains an empty gene symbol.")
+        if not gene_symbols:
+            return pd.DataFrame({
+                'Genesymbol': pd.Series(dtype='object'),
+                'in_tissue': pd.Series(dtype='bool'),
+            })
 
-            # Test if any tissue annotation contains the specified tissue
-            in_tissue = any(tissue.lower() in value.lower() for value in tissue_annotations['value'])
+        unique_symbols = list(dict.fromkeys(gene_symbols))
+        normalized_tissue = _normalize_annotation_value(tissue)
 
-            # Append result to list
-            results.append({'Genesymbol': genesymbol, 'in_tissue': in_tissue})
+        if normalized_tissue in _HPA_CANCER_TISSUES:
+            try:
+                expressed = _hpa_cancer_expressed_genes(
+                    unique_symbols,
+                    tissue,
+                )
+            except Exception as exc:
+                raise AnnotationServiceError(
+                    "Unable to retrieve cancer expression data from the "
+                    "Human Protein Atlas. No genes were classified as absent."
+                ) from exc
+        else:
+            # A single resource-restricted request is faster, cacheable as one
+            # unit, and less likely to fail than one request per gene.
+            try:
+                annotations_df = op.requests.Annotations.get(
+                    proteins=unique_symbols,
+                    resources=_HPA_TISSUE_RESOURCE,
+                )
+            except Exception as exc:
+                raise AnnotationServiceError(
+                    "Unable to retrieve HPA tissue annotations from OmniPath. "
+                    "The service may be temporarily unavailable; no genes "
+                    "were classified as absent."
+                ) from exc
+            expressed = _expressed_genes(annotations_df, tissue)
 
-        # Create DataFrame from results
-        results_df = pd.DataFrame(results)
-
-        return results_df
+        return pd.DataFrame({
+            'Genesymbol': gene_symbols,
+            'in_tissue': [
+                _normalize_annotation_value(symbol) in expressed
+                for symbol in gene_symbols
+            ],
+        })
