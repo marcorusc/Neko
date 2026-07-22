@@ -801,12 +801,50 @@ class Network:
         return connect_to_upstream_nodes(self, nodes_to_connect=nodes_to_connect, depth=depth, rank=rank, only_signed=only_signed, consensus=consensus)
 
     @_record_state_operation
-    def connect_genes_to_phenotype(self, phenotype: str = None, id_accession: str = None, sub_genes: list = None, maxlen: int = 2, only_signed: bool = False, compress: bool = False) -> None:
+    def connect_genes_to_phenotype(
+            self,
+            phenotype: str = None,
+            id_accession: str = None,
+            sub_genes: list = None,
+            maxlen: int = 2,
+            only_signed: bool = False,
+            compress: bool = False,
+            taxon_id=9606,
+            include_descendants: bool = False,
+            exclude_automatic_assertions: bool = False,
+        ) -> None:
         """
-        Delegates to strategies.connect_genes_to_phenotype.
+        Connect this network to genes associated with a GO term.
+
+        The GO accession is authoritative. Exact human annotations are used
+        by default; ``include_descendants`` enables annotations propagated
+        from more specific terms. When ``compress`` is true, connected GO
+        genes are replaced by a node carrying the canonical GO term label.
+
+        Args:
+            phenotype: Optional backward-compatible phenotype alias.
+            id_accession: GO accession such as ``GO:0062043``.
+            sub_genes: Optional subset of network genes to connect from.
+            maxlen: Maximum path length in the interaction resource.
+            only_signed: Restrict paths to signed interactions.
+            compress: Collapse connected GO genes into one phenotype node.
+            taxon_id: NCBI taxonomy ID or ``NCBITaxon:`` CURIE.
+            include_descendants: Include associations to descendant GO terms.
+            exclude_automatic_assertions: Exclude ``ECO:0000501`` records.
         """
         from .strategies import connect_genes_to_phenotype
-        return connect_genes_to_phenotype(self, phenotype=phenotype, id_accession=id_accession, sub_genes=sub_genes, maxlen=maxlen, only_signed=only_signed, compress=compress)
+        return connect_genes_to_phenotype(
+            self,
+            phenotype=phenotype,
+            id_accession=id_accession,
+            sub_genes=sub_genes,
+            maxlen=maxlen,
+            only_signed=only_signed,
+            compress=compress,
+            taxon_id=taxon_id,
+            include_descendants=include_descendants,
+            exclude_automatic_assertions=exclude_automatic_assertions,
+        )
 
     @_record_state_operation
     def connect_network_radially(self, max_len: int = 1, direction: Literal['OUT', 'IN', None] = None, loops: bool = False, consensus: bool = False, only_signed: bool = True) -> None:

@@ -129,32 +129,99 @@ def connect_to_upstream_nodes(network, nodes_to_connect=None, depth: int = 1, ra
     network.edges.drop_duplicates().reset_index(drop=True)
     return
 
-def connect_genes_to_phenotype(network, phenotype: str = None, id_accession: str = None, sub_genes: list = None, maxlen: int = 2, only_signed: bool = False, compress: bool = False) -> None:
+def connect_genes_to_phenotype(
+        network,
+        phenotype: str = None,
+        id_accession: str = None,
+        sub_genes: list = None,
+        maxlen: int = 2,
+        only_signed: bool = False,
+        compress: bool = False,
+        taxon_id=9606,
+        include_descendants: bool = False,
+        exclude_automatic_assertions: bool = False,
+    ) -> None:
     """
-    Connect genes to a phenotype and optionally compress the network.
+    Connect a network to GO-associated genes and optionally compress them.
+
+    GO-provided UniProt identifiers are used directly. Gene-symbol mapping is
+    retained only as a fallback for associations in another identifier space.
     """
+    id_accession = network._ontology.resolve_accession(
+        phenotype=phenotype,
+        id_accession=id_accession,
+    )
+    term = network._ontology.get_term(id_accession)
+    go_genes = network._ontology.fetch_go_genes(
+        id_accession,
+        taxon_id=taxon_id,
+        include_descendants=include_descendants,
+        exclude_automatic_assertions=exclude_automatic_assertions,
+    )
+    phenotype_genes = sorted({
+        gene.symbol for gene in go_genes if gene.symbol
+    })
+
+    if not go_genes:
+        logger.warning(
+            "No genes associated with %s for taxon %s.",
+            term.go_id,
+            taxon_id,
+        )
+        return
+
+    uniprot_genes = []
+    for gene in go_genes:
+        uniprot = None
+        if gene.gene_id and gene.gene_id.startswith("UniProtKB:"):
+            uniprot = gene.gene_id.split(":", 1)[1]
+        if uniprot is None and gene.symbol:
+            uniprot = network.mapping_node_identifier(gene.symbol)[2]
+        if uniprot is None:
+            logger.warning(
+                "Skipping GO gene without a usable network identifier: %s",
+                gene.gene_id or gene.symbol,
+            )
+            continue
+        uniprot_genes.append(uniprot)
+
+    if not uniprot_genes:
+        logger.warning(
+            "No genes associated with %s could be mapped to network IDs.",
+            term.go_id,
+        )
+        return
+
     uniprot_gene_list = []
     genesymbols_genes = []
-    phenotype_genes = network._ontology.get_markers(phenotype=phenotype, id_accession=id_accession)
-    if not phenotype_genes:
-        print("Something went wrong while getting the markers for:", phenotype, "and", id_accession)
-        print("Check URL and try again")
-        return
-    uniprot_genes = [network.mapping_node_identifier(i)[2] for i in phenotype_genes]
     if sub_genes:
-        if network.check_gene_list_format(sub_genes):
-            uniprot_gene_list = sub_genes
-            genesymbols_genes = [network.mapping_node_identifier(i)[2] for i in sub_genes]
-        else:
-            uniprot_gene_list = [network.mapping_node_identifier(i)[2] for i in sub_genes]
-            genesymbols_genes = sub_genes
-    print("Starting connecting network's nodes to:", phenotype_genes)
-    unique_uniprot = set(uniprot_genes) - set(uniprot_gene_list if uniprot_gene_list else network.nodes["Uniprot"])
-    unique_genesymbol = set(phenotype_genes) - set(genesymbols_genes if genesymbols_genes else network.nodes["Genesymbol"])
-    connect_component(network, uniprot_gene_list if uniprot_gene_list else network.nodes["Uniprot"].tolist(), list(unique_uniprot), mode="OUT", maxlen=maxlen, only_signed=only_signed)
+        for gene in sub_genes:
+            _, genesymbol, uniprot = network.mapping_node_identifier(gene)
+            uniprot_gene_list.append(uniprot or gene)
+            genesymbols_genes.append(genesymbol or gene)
+
+    source_uniprot = (
+        uniprot_gene_list
+        if uniprot_gene_list
+        else network.nodes["Uniprot"].dropna().tolist()
+    )
+    source_symbols = (
+        genesymbols_genes
+        if genesymbols_genes
+        else network.nodes["Genesymbol"].dropna().tolist()
+    )
+    unique_uniprot = set(uniprot_genes) - set(source_uniprot)
+    unique_genesymbol = set(phenotype_genes) - set(source_symbols)
+    connect_component(
+        network,
+        source_uniprot,
+        sorted(unique_uniprot),
+        mode="OUT",
+        maxlen=maxlen,
+        only_signed=only_signed,
+    )
     if compress:
-        phenotype = phenotype or network._ontology.accession_to_phenotype_dict[id_accession]
-        phenotype_modified = phenotype.replace(" ", "_")
+        phenotype_modified = term.label.replace(" ", "_")
         network.nodes['Uniprot'] = network.nodes['Uniprot'].apply(lambda x: phenotype_modified if x in unique_uniprot else x)
         network.nodes['Genesymbol'] = network.nodes['Genesymbol'].apply(lambda x: phenotype_modified if x in unique_genesymbol else x)
         for column in ['source', 'target']:
@@ -164,8 +231,8 @@ def connect_genes_to_phenotype(network, phenotype: str = None, id_accession: str
             'Effect': 'first',
             'References': 'first'
         }).reset_index()
-        common_genes = set(uniprot_genes).intersection(set(uniprot_gene_list if uniprot_gene_list else network.nodes["Uniprot"]))
-        for gene in common_genes:
+        common_genes = set(uniprot_genes).intersection(source_uniprot)
+        for gene in sorted(common_genes):
             new_edge = pd.DataFrame({"source": [gene], "target": [phenotype_modified], "Effect": ["stimulation"], "References": ["Gene Ontology"]})
             network.edges = pd.concat([network.edges, new_edge], ignore_index=True)
     return
