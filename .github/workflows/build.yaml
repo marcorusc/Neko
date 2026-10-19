@@ -35,4 +35,14 @@ jobs:
         -   name: Smoke test installed wheel metadata
             working-directory: /tmp
             run: |
-                python -c 'import importlib.metadata as md; import neko; assert md.version("nekomata") == neko.__version__ == "1.10.0"'
+                python - <<'PYVERSIONS'
+                import importlib.metadata as md
+                import os
+                from pathlib import Path
+                import neko
+                import toml
+                project = Path(os.environ["GITHUB_WORKSPACE"]) / "pyproject.toml"
+                expected = toml.load(project)["tool"]["poetry"]["version"]
+                assert md.version("nekomata") == neko.__version__ == expected
+                print(f"Installed wheel metadata matches declared version {expected}")
+                PYVERSIONS

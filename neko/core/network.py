@@ -331,17 +331,19 @@ class Network:
             complex_string, genesymbol, uniprot = mapping_node_identifier(node)
             if not complex_string and not genesymbol and not uniprot:
                 print("Error: node %s could not be automatically translated" % node)
-                new_entry = {"Genesymbol": node, "Uniprot": node, "Type": "NaN"}
-                self.nodes.loc[len(self.nodes)] = new_entry
-                self.nodes = self.nodes.drop_duplicates().reset_index(drop=True)
-                self._add_node_obj(node, node, "NaN")
-                return True
-            new_entry = {"Genesymbol": genesymbol, "Uniprot": uniprot, "Type": "NaN"}
+            # Complexes have a display name but no gene symbol. Keep the
+            # original SIF identifier for labels without a mapped accession.
+            new_entry = {
+                "Genesymbol": complex_string or genesymbol or node,
+                "Uniprot": uniprot or node,
+                "Type": "NaN",
+            }
             self.nodes.loc[len(self.nodes)] = new_entry
             self.nodes = self.nodes.drop_duplicates().reset_index(drop=True)
-            self._add_node_obj(genesymbol, uniprot, "NaN")
-            self.initial_nodes.append(new_entry["Genesymbol"])
-            self.initial_nodes = list(set(self.initial_nodes))
+            self._add_node_obj(new_entry["Genesymbol"], new_entry["Uniprot"], "NaN")
+            self.initial_nodes = list(dict.fromkeys(
+                [*(self.initial_nodes or []), new_entry["Genesymbol"]]
+            ))
             return True
         complex_string, genesymbol, uniprot = mapping_node_identifier(node)
 
@@ -698,13 +700,25 @@ class Network:
             }
             return effect_types.get(interaction_type, "undefined")
 
+        reference_prefix = "# Reference PMID:"
+        pending_references = None
         with open(sif_file, "r") as f:
             for line in f:
-                if line.startswith('#'):  # Skip comment lines
+                if line.startswith(reference_prefix):
+                    # NeKo exports one reference comment before each edge.
+                    # Keep it local to that edge, including when a malformed
+                    # interaction is skipped below.
+                    pending_references = line[len(reference_prefix):].strip()
+                    continue
+                if line.startswith('#'):
                     continue
                 interaction = line.strip().split()
+                if not interaction:
+                    continue
+                references = pending_references or "SIF file"
+                pending_references = None
                 if len(interaction) < 3:
-                    continue  # Skip malformed lines
+                    continue  # Skip malformed lines without leaking references.
 
                 effect = determine_effect(interaction[1])
 
@@ -715,7 +729,7 @@ class Network:
                         [interaction[2]]) else interaction[2],
                     "Type": interaction[3] if len(interaction) > 3 else None,
                     "Effect": effect,
-                    "References": "SIF file"
+                    "References": references
                 })
                 node_set.update([interaction[0], interaction[2]])
 
